@@ -10,7 +10,7 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Detencion de ruta"
+            android:text="Detención de ruta"
             android:elevation="20dp"
             android:id="@+id/imageButton1"
             android:layout_marginBottom="64dp" android:layout_above="@+id/imageButton2"
@@ -19,7 +19,7 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Llegue a cargar"
+            android:text="Llegue a descargar"
             android:elevation="20dp"
             android:id="@+id/imageButton2"
             android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>

@@ -8,5 +8,7 @@
     <string name="title_activity_operation">OperationActivity</string>
     <string name="title_activity_info_cargue">infoCargueActivity</string>
     <string name="title_activity_estado_viaje">EstadoViajeActivity</string>
+    <string name="title_activity_detencion_ruta">DetencionRutaActivity</string>
+    <string name="title_activity_finalizar_viaje">FinalizarViajeActivity</string>
 
 </resources>

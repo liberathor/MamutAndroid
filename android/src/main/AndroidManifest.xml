@@ -32,6 +32,14 @@
             android:name=".view.EstadoViajeActivity"
             android:label="@string/title_activity_estado_viaje" >
         </activity>
+        <activity
+                android:name=".view.DetencionRutaActivity"
+                android:label="@string/title_activity_detencion_ruta">
+        </activity>
+        <activity
+                android:name=".view.FinalizarViajeActivity"
+                android:label="@string/title_activity_finalizar_viaje">
+        </activity>
     </application>
 
 </manifest>

@@ -37,8 +37,7 @@
             android:layout_height="wrap_content"
             android:text="INFORMACION DE CARGUE"
             android:id="@+id/textView3"
-            android:layout_marginTop="59dp" android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:elevation="20dp" android:id="@+id/imageButton8"
             android:text="Opciones"
