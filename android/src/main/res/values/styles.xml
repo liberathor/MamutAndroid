@@ -12,6 +12,25 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:actionBarSize">@dimen/abc_action_bar_default_height_material</item>
         <item name="windowActionBar">true</item>
+        <item name="android:buttonStyle">@style/button</item>
+    </style>
+
+    <style name="button" parent="@android:style/Widget.Button">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:shadowColor">#ff000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">@drawable/button_shaped</item>
+        <item name="android:paddingTop">50dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
     </style>
 
 </resources>

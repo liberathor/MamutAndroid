@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/circle">
-    </item>
-    <item>
-        <shape
-            android:shape="oval" >
-            <size android:height="30dp" android:width="50dp"/>
-            <solid android:color="@color/accent_material_light"/>
-        </shape>
-    </item>
-    <item android:drawable="@drawable/ic_launcher">
-        <shape
-            android:shape="rectangle">
-            <size android:width="20dp" android:height="20dp"/>
-        </shape>
+    <item android:drawable="@drawable/button"/>
+    <item android:top="5dp" android:left="0dp">
+        <bitmap android:src="@drawable/ic_launcher" android:gravity="top|center_vertical"/>
     </item>
 </layer-list>
