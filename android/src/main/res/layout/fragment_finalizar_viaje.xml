@@ -51,6 +51,6 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="FINALIZACION DE VIAJE"
-            android:id="@+id/textView2" android:layout_alignParentTop="true" android:layout_alignLeft="@+id/button8"
-            android:layout_alignStart="@+id/button8"/>
+            android:id="@+id/textView2"
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
 </RelativeLayout>

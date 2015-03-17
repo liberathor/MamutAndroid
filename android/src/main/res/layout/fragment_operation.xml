@@ -28,7 +28,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Operacion Nacional"
+                android:text="OPERACION NACIONAL"
                 android:id="@+id/operacionNalTextView"
                 android:textSize="@dimen/abc_text_size_headline_material" android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"/>

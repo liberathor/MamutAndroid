@@ -4,7 +4,15 @@
   <locations  
     class = "java.util.ArrayList">
     <statePointEntry>
-      <state      
+      <state
+              class="com.android.tools.idea.editors.navigation.model.ActivityState"
+              className="co.com.widetech.mamut.android.view.SolicitudMantenimientoActivity"/>
+        <point
+                x="480"
+                y="11200"/>
+    </statePointEntry>
+      <statePointEntry>
+          <state
         class = "com.android.tools.idea.editors.navigation.model.MenuState"      
         xmlResourceName = "menu_info_cargue"/>
       <point      
@@ -13,39 +21,55 @@
     </statePointEntry>
     <statePointEntry>
       <state      
-        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
-        xmlResourceName = "menu_ingreso"/>
-      <point      
-        x = "1600"      
-        y = "640"/>
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"
+        xmlResourceName="menu_info_viaje"/>
+      <point
+              x="3680"
+              y="8480"/>
     </statePointEntry>
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.MenuState"      
         xmlResourceName = "menu_estado_viaje"/>
-      <point      
-        x = "620"      
-        y = "5260"/>
+      <point
+              x="640"
+              y="5120"/>
     </statePointEntry>
     <statePointEntry>
       <state      
         class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
         className = "co.com.widetech.mamut.android.view.MainActivity"/>
+      <point
+              x="2080"
+              y="1440"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state
+              class="com.android.tools.idea.editors.navigation.model.ActivityState"
+              className="co.com.widetech.mamut.android.view.TanqueoActivity"/>
+        <point
+                x="2400"
+                y="10240"/>
+    </statePointEntry>
+      <statePointEntry>
+          <state
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"
+        xmlResourceName="menu_detencion_ruta"/>
       <point      
-        x = "1920"      
-        y = "1600"/>
+        x = "640"
+        y="7040"/>
     </statePointEntry>
     <statePointEntry>
       <state      
-        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
-        xmlResourceName = "menu_operation"/>
-      <point      
-        x = "640"      
-        y = "2240"/>
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"
+        className="co.com.widetech.mamut.android.view.EstadoViajeActivity"/>
+        <point
+                x="480"
+                y="5440"/>
     </statePointEntry>
-    <statePointEntry>
-      <state      
-        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+      <statePointEntry>
+          <state
+                  class="com.android.tools.idea.editors.navigation.model.ActivityState"
         className = "co.com.widetech.mamut.android.view.infoCargueActivity"/>
       <point      
         x = "2400"      
@@ -53,19 +77,19 @@
     </statePointEntry>
     <statePointEntry>
       <state      
-        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
-        className = "co.com.widetech.mamut.android.view.IngresoActivity"/>
-      <point      
-        x = "500"      
-        y = "100"/>
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"
+        className="co.com.widetech.mamut.android.view.FinalizarViajeActivity"/>
+      <point
+              x="2400"
+              y="6240"/>
     </statePointEntry>
     <statePointEntry>
       <state      
-        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
-        xmlResourceName = "menu_main"/>
-      <point      
-        x = "2240"      
-        y = "1280"/>
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"
+        xmlResourceName="menu_finalizar_viaje"/>
+      <point
+              x="3668"
+              y="6240"/>
     </statePointEntry>
     <statePointEntry>
       <state      
@@ -76,12 +100,84 @@
         y = "2560"/>
     </statePointEntry>
     <statePointEntry>
-      <state      
-        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
-        className = "co.com.widetech.mamut.android.view.EstadoViajeActivity"/>
+      <state
+              class="com.android.tools.idea.editors.navigation.model.MenuState"
+              xmlResourceName="menu_tanqueo"/>
+        <point
+                x="3668"
+                y="10240"/>
+    </statePointEntry>
+      <statePointEntry>
+          <state
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"
+        className="co.com.widetech.mamut.android.view.DetencionRutaActivity"/>
       <point      
-        x = "480"      
-        y = "5600"/>
+        x = "480"
+        y="7360"/>
+      </statePointEntry>
+      <statePointEntry>
+          <state
+                  class="com.android.tools.idea.editors.navigation.model.ActivityState"
+                  className="co.com.widetech.mamut.android.view.InicioTurnoActivity"/>
+          <point
+                  x="480"
+                  y="9280"/>
+      </statePointEntry>
+      <statePointEntry>
+          <state
+                  class="com.android.tools.idea.editors.navigation.model.MenuState"
+                  xmlResourceName="menu_ingreso"/>
+          <point
+                  x="640"
+                  y="160"/>
+      </statePointEntry>
+      <statePointEntry>
+          <state
+                  class="com.android.tools.idea.editors.navigation.model.MenuState"
+                  xmlResourceName="menu_operation"/>
+          <point
+                  x="640"
+                  y="2240"/>
+      </statePointEntry>
+      <statePointEntry>
+          <state
+                  class="com.android.tools.idea.editors.navigation.model.ActivityState"
+                  className="co.com.widetech.mamut.android.view.InfoViajeActivity"/>
+          <point
+                  x="2400"
+                  y="8480"/>
+      </statePointEntry>
+      <statePointEntry>
+          <state
+                  class="com.android.tools.idea.editors.navigation.model.ActivityState"
+                  className="co.com.widetech.mamut.android.view.IngresoActivity"/>
+          <point
+                  x="480"
+                  y="640"/>
+      </statePointEntry>
+      <statePointEntry>
+          <state
+                  class="com.android.tools.idea.editors.navigation.model.MenuState"
+                  xmlResourceName="menu_main"/>
+          <point
+                  x="2240"
+                  y="1120"/>
+      </statePointEntry>
+      <statePointEntry>
+          <state
+                  class="com.android.tools.idea.editors.navigation.model.MenuState"
+                  xmlResourceName="menu_inicio_turno"/>
+          <point
+                  x="640"
+                  y="8800"/>
+      </statePointEntry>
+      <statePointEntry>
+          <state
+                  class="com.android.tools.idea.editors.navigation.model.MenuState"
+                  xmlResourceName="menu_solicitud_mantenimiento"/>
+          <point
+                  x="640"
+                  y="10880"/>
     </statePointEntry>
   </locations>
 </navigationModel>

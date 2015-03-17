@@ -75,9 +75,9 @@
   <component name="GradleLocalSettings">
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$/../AutoRecorder" value="4248836267697" />
-        <entry key="$PROJECT_DIR$/../taximeter-odometro" value="1415255171464" />
-        <entry key="$PROJECT_DIR$/../theBusyCoderGuidetoAndroidDevelopemt/cw-omnibus/Notifications/Foreground" value="1416210927869" />
+        <entry key="$USER_HOME$/AutoRecorder" value="4248836267697" />
+        <entry key="$USER_HOME$/taximeter-odometro" value="1415255171464" />
+        <entry key="$USER_HOME$/theBusyCoderGuidetoAndroidDevelopemt/cw-omnibus/Notifications/Foreground" value="1416210927869" />
       </map>
     </option>
   </component>
@@ -95,7 +95,7 @@
   <component name="ProjectModuleManager">
     <modules />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="Android 5.0 Google APIs" project-jdk-type="Android SDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
@@ -112,7 +112,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">

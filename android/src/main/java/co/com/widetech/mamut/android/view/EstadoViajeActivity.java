@@ -1,15 +1,10 @@
 package co.com.widetech.mamut.android.view;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
+import android.view.*;
 import co.com.widetech.mamut.android.R;
 
 
@@ -24,6 +19,12 @@ public class EstadoViajeActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        findViewById(R.id.container).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EstadoViajeActivity.this.startActivity(new Intent(EstadoViajeActivity.this, FinalizarViajeActivity.class));
+            }
+        });
     }
 
 

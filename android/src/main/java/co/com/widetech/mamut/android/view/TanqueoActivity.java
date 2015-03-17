@@ -7,12 +7,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.*;
 import co.com.widetech.mamut.android.R;
 
-public class DetencionRutaActivity extends ActionBarActivity {
+public class TanqueoActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detencion_ruta);
+        setContentView(R.layout.activity_tanqueo);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -21,7 +21,7 @@ public class DetencionRutaActivity extends ActionBarActivity {
         findViewById(R.id.container).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DetencionRutaActivity.this.startActivity(new Intent(DetencionRutaActivity.this, InfoViajeActivity.class));
+                TanqueoActivity.this.startActivity(new Intent(TanqueoActivity.this, SolicitudMantenimientoActivity.class));
             }
         });
     }
@@ -30,7 +30,7 @@ public class DetencionRutaActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_detencion_ruta, menu);
+        getMenuInflater().inflate(R.menu.menu_tanqueo, menu);
         return true;
     }
 
@@ -60,7 +60,7 @@ public class DetencionRutaActivity extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_detencion_ruta, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_info_tanqueo, container, false);
             return rootView;
         }
     }

@@ -10,5 +10,10 @@
     <string name="title_activity_estado_viaje">EstadoViajeActivity</string>
     <string name="title_activity_detencion_ruta">DetencionRutaActivity</string>
     <string name="title_activity_finalizar_viaje">FinalizarViajeActivity</string>
+    <string name="title_activity_inicio_turno">InicioTurnoActivity</string>
+    <string name="title_activity_info_viaje">InfoViajeActivity</string>
+    <string name="title_activity_tanqueo">TanqueoActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_solicitud_mantenimiento">SolicitudMantenimientoActivity</string>
 
 </resources>

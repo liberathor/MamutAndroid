@@ -40,6 +40,22 @@
                 android:name=".view.FinalizarViajeActivity"
                 android:label="@string/title_activity_finalizar_viaje">
         </activity>
+        <activity
+                android:name=".view.InicioTurnoActivity"
+                android:label="@string/title_activity_inicio_turno">
+        </activity>
+        <activity
+                android:name=".view.InfoViajeActivity"
+                android:label="@string/title_activity_info_viaje">
+        </activity>
+        <activity
+                android:name=".view.TanqueoActivity"
+                android:label="@string/title_activity_tanqueo">
+        </activity>
+        <activity
+                android:name=".view.SolicitudMantenimientoActivity"
+                android:label="@string/title_activity_solicitud_mantenimiento">
+        </activity>
     </application>
 
 </manifest>

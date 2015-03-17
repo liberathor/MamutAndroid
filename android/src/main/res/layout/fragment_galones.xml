@@ -1,0 +1,34 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="co.com.widetech.mamut.android.view.GalonesFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="EN MANTENIMIENTO"
+            android:id="@+id/textView17" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GALONES"
+            android:id="@+id/textView18" android:layout_below="@+id/textView17" android:layout_centerHorizontal="true"
+            android:layout_marginTop="76dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText11" android:layout_below="@+id/textView18"
+            android:layout_alignLeft="@+id/textView17" android:layout_alignStart="@+id/textView17"
+            android:layout_alignRight="@+id/textView17" android:layout_alignEnd="@+id/textView17"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enviar"
+            android:id="@+id/button29"
+            android:layout_centerVertical="true" android:layout_alignRight="@+id/editText11"
+            android:layout_alignEnd="@+id/editText11"/>
+</RelativeLayout>

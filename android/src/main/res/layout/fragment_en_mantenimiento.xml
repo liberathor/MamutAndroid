@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="co.com.widetech.mamut.android.view.EnMantenimientoFragment">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="EN MANTENIMIENTO"
+            android:id="@+id/textView16" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inicio mantenimiento"
+            android:id="@+id/button27" android:layout_below="@+id/textView16" android:layout_centerHorizontal="true"
+            android:layout_marginTop="152dp"/>
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Chat"
+            android:id="@+id/button28"
+            android:layout_below="@+id/button27" android:layout_centerHorizontal="true"
+            android:layout_marginTop="53dp"/>
+</RelativeLayout>
