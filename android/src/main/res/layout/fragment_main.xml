@@ -70,7 +70,8 @@
             android:text="MENU PRINCIPAL"
             android:id="@+id/textView"
             android:layout_alignParentTop="true" android:layout_centerHorizontal="true"
-            android:layout_marginTop="0dp" android:textSize="@dimen/abc_text_size_headline_material"/>
+            android:layout_marginTop="0dp" android:textSize="@dimen/abc_text_size_large_material"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
