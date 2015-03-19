@@ -70,7 +70,7 @@
       <statePointEntry>
           <state
                   class="com.android.tools.idea.editors.navigation.model.ActivityState"
-        className = "co.com.widetech.mamut.android.view.infoCargueActivity"/>
+                  className="co.com.widetech.mamut.android.view.InfoCargueActivity"/>
       <point      
         x = "2400"      
         y = "4160"/>

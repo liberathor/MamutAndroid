@@ -1,14 +1,13 @@
 package co.com.widetech.mamut.android.view;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
+import android.view.*;
+import android.widget.Button;
+import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
 
 
@@ -23,12 +22,6 @@ public class IngresoActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-        findViewById(R.id.container).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IngresoActivity.this.startActivity(new Intent(IngresoActivity.this, MainActivity.class));
-            }
-        });
     }
 
 
@@ -57,9 +50,20 @@ public class IngresoActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
+        private Button mButton;
+        private EditText mTextView;
 
         public PlaceholderFragment() {
+        }
+
+        @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            Activity activity = getActivity();
+            mButton = (Button) activity.findViewById(R.id.buttonIngreso);
+            mTextView = (EditText) activity.findViewById(R.id.editTextCodigoIngreso);
+            mButton.setOnClickListener(this);
+            super.onActivityCreated(savedInstanceState);
         }
 
         @Override
@@ -67,6 +71,18 @@ public class IngresoActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_ingreso, container, false);
             return rootView;
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (isValid(mTextView.getText().toString())) {
+                getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+            }
+        }
+
+        private boolean isValid(String value) {
+            //TODO: Validate text ingressed here
+            return true;
         }
     }
 }
