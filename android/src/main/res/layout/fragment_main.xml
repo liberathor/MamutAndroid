@@ -27,41 +27,41 @@
                         android:layout_height="100dp"
                         android:text="Operacion Nacional"
                         android:elevation="20dp"
-                        android:id="@+id/imageButton"/>
+                        android:id="@+id/ButtonOpNal"/>
                 <Button
                         android:layout_marginTop="15dp"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:text="Proyectos"
                         android:elevation="20dp"
-                        android:id="@+id/imageButton2"/>
+                        android:id="@+id/ButtonProyectos"/>
                 <Button
                         android:layout_marginTop="15dp"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:text="Viaje vacio"
                         android:elevation="20dp"
-                        android:id="@+id/imageButton3"/>
+                        android:id="@+id/ButtonViajeVacio"/>
                 <Button
                         android:layout_marginTop="19dp"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:text="Tanqueo"
                         android:elevation="20dp"
-                        android:id="@+id/imageButton4"/>
+                        android:id="@+id/ButtonTanqueo"/>
                 <Button
                         android:layout_marginTop="19dp"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:text="Chat"
                         android:elevation="20dp"
-                        android:id="@+id/imageButton5"/>
+                        android:id="@+id/ButtonChat"/>
                 <Button
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:text="Mantenimiento"
                         android:elevation="20dp"
-                        android:id="@+id/imageButton6"/>
+                        android:id="@+id/ButtonMantenimiento"/>
             </android.support.v7.widget.GridLayout>
     </RelativeLayout>
     <TextView
@@ -74,7 +74,7 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView2"
+            android:id="@+id/ButtonSalida"
             android:text="Salida"
             android:elevation="20dp"
             android:layout_alignParentBottom="true"

@@ -56,6 +56,10 @@
                 android:name=".view.SolicitudMantenimientoActivity"
                 android:label="@string/title_activity_solicitud_mantenimiento">
         </activity>
+        <activity
+                android:name=".view.ProjectosActivity"
+                android:label="@string/title_activity_projectos">
+        </activity>
     </application>
 
 </manifest>

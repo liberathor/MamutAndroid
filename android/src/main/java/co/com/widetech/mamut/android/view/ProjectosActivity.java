@@ -1,22 +1,17 @@
 package co.com.widetech.mamut.android.view;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.*;
-import android.widget.Button;
-import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
 
-
-public class IngresoActivity extends ActionBarActivity {
+public class ProjectosActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ingreso);
+        setContentView(R.layout.activity_projectos);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -28,7 +23,7 @@ public class IngresoActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_ingreso, menu);
+        getMenuInflater().inflate(R.menu.menu_projectos, menu);
         return true;
     }
 
@@ -50,40 +45,16 @@ public class IngresoActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
-        private Button mButton;
-        private EditText mTextView;
+    public static class PlaceholderFragment extends Fragment {
 
         public PlaceholderFragment() {
         }
 
         @Override
-        public void onActivityCreated(Bundle savedInstanceState) {
-            Activity activity = getActivity();
-            mButton = (Button) activity.findViewById(R.id.buttonIngreso);
-            mTextView = (EditText) activity.findViewById(R.id.editTextCodigoIngreso);
-            mButton.setOnClickListener(this);
-            super.onActivityCreated(savedInstanceState);
-        }
-
-        @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_ingreso, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_projectos, container, false);
             return rootView;
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (isValid(mTextView.getText().toString())) {
-                getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
-            }
-            getActivity().finish();
-        }
-
-        private boolean isValid(String value) {
-            //TODO: Validate text ingressed here
-            return true;
         }
     }
 }
