@@ -25,7 +25,7 @@
             android:label="@string/title_activity_operation" >
         </activity>
         <activity
-                android:name=".view.InfoCargueActivity"
+                android:name=".view.infoCargueActivity"
             android:label="@string/title_activity_info_cargue" >
         </activity>
         <activity
