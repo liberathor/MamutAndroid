@@ -22,9 +22,9 @@
             android:layout_height="wrap_content"
             android:elevation="20dp"
             android:text="Enviar"
-            android:id="@+id/ButtonMantenimiento" android:layout_below="@+id/editTextCarga"
-            android:layout_alignRight="@+id/editTextCarga" android:layout_alignEnd="@+id/editTextCarga"
-            android:layout_marginRight="33dp" android:layout_marginEnd="33dp" android:layout_marginTop="35dp"/>
+            android:id="@+id/ButtonMantenimiento"
+            android:layout_marginTop="46dp" android:layout_below="@+id/editTextCarga"
+            android:layout_alignRight="@+id/editTextCarga" android:layout_alignEnd="@+id/editTextCarga"/>
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:text="Chat"
             android:elevation="20dp" android:id="@+id/ButtonChat"

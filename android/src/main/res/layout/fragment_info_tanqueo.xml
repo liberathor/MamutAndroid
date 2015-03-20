@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:text="NOMBRE DE LA EDS"
             android:id="@+id/textView12"
-            android:layout_marginTop="62dp" android:layout_below="@+id/textView11"
-            android:layout_centerHorizontal="true"/>
+            android:layout_below="@+id/textView11" android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,13 +32,15 @@
             android:layout_height="wrap_content"
             android:text="CANTIDAD DE GALONES"
             android:id="@+id/textView13"
-            android:layout_below="@+id/editText4" android:layout_centerHorizontal="true"/>
+            android:layout_marginTop="20dp" android:layout_below="@+id/editText4"
+            android:layout_centerHorizontal="true"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText9" android:layout_below="@+id/textView13"
-            android:layout_alignLeft="@+id/editText4" android:layout_alignStart="@+id/editText4"
-            android:layout_alignRight="@+id/editText4" android:layout_alignEnd="@+id/editText4"/>
+            android:id="@+id/editText9"
+            android:layout_below="@+id/textView13" android:layout_alignLeft="@+id/button19"
+            android:layout_alignStart="@+id/button19"
+            android:layout_alignRight="@+id/textView13" android:layout_alignEnd="@+id/textView13"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

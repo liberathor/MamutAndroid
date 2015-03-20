@@ -2,16 +2,11 @@ package co.com.widetech.mamut.android.view;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
+import android.view.*;
+import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
 
@@ -26,12 +21,6 @@ public class OperationActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-        findViewById(R.id.container).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                OperationActivity.this.startActivity(new Intent(OperationActivity.this, infoCargueActivity.class));
-            }
-        });
     }
 
 
@@ -60,9 +49,21 @@ public class OperationActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
+        private Button mButtonMantenimiento;
+        private Button mButtonChat;
 
         public PlaceholderFragment() {
+        }
+
+        @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            Activity activity = getActivity();
+            mButtonMantenimiento = (Button) activity.findViewById(R.id.ButtonMantenimiento);
+            mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
+            mButtonMantenimiento.setOnClickListener(this);
+            mButtonChat.setOnClickListener(this);
+            super.onActivityCreated(savedInstanceState);
         }
 
         @Override
@@ -70,6 +71,24 @@ public class OperationActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_operation, container, false);
             return rootView;
+        }
+
+        @Override
+        public void onClick(View view) {
+            int id = view.getId();
+            Class activity = null;
+            switch (id) {
+                case R.id.ButtonMantenimiento:
+                    activity = infoCargueActivity.class;
+                    break;
+                case R.id.ButtonChat:
+                    break;
+                default:
+                    break;
+            }
+            if (activity != null) {
+                getActivity().startActivity(new Intent(getActivity(), activity));
+            }
         }
     }
 }
