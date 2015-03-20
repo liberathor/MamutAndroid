@@ -60,6 +60,10 @@
                 android:name=".view.ProjectosActivity"
                 android:label="@string/title_activity_projectos">
         </activity>
+        <activity
+                android:name=".view.InicioViaje"
+                android:label="@string/title_activity_inicio_viaje">
+        </activity>
     </application>
 
 </manifest>
