@@ -13,14 +13,14 @@
                 android:layout_height="wrap_content"
                 android:text="Llegue a cargar"
                 android:elevation="20dp"
-                android:id="@+id/ButtonMantenimiento" android:layout_centerVertical="true"
+                android:id="@+id/ButtonOptions" android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"/>
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chat"
                 android:elevation="20dp"
-                android:id="@+id/ButtonChat" android:layout_below="@+id/ButtonMantenimiento"
+                android:id="@+id/ButtonChat" android:layout_below="@+id/ButtonOptions"
                 android:layout_centerHorizontal="true" android:layout_marginTop="51dp"/>
         <TextView
                 android:layout_width="wrap_content"

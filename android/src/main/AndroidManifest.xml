@@ -61,7 +61,7 @@
                 android:label="@string/title_activity_projectos">
         </activity>
         <activity
-                android:name=".view.InicioViaje"
+                android:name=".view.InicioViajeActivity"
                 android:label="@string/title_activity_inicio_viaje">
         </activity>
     </application>

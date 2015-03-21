@@ -67,11 +67,11 @@ public class MainActivity extends ActionBarActivity {
         public void onActivityCreated(Bundle savedInstanceState) {
             Activity activity = getActivity();
             mButtonOpNal = (Button) activity.findViewById(R.id.ButtonOpNal);
-            mButtonProyectos = (Button) activity.findViewById(R.id.ButtonProyectos);
+            mButtonProyectos = (Button) activity.findViewById(R.id.ButtonLlegadaDescargar);
             mButtonViajeVacio = (Button) activity.findViewById(R.id.ButtonViajeVacio);
             mButtonTanqueo = (Button) activity.findViewById(R.id.ButtonTanqueo);
             mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
-            mButtonMantenimiento = (Button) activity.findViewById(R.id.ButtonMantenimiento);
+            mButtonMantenimiento = (Button) activity.findViewById(R.id.ButtonOptions);
             mButtonSalida = (Button) activity.findViewById(R.id.ButtonSalida);
             mButtonOpNal.setOnClickListener(this);
             mButtonProyectos.setOnClickListener(this);
@@ -99,7 +99,7 @@ public class MainActivity extends ActionBarActivity {
                 case R.id.ButtonOpNal:
                     activity = OperationActivity.class;
                     break;
-                case R.id.ButtonProyectos:
+                case R.id.ButtonLlegadaDescargar:
                     activity = ProjectosActivity.class;
                     break;
                 case R.id.ButtonViajeVacio:
@@ -110,7 +110,7 @@ public class MainActivity extends ActionBarActivity {
                     break;
                 case R.id.ButtonChat:
                     break;
-                case R.id.ButtonMantenimiento:
+                case R.id.ButtonOptions:
                     activity = SolicitudMantenimientoActivity.class;
                     break;
                 case R.id.ButtonSalida:

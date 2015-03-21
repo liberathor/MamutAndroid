@@ -1,7 +1,7 @@
 package co.com.widetech.mamut.android.view;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -9,25 +9,34 @@ import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
-
-public class EstadoViajeActivity extends ActionBarActivity {
+public class InicioViajeActivity extends ActionBarActivity implements InfoInicioViajeFragment.OnFragmentInteractionListener {
+    Fragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_estado_viaje);
+        setContentView(R.layout.activity_inicio_viaje);
+        if (mFragment == null) {
+            mFragment = new PlaceholderFragment();
+        }
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, mFragment)
                     .commit();
         }
     }
 
+    private void addFragment(Fragment fragment) {
+        if (fragment != null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+            mFragment = fragment;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_estado_viaje, menu);
+        getMenuInflater().inflate(R.menu.menu_inicio_viaje, menu);
         return true;
     }
 
@@ -46,14 +55,18 @@ public class EstadoViajeActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
-        private Button mButtonDetencionRuta;
-        private Button mButtonLlegueDescargar;
-        private Button mButtonChat;
-        private Button mButtonOptions;
+        Button mButtonInicioViaje;
+        Button mButtonChat;
+        Button mButtonOpciones;
 
         public PlaceholderFragment() {
         }
@@ -61,26 +74,29 @@ public class EstadoViajeActivity extends ActionBarActivity {
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             Activity activity = getActivity();
-            mButtonDetencionRuta = (Button) activity.findViewById(R.id.ButtonDetencionRuta);
-            mButtonLlegueDescargar = (Button) activity.findViewById(R.id.ButtonLlegueCargar);
+            mButtonInicioViaje = (Button) activity.findViewById(R.id.ButtonInicioViaje);
             mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
-            mButtonOptions = (Button) activity.findViewById(R.id.ButtonOpciones);
-            mButtonDetencionRuta.setOnClickListener(this);
-            mButtonLlegueDescargar.setOnClickListener(this);
+            mButtonOpciones = (Button) activity.findViewById(R.id.ButtonOpciones);
+            mButtonInicioViaje.setOnClickListener(this);
             mButtonChat.setOnClickListener(this);
-            mButtonOptions.setOnClickListener(this);
+            mButtonOpciones.setOnClickListener(this);
             super.onActivityCreated(savedInstanceState);
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_inicio_viaje, container, false);
+            return rootView;
         }
 
         @Override
         public void onClick(View view) {
             int id = view.getId();
-            Class activity = null;
+            Fragment fragment = null;
             switch (id) {
-                case R.id.ButtonDetencionRuta:
-                    activity = DetencionRutaActivity.class;
-                    break;
-                case R.id.ButtonLlegadaDescargar:
+                case R.id.ButtonInicioViaje:
+                    fragment = new InfoInicioViajeFragment();
                     break;
                 case R.id.ButtonChat:
                     break;
@@ -89,16 +105,7 @@ public class EstadoViajeActivity extends ActionBarActivity {
                 default:
                     break;
             }
-            if (activity != null) {
-                getActivity().startActivity(new Intent(getActivity(), activity));
-            }
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_estado_viaje, container, false);
-            return rootView;
+            ((InicioViajeActivity) getActivity()).addFragment(fragment);
         }
     }
 }

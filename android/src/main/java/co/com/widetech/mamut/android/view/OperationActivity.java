@@ -59,7 +59,7 @@ public class OperationActivity extends ActionBarActivity {
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             Activity activity = getActivity();
-            mButtonMantenimiento = (Button) activity.findViewById(R.id.ButtonMantenimiento);
+            mButtonMantenimiento = (Button) activity.findViewById(R.id.ButtonOptions);
             mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
             mButtonMantenimiento.setOnClickListener(this);
             mButtonChat.setOnClickListener(this);
@@ -78,7 +78,7 @@ public class OperationActivity extends ActionBarActivity {
             int id = view.getId();
             Class activity = null;
             switch (id) {
-                case R.id.ButtonMantenimiento:
+                case R.id.ButtonOptions:
                     activity = infoCargueActivity.class;
                     break;
                 case R.id.ButtonChat:

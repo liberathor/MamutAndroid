@@ -34,7 +34,7 @@
                         android:layout_height="100dp"
                         android:text="Proyectos"
                         android:elevation="20dp"
-                        android:id="@+id/ButtonProyectos"/>
+                        android:id="@+id/ButtonLlegadaDescargar"/>
                 <Button
                         android:layout_marginTop="15dp"
                         android:layout_width="100dp"
@@ -61,7 +61,7 @@
                         android:layout_height="100dp"
                         android:text="Mantenimiento"
                         android:elevation="20dp"
-                        android:id="@+id/ButtonMantenimiento"/>
+                        android:id="@+id/ButtonOptions"/>
             </android.support.v7.widget.GridLayout>
     </RelativeLayout>
     <TextView

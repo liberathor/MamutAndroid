@@ -22,13 +22,13 @@
             android:layout_height="wrap_content"
             android:elevation="20dp"
             android:text="Enviar"
-            android:id="@+id/ButtonMantenimiento"
+            android:id="@+id/ButtonOptions"
             android:layout_marginTop="46dp" android:layout_below="@+id/editTextCarga"
             android:layout_alignRight="@+id/editTextCarga" android:layout_alignEnd="@+id/editTextCarga"/>
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:text="Chat"
             android:elevation="20dp" android:id="@+id/ButtonChat"
-            android:layout_alignTop="@+id/ButtonMantenimiento" android:layout_alignLeft="@+id/editTextCarga"
+            android:layout_alignTop="@+id/ButtonOptions" android:layout_alignLeft="@+id/editTextCarga"
             android:layout_alignStart="@+id/editTextCarga"/>
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:elevation="20dp" android:id="@+id/ButtonOpciones"
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="FINALIZACION DE VIAJE"
+            android:text="INFORMACION DE CARGUE"
             android:id="@+id/textView3" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
     <TextView
             android:layout_width="wrap_content"

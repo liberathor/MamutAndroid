@@ -1,6 +1,5 @@
 package co.com.widetech.mamut.android.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -18,12 +17,6 @@ public class InfoViajeActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-        findViewById(R.id.container).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InfoViajeActivity.this.startActivity(new Intent(InfoViajeActivity.this, InicioTurnoActivity.class));
-            }
-        });
     }
 
 
