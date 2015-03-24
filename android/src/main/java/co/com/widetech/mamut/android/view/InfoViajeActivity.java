@@ -1,9 +1,12 @@
 package co.com.widetech.mamut.android.view;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.*;
+import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
 public class InfoViajeActivity extends ActionBarActivity {
@@ -18,7 +21,6 @@ public class InfoViajeActivity extends ActionBarActivity {
                     .commit();
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -45,7 +47,8 @@ public class InfoViajeActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
+        Button mButtonEnviarEstadoViaje;
 
         public PlaceholderFragment() {
         }
@@ -55,6 +58,29 @@ public class InfoViajeActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_info_viaje, container, false);
             return rootView;
+        }
+
+        @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            Activity activity = getActivity();
+            mButtonEnviarEstadoViaje = (Button) activity.findViewById(R.id.ButtonEnviarInfoViaje);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int id = view.getId();
+            Class activity = null;
+            switch (id) {
+                case R.id.ButtonEnviarInfoViaje:
+                    activity = EstadoViajeActivity.class;
+                    break;
+                default:
+                    break;
+            }
+            if (activity != null) {
+                getActivity().startActivity(new Intent(getActivity(), activity));
+            }
         }
     }
 }
