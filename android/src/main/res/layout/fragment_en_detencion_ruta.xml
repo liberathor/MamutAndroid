@@ -1,0 +1,30 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="co.com.widetech.mamut.android.view.EnDetencionRutaFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reiniciar viaje"
+            android:id="@+id/ButtonReinicarViaje" android:layout_gravity="center"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opciones"
+            android:id="@+id/ButtonOptions" android:layout_gravity="left|bottom" android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="EN PAUSA"
+            android:id="@+id/textViewMainTitle" android:layout_gravity="center_horizontal|top"/>
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Chat"
+            android:id="@+id/ButtonChat" android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"/>
+</FrameLayout>

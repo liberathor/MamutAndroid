@@ -17,5 +17,11 @@
     <string name="title_activity_solicitud_mantenimiento">SolicitudMantenimientoActivity</string>
     <string name="title_activity_projectos">ProjectosActivity</string>
     <string name="title_activity_inicio_viaje">InicioViaje</string>
+    <string name="fragment_name">co.com.widetech.mamut.android.fragment_name</string>
+    <string name="fragment_title">co.com.widetech.mamut.android.fragment_title</string>
+    <string name="title_pausa_activa">EN PAUSA ACTIVA</string>
+    <string name="title_alimentacion">EN ALIMENTACION</string>
+    <string name="title_pernoctacion">EN PERNOCTACION</string>
+    <string name="title_otro_motivo">OTRO MOTIVO</string>
 
 </resources>
