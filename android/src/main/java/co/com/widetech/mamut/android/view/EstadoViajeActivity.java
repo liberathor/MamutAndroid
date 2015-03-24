@@ -62,9 +62,9 @@ public class EstadoViajeActivity extends ActionBarActivity {
         public void onActivityCreated(Bundle savedInstanceState) {
             Activity activity = getActivity();
             mButtonDetencionRuta = (Button) activity.findViewById(R.id.ButtonDetencionRuta);
-            mButtonLlegueDescargar = (Button) activity.findViewById(R.id.ButtonLlegueCargar);
+            mButtonLlegueDescargar = (Button) activity.findViewById(R.id.ButtonLlegadaDescargar);
             mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
-            mButtonOptions = (Button) activity.findViewById(R.id.ButtonOpciones);
+            mButtonOptions = (Button) activity.findViewById(R.id.ButtonOptions);
             mButtonDetencionRuta.setOnClickListener(this);
             mButtonLlegueDescargar.setOnClickListener(this);
             mButtonChat.setOnClickListener(this);
