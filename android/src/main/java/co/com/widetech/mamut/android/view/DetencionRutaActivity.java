@@ -57,7 +57,10 @@ public class DetencionRutaActivity extends ActionBarActivity implements EnDetenc
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
+        uri = Uri.parse(EnDetencionRutaFragment.class.getCanonicalName());
+        if (uri.compareTo(uri) == 0) {
+            finish();
+        }
     }
 
     /**
