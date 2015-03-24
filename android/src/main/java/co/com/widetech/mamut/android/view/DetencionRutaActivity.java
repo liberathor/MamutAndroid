@@ -116,7 +116,7 @@ public class DetencionRutaActivity extends ActionBarActivity implements EnDetenc
                     bundle.putString(getString(R.string.fragment_title), getString(R.string.title_alimentacion));
                     break;
                 case R.id.ButtonOtro:
-                    fragment = new EnDetencionRutaFragment();
+                    fragment = new OtroMotivoDetencionFragment();
                     bundle.putString(getString(R.string.fragment_title), getString(R.string.title_otro_motivo));
                     break;
                 default:
