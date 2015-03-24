@@ -81,6 +81,7 @@ public class EstadoViajeActivity extends ActionBarActivity {
                     activity = DetencionRutaActivity.class;
                     break;
                 case R.id.ButtonLlegadaDescargar:
+                    activity = FinalizarViajeActivity.class;
                     break;
                 case R.id.ButtonChat:
                     break;
