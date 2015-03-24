@@ -1,10 +1,12 @@
 package co.com.widetech.mamut.android.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.*;
+import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
 public class FinalizarViajeActivity extends ActionBarActivity {
@@ -18,12 +20,6 @@ public class FinalizarViajeActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-        findViewById(R.id.container).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FinalizarViajeActivity.this.startActivity(new Intent(FinalizarViajeActivity.this, DetencionRutaActivity.class));
-            }
-        });
     }
 
 
@@ -52,7 +48,8 @@ public class FinalizarViajeActivity extends ActionBarActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
+        private Button mButtonFinalizarViaje;
 
         public PlaceholderFragment() {
         }
@@ -63,5 +60,33 @@ public class FinalizarViajeActivity extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_finalizar_viaje, container, false);
             return rootView;
         }
+
+        @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            Activity activity = getActivity();
+            mButtonFinalizarViaje = (Button) activity.findViewById(R.id.ButtonFinalizarViaje);
+            mButtonFinalizarViaje.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int id = view.getId();
+            Class activity = null;
+            Intent intent = null;
+            switch (id) {
+                case R.id.ButtonFinalizarViaje:
+                    activity = MainActivity.class;
+                    intent = new Intent(getActivity(), activity);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    break;
+                default:
+                    break;
+            }
+            if (activity != null && intent != null) {
+                getActivity().startActivity(intent);
+            }
+        }
     }
 }
+
