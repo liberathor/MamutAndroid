@@ -1,14 +1,32 @@
 package co.com.widetech.mamut.android.view;
 
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.UriMatcher;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.view.*;
+import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
 
-public class InicioTurnoActivity extends ActionBarActivity {
+public class InicioTurnoActivity extends ActionBarActivity implements EnTurnoFragment.OnFragmentInteractionListener {
+    public static final String SCHEME = ContentResolver.SCHEME_CONTENT + "://";
+    public static final String AUTHORITY = "co.com.widetech.mamut.android.turnos";
+    private static final int INICIAR_TURNO = 0;
+    private static final int FINALIZAR_TURNO = 1;
+    private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+
+    static {
+        sUriMatcher.addURI(AUTHORITY, "iniciar_turno", INICIAR_TURNO);
+        sUriMatcher.addURI(AUTHORITY, "finalizar_turno", FINALIZAR_TURNO);
+    }
+
+    public static String BASE_URI = SCHEME + AUTHORITY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +43,12 @@ public class InicioTurnoActivity extends ActionBarActivity {
                 InicioTurnoActivity.this.startActivity(new Intent(InicioTurnoActivity.this, TanqueoActivity.class));
             }
         });
+    }
+
+    void replaceFragment(Fragment fragment, String tag) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment, tag);
+        transaction.commit();
     }
 
 
@@ -50,10 +74,27 @@ public class InicioTurnoActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        int match = sUriMatcher.match(uri);
+        switch (match) {
+            case INICIAR_TURNO:
+                break;
+            case FINALIZAR_TURNO:
+                finish();
+                break;
+            default:
+                break;
+        }
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment {
+    public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
+        Button mButtonInicarTurno;
+        Button mButtonOpciones;
+        Button mButtonChat;
 
         public PlaceholderFragment() {
         }
@@ -63,6 +104,40 @@ public class InicioTurnoActivity extends ActionBarActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_inicio_turno, container, false);
             return rootView;
+        }
+
+        @Override
+        public void onActivityCreated(Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            Activity activity = getActivity();
+            mButtonInicarTurno = (Button) activity.findViewById(R.id.ButtonIniciarTurno);
+            mButtonOpciones = (Button) activity.findViewById(R.id.ButtonOpciones);
+            mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
+            mButtonInicarTurno.setOnClickListener(this);
+            mButtonOpciones.setOnClickListener(this);
+            mButtonChat.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int id = view.getId();
+            Fragment fragment = null;
+            String tag = null;
+            switch (id) {
+                case R.id.ButtonIniciarTurno:
+                    fragment = new EnTurnoFragment();
+                    tag = EnTurnoFragment.TAG;
+                    break;
+                case R.id.ButtonOpciones:
+                    break;
+                case R.id.ButtonChat:
+                    break;
+                default:
+                    break;
+            }
+            if (fragment != null) {
+                ((InicioTurnoActivity) getActivity()).replaceFragment(fragment, tag);
+            }
         }
     }
 }
