@@ -45,7 +45,7 @@
                 android:label="@string/title_activity_inicio_turno">
         </activity>
         <activity
-                android:name=".view.InfoViajeActivity"
+                android:name=".view.InfoViajeVacioActivity"
                 android:label="@string/title_activity_info_viaje">
         </activity>
         <activity

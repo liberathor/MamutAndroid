@@ -142,7 +142,7 @@
       <statePointEntry>
           <state
                   class="com.android.tools.idea.editors.navigation.model.ActivityState"
-                  className="co.com.widetech.mamut.android.view.InfoViajeActivity"/>
+                  className="co.com.widetech.mamut.android.view.InfoViajeVacioActivity"/>
           <point
                   x="2400"
                   y="8480"/>

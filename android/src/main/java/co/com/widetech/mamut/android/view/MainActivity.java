@@ -103,7 +103,7 @@ public class MainActivity extends ActionBarActivity {
                     activity = InicioTurnoActivity.class;
                     break;
                 case R.id.ButtonViajeVacio:
-                    activity = InfoViajeActivity.class;
+                    activity = InfoViajeVacioActivity.class;
                     break;
                 case R.id.ButtonTanqueo:
                     activity = TanqueoActivity.class;

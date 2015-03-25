@@ -9,7 +9,7 @@ import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
-public class InfoViajeActivity extends ActionBarActivity {
+public class InfoViajeVacioActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,8 @@ public class InfoViajeActivity extends ActionBarActivity {
      */
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
         Button mButtonEnviarEstadoViaje;
+        Button mButtonChat;
+        Button mButtonOpciones;
 
         public PlaceholderFragment() {
         }
@@ -65,6 +67,11 @@ public class InfoViajeActivity extends ActionBarActivity {
             super.onActivityCreated(savedInstanceState);
             Activity activity = getActivity();
             mButtonEnviarEstadoViaje = (Button) activity.findViewById(R.id.ButtonEnviarInfoViaje);
+            mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
+            mButtonOpciones = (Button) activity.findViewById(R.id.ButtonOptions);
+            mButtonEnviarEstadoViaje.setOnClickListener(this);
+            mButtonChat.setOnClickListener(this);
+            mButtonOpciones.setOnClickListener(this);
         }
 
         @Override
@@ -74,6 +81,10 @@ public class InfoViajeActivity extends ActionBarActivity {
             switch (id) {
                 case R.id.ButtonEnviarInfoViaje:
                     activity = EstadoViajeActivity.class;
+                    break;
+                case R.id.ButtonChat:
+                    break;
+                case R.id.ButtonOpciones:
                     break;
                 default:
                     break;
