@@ -38,18 +38,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/editText9"
-            android:layout_below="@+id/textView13" android:layout_alignLeft="@+id/button19"
-            android:layout_alignStart="@+id/button19"
+            android:layout_below="@+id/textView13" android:layout_alignLeft="@+id/ButtonChat"
+            android:layout_alignStart="@+id/ButtonChat"
             android:layout_alignRight="@+id/textView13" android:layout_alignEnd="@+id/textView13"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enviar"
-            android:id="@+id/button18"
+            android:id="@+id/ButtonEnviarTanqueo"
             android:layout_marginTop="86dp" android:layout_below="@+id/editText9"
             android:layout_alignRight="@+id/textView13" android:layout_alignEnd="@+id/textView13"/>
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Chat"
-            android:id="@+id/button19"
-            android:layout_alignTop="@+id/button18" android:layout_alignLeft="@+id/textView13"
+            android:id="@+id/ButtonChat"
+            android:layout_alignTop="@+id/ButtonEnviarTanqueo" android:layout_alignLeft="@+id/textView13"
             android:layout_alignStart="@+id/textView13"/>
 </RelativeLayout>

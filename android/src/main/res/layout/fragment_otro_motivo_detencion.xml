@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enviar"
-            android:id="@+id/ButtonEnviar" android:layout_below="@+id/editTextMotivo"
+            android:id="@+id/ButtonEnviarTanqueo" android:layout_below="@+id/editTextMotivo"
             android:layout_alignRight="@+id/editTextMotivo"
             android:layout_alignEnd="@+id/editTextMotivo"/>
     <Button

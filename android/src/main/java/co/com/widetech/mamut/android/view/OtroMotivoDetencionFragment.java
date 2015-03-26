@@ -73,7 +73,7 @@ public class OtroMotivoDetencionFragment extends Fragment implements View.OnClic
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Activity activity = getActivity();
-        mButtonEnviar = (Button) activity.findViewById(R.id.ButtonEnviar);
+        mButtonEnviar = (Button) activity.findViewById(R.id.ButtonEnviarTanqueo);
         mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
         mButtonOpciones = (Button) activity.findViewById(R.id.ButtonOptions);
         mButtonEnviar.setOnClickListener(this);
@@ -86,7 +86,7 @@ public class OtroMotivoDetencionFragment extends Fragment implements View.OnClic
         int id = view.getId();
         Uri uri = null;
         switch (id) {
-            case R.id.ButtonEnviar:
+            case R.id.ButtonEnviarTanqueo:
                 uri = Uri.parse(this.getClass().getCanonicalName());
                 break;
             case R.id.ButtonChat:

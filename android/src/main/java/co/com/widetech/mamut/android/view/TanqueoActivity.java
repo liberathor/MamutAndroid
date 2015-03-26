@@ -1,10 +1,10 @@
 package co.com.widetech.mamut.android.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.*;
+import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
 public class TanqueoActivity extends ActionBarActivity {
@@ -18,12 +18,6 @@ public class TanqueoActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-        findViewById(R.id.container).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TanqueoActivity.this.startActivity(new Intent(TanqueoActivity.this, SolicitudMantenimientoActivity.class));
-            }
-        });
     }
 
 
@@ -53,6 +47,8 @@ public class TanqueoActivity extends ActionBarActivity {
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
+        Button mButtonEnviarTanqueo;
+        Button mButtonChat;
 
         public PlaceholderFragment() {
         }
