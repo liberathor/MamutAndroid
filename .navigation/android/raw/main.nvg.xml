@@ -6,7 +6,7 @@
     <statePointEntry>
       <state
               class="com.android.tools.idea.editors.navigation.model.ActivityState"
-              className="co.com.widetech.mamut.android.view.SolicitudMantenimientoActivity"/>
+              className="co.com.widetech.mamut.android.view.OpcionesMantenimientoActivity"/>
         <point
                 x="480"
                 y="11200"/>
@@ -46,7 +46,7 @@
     <statePointEntry>
       <state
               class="com.android.tools.idea.editors.navigation.model.ActivityState"
-              className="co.com.widetech.mamut.android.view.TanqueoActivity"/>
+              className="co.com.widetech.mamut.android.view.SolicitudTanqueoActivity"/>
         <point
                 x="2400"
                 y="10240"/>

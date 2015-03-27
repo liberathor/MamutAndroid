@@ -6,7 +6,7 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context="co.com.widetech.mamut.android.view.TanqueoActivity$PlaceholderFragment">
+                tools:context="co.com.widetech.mamut.android.view.SolicitudTanqueoActivity$PlaceholderFragment">
 
     <TextView
             android:layout_width="wrap_content"

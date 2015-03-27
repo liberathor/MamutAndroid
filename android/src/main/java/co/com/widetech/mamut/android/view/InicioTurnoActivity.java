@@ -20,13 +20,12 @@ public class InicioTurnoActivity extends ActionBarActivity implements EnTurnoFra
     private static final int INICIAR_TURNO = 0;
     private static final int FINALIZAR_TURNO = 1;
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
+    public static String BASE_URI = SCHEME + AUTHORITY;
 
     static {
         sUriMatcher.addURI(AUTHORITY, "iniciar_turno", INICIAR_TURNO);
         sUriMatcher.addURI(AUTHORITY, "finalizar_turno", FINALIZAR_TURNO);
     }
-
-    public static String BASE_URI = SCHEME + AUTHORITY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class InicioTurnoActivity extends ActionBarActivity implements EnTurnoFra
         findViewById(R.id.container).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InicioTurnoActivity.this.startActivity(new Intent(InicioTurnoActivity.this, TanqueoActivity.class));
+                InicioTurnoActivity.this.startActivity(new Intent(InicioTurnoActivity.this, SolicitudTanqueoActivity.class));
             }
         });
     }

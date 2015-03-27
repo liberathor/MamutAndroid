@@ -49,11 +49,11 @@
                 android:label="@string/title_activity_info_viaje">
         </activity>
         <activity
-                android:name=".view.TanqueoActivity"
+                android:name=".view.SolicitudTanqueoActivity"
                 android:label="@string/title_activity_tanqueo">
         </activity>
         <activity
-                android:name=".view.SolicitudMantenimientoActivity"
+                android:name=".view.OpcionesMantenimientoActivity"
                 android:label="@string/title_activity_solicitud_mantenimiento">
         </activity>
         <activity

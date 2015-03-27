@@ -3,5 +3,5 @@
              android:id="@+id/container"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="co.com.widetech.mamut.android.view.SolicitudMantenimientoActivity"
+             tools:context="co.com.widetech.mamut.android.view.OpcionesMantenimientoActivity"
              tools:ignore="MergeRootFrame"/>

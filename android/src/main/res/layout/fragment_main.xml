@@ -61,7 +61,7 @@
                         android:layout_height="100dp"
                         android:text="Mantenimiento"
                         android:elevation="20dp"
-                        android:id="@+id/ButtonOptions"/>
+                        android:id="@+id/ButtonMantenimiento"/>
             </android.support.v7.widget.GridLayout>
     </RelativeLayout>
     <TextView
