@@ -109,6 +109,7 @@ public class MainActivity extends ActionBarActivity {
                     activity = SolicitudTanqueoActivity.class;
                     break;
                 case R.id.ButtonChat:
+                    activity = ChatActivity.class;
                     break;
                 case R.id.ButtonMantenimiento:
                     activity = OpcionesMantenimientoActivity.class;

@@ -23,5 +23,6 @@
     <string name="title_alimentacion">EN ALIMENTACION</string>
     <string name="title_pernoctacion">EN PERNOCTACION</string>
     <string name="title_otro_motivo">OTRO MOTIVO</string>
+    <string name="title_activity_chat">ChatActivity</string>
 
 </resources>
