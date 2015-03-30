@@ -68,6 +68,11 @@
                 android:name=".view.ChatActivity"
                 android:label="@string/title_activity_chat">
         </activity>
+        <service android:name="com.co.widetech.serial_port_core.service.TransportDataService">
+            <intent-filter>
+                <action android:name="com.co.widetech.serial_port_core.service.TransportDataService"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
