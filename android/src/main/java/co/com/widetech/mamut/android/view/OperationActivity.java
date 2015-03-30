@@ -4,13 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
 
-public class OperationActivity extends ActionBarActivity {
+public class OperationActivity extends BinderServiceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -8,13 +8,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
 
-public class InicioTurnoActivity extends ActionBarActivity implements EnTurnoFragment.OnFragmentInteractionListener {
+public class InicioTurnoActivity extends BinderServiceActivity implements EnTurnoFragment.OnFragmentInteractionListener {
     public static final String SCHEME = ContentResolver.SCHEME_CONTENT + "://";
     public static final String AUTHORITY = "co.com.widetech.mamut.android.turnos";
     private static final int INICIAR_TURNO = 0;

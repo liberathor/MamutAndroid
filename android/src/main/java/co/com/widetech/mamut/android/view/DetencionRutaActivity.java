@@ -5,12 +5,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBarActivity;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
-public class DetencionRutaActivity extends ActionBarActivity implements EnDetencionRutaFragment.OnFragmentInteractionListener {
+public class DetencionRutaActivity extends BinderServiceActivity implements EnDetencionRutaFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

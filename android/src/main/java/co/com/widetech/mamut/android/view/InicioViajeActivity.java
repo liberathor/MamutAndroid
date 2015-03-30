@@ -4,12 +4,11 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
-public class InicioViajeActivity extends ActionBarActivity implements InfoInicioViajeFragment.OnFragmentInteractionListener {
+public class InicioViajeActivity extends BinderServiceActivity implements InfoInicioViajeFragment.OnFragmentInteractionListener {
     Fragment mFragment;
 
     @Override

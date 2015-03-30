@@ -2,11 +2,10 @@ package co.com.widetech.mamut.android.view;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.view.*;
 import co.com.widetech.mamut.android.R;
 
-public class ProjectosActivity extends ActionBarActivity {
+public class ProjectosActivity extends BinderServiceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
