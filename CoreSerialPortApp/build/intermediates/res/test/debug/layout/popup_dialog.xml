@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:cacheColorHint="#00000000" >
+</LinearLayout><!-- From: file:/Users/wtjramirez/MamutAndroid/CoreSerialPortApp/src/main/res/layout/popup_dialog.xml --><!-- From: file:/Users/wtjramirez/MamutAndroid/CoreSerialPortApp/build/intermediates/bundles/debug/res/layout/popup_dialog.xml -->

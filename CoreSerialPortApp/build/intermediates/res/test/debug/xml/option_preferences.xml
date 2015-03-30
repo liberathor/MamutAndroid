@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="Serial port setup" >
+
+    <PreferenceCategory android:title="Opciones De configuracion" >
+        <ListPreference
+            android:key="DEVICE"
+            android:persistent="true"
+            android:title="Device" >
+        </ListPreference>
+        
+        <ListPreference
+            android:defaultValue="@string/default_baudrates"
+            android:dialogTitle="Velocidad de Conexión"
+            android:entries="@array/baudrates_name"
+            android:entryValues="@array/baudrates_value"
+            android:key="BAUDRATE"
+            android:summary="Velocidad de puerto serial (Reinicie para efectuar cambios)"
+            android:title="Velocidad" />
+        
+        <ListPreference
+            android:defaultValue="@string/default_type_unity"
+            android:dialogTitle="Tipo de Unidad"
+            android:entries="@array/type_unity_name"
+            android:entryValues="@array/type_unity_value"
+            android:key="OptionUnityType"
+            android:summary="Tipo de Unidad de Rastreo (Reinicie para efectuar cambios)"
+            android:title="Unidad" />
+        
+        <ListPreference 
+            android:defaultValue="@string/default_time_report"
+            android:dialogTitle="Tiempo de envio de datos en Segundos"
+            android:entries="@array/time_report"
+            android:entryValues="@array/time_report"
+            android:key="OptionTimeReport"
+            android:summary="Tiempo de envio de datos en segundos (Reinicie para efectuar cambios)"
+            android:title="Tiempo de envio de datos en Segundos"
+            
+            />
+        
+        <Preference
+            android:key="@string/key_kill_app"
+            android:summary="Al Realizar Cambios (Dispositivo, Velocidad, Unidad)"
+            android:title="Salir de la app" />
+    </PreferenceCategory>
+
+</PreferenceScreen><!-- From: file:/Users/wtjramirez/MamutAndroid/CoreSerialPortApp/src/main/res/xml/option_preferences.xml --><!-- From: file:/Users/wtjramirez/MamutAndroid/CoreSerialPortApp/build/intermediates/bundles/debug/res/xml/option_preferences.xml -->

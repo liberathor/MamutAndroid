@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="option_device">DEVICE</string>
+    <string name="option_baudrate">BAUDRATE</string>
+    <string name="option_unity_type">OptionUnityType</string>
+    <string name="option_time_report">OptionTimeReport</string>
+    <string name="option_kill_app">myKillApp</string>
+</resources>
