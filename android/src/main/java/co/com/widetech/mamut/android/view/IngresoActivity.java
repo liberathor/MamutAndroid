@@ -1,25 +1,20 @@
 package co.com.widetech.mamut.android.view;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.*;
 import android.widget.Button;
 import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
-import utils.AlertBuilder;
 
 
 public class IngresoActivity extends BinderServiceActivity {
-    private static final String TAG = "IngresoActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate()");
         setContentView(R.layout.activity_ingreso);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -27,6 +22,7 @@ public class IngresoActivity extends BinderServiceActivity {
                     .commit();
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,16 +44,6 @@ public class IngresoActivity extends BinderServiceActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    protected boolean isValid(String data) {
-        if (data != null) {
-            if (data.length() > 0) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
@@ -88,26 +74,15 @@ public class IngresoActivity extends BinderServiceActivity {
 
         @Override
         public void onClick(View view) {
-            IngresoActivity activity = (IngresoActivity) getActivity();
-            try {
-                if (activity.sendData(mTextView.getText().toString())) {
-                    getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
-                    getActivity().finish();
-                }
-            } catch (IllegalStateException e) {
-                AlertBuilder.buildAlertNotConfiguredDevice(
-                        activity,
-                        "Configure el Puerto Serial",
-                        "Comuniquese con el Administrador para la configuracon",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //TODO: clear data or do something to fix it
-                                //mEditPass.setText("");
-                            }
-                        }).show();
-                e.printStackTrace();
+            if (isValid(mTextView.getText().toString())) {
+                getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
             }
+            getActivity().finish();
+        }
+
+        private boolean isValid(String value) {
+            //TODO: Validate text ingressed here
+            return true;
         }
     }
 }

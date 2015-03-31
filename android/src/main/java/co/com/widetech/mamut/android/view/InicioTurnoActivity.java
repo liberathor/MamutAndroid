@@ -86,11 +86,6 @@ public class InicioTurnoActivity extends BinderServiceActivity implements EnTurn
         }
     }
 
-    @Override
-    protected boolean isValid(String data) {
-        return false;
-    }
-
     /**
      * A placeholder fragment containing a simple view.
      */
