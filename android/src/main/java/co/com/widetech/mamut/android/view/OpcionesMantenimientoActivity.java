@@ -45,6 +45,11 @@ public class OpcionesMantenimientoActivity extends BinderServiceActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected boolean isValid(String data) {
+        return false;
+    }
+
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }

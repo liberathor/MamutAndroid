@@ -68,6 +68,14 @@
                 android:name=".view.ChatActivity"
                 android:label="@string/title_activity_chat">
         </activity>
+
+        <activity android:name="com.co.widetech.serial_port_core.tools.SerialPortPreferences"
+                  android:configChanges="orientation|screenSize">
+            <intent-filter>
+                <action android:name="com.co.widetech.serial_port_core.tools.SerialPortPreferences"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <service android:name="com.co.widetech.serial_port_core.service.TransportDataService">
             <intent-filter>
                 <action android:name="com.co.widetech.serial_port_core.service.TransportDataService"/>
