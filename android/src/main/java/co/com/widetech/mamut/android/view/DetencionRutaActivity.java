@@ -62,6 +62,11 @@ public class DetencionRutaActivity extends BinderServiceActivity implements EnDe
         }
     }
 
+    @Override
+    protected boolean isValid(String data) {
+        return false;
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */

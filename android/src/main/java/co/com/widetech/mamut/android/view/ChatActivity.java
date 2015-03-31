@@ -41,6 +41,11 @@ public class ChatActivity extends BinderServiceActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected boolean isValid(String data) {
+        return false;
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */

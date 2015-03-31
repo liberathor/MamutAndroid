@@ -60,6 +60,11 @@ public class InicioViajeActivity extends BinderServiceActivity implements InfoIn
 
     }
 
+    @Override
+    protected boolean isValid(String data) {
+        return false;
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
