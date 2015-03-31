@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
@@ -12,34 +12,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enviar"
-            android:id="@+id/ButtonEnviar" android:layout_gravity="right|bottom"/>
+            android:id="@+id/ButtonEnviar" android:layout_gravity="right|bottom" android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/editText3" android:layout_alignEnd="@+id/editText3"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opciones"
-            android:id="@+id/ButtonOpciones" android:layout_gravity="left|bottom"/>
+            android:id="@+id/ButtonOpciones" android:layout_gravity="left|bottom"
+            android:layout_alignTop="@+id/ButtonVolver" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Volver"
-            android:id="@+id/ButtonVolver" android:layout_gravity="center_horizontal|bottom"/>
+            android:id="@+id/ButtonVolver" android:layout_gravity="center_horizontal|bottom"
+            android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="CHAT"
-            android:id="@+id/textView15" android:layout_gravity="center_horizontal|top"/>
+            android:id="@+id/textView15" android:layout_gravity="center_horizontal|top"
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
     <FrameLayout
             android:layout_width="fill_parent"
-            android:layout_height="150dp" android:layout_gravity="center">
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText3" android:layout_gravity="center_horizontal|bottom"/>
+            android:layout_height="150dp" android:layout_gravity="center"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true"
+            android:layout_above="@+id/editText3" android:layout_below="@+id/textView15">
         <ListView
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:id="@+id/ChatlistView" android:layout_gravity="center_horizontal|top"
                 android:choiceMode="none"/>
     </FrameLayout>
-</FrameLayout>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText3" android:layout_gravity="center_horizontal|bottom"
+            android:layout_above="@+id/ButtonEnviar" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+</RelativeLayout>
