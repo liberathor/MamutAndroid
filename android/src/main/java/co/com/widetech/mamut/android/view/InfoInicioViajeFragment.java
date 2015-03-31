@@ -108,6 +108,7 @@ public class InfoInicioViajeFragment extends Fragment implements View.OnClickLis
                 activity = EstadoViajeActivity.class;
                 break;
             case R.id.ButtonChat:
+                activity = ChatActivity.class;
                 break;
             case R.id.ButtonOpciones:
                 break;
@@ -137,7 +138,7 @@ public class InfoInicioViajeFragment extends Fragment implements View.OnClickLis
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(Uri uri);
     }
 
 }

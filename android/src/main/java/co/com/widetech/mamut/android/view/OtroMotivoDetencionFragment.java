@@ -1,6 +1,7 @@
 package co.com.widetech.mamut.android.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -90,6 +91,7 @@ public class OtroMotivoDetencionFragment extends Fragment implements View.OnClic
                 uri = Uri.parse(this.getClass().getCanonicalName());
                 break;
             case R.id.ButtonChat:
+                getActivity().startActivity(new Intent(getActivity(), ChatActivity.class));
                 break;
             case R.id.ButtonOpciones:
                 break;

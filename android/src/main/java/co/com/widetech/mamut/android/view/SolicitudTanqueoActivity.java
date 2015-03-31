@@ -82,6 +82,7 @@ public class SolicitudTanqueoActivity extends BinderServiceActivity {
                     intent = new Intent(getActivity(), activity);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 case R.id.ButtonChat:
+                    activity = ChatActivity.class;
                     break;
                 default:
                     break;

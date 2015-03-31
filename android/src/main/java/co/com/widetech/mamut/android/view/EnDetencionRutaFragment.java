@@ -1,6 +1,7 @@
 package co.com.widetech.mamut.android.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -96,6 +97,7 @@ public class EnDetencionRutaFragment extends Fragment implements View.OnClickLis
                 uri = Uri.parse(this.getClass().getCanonicalName());
                 break;
             case R.id.ButtonChat:
+                getActivity().startActivity(new Intent(getActivity(), ChatActivity.class));
                 break;
             case R.id.ButtonOptions:
                 break;
@@ -142,7 +144,7 @@ public class EnDetencionRutaFragment extends Fragment implements View.OnClickLis
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(Uri uri);
     }
 
 }

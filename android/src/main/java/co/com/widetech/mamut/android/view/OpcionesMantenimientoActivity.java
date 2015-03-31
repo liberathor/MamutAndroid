@@ -93,6 +93,7 @@ public class OpcionesMantenimientoActivity extends BinderServiceActivity {
                 case R.id.ButtonMantenimiento:
                     break;
                 case R.id.ButtonChat:
+                    activity = ChatActivity.class;
                     break;
                 case R.id.ButtonVolver:
                     break;

@@ -80,6 +80,7 @@ public class infoCargueActivity extends BinderServiceActivity {
             Class activity = null;
             switch (id) {
                 case R.id.ButtonChat:
+                    activity = ChatActivity.class;
                     break;
                 case R.id.ButtonOptions:
                     activity = InicioViajeActivity.class;

@@ -83,6 +83,7 @@ public class EstadoViajeActivity extends BinderServiceActivity {
                     activity = FinalizarViajeActivity.class;
                     break;
                 case R.id.ButtonChat:
+                    activity = ChatActivity.class;
                     break;
                 case R.id.ButtonOpciones:
                     break;

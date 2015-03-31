@@ -82,6 +82,7 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
                     activity = EstadoViajeActivity.class;
                     break;
                 case R.id.ButtonChat:
+                    activity = ChatActivity.class;
                     break;
                 case R.id.ButtonOpciones:
                     break;

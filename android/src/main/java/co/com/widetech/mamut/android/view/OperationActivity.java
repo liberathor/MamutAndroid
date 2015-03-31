@@ -81,6 +81,7 @@ public class OperationActivity extends BinderServiceActivity {
                     activity = infoCargueActivity.class;
                     break;
                 case R.id.ButtonChat:
+                    activity = ChatActivity.class;
                     break;
                 default:
                     break;

@@ -49,6 +49,7 @@ public class FinalizarViajeActivity extends BinderServiceActivity {
      */
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
         private Button mButtonFinalizarViaje;
+        private Button mButtonChat;
 
         public PlaceholderFragment() {
         }
@@ -65,7 +66,9 @@ public class FinalizarViajeActivity extends BinderServiceActivity {
             super.onActivityCreated(savedInstanceState);
             Activity activity = getActivity();
             mButtonFinalizarViaje = (Button) activity.findViewById(R.id.ButtonFinalizarViaje);
+            mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
             mButtonFinalizarViaje.setOnClickListener(this);
+            mButtonChat.setOnClickListener(this);
         }
 
         @Override
@@ -78,6 +81,10 @@ public class FinalizarViajeActivity extends BinderServiceActivity {
                     activity = MainActivity.class;
                     intent = new Intent(getActivity(), activity);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    break;
+                case R.id.ButtonChat:
+                    activity = ChatActivity.class;
+                    intent = new Intent(getActivity(), activity);
                     break;
                 default:
                     break;

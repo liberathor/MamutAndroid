@@ -1,6 +1,7 @@
 package co.com.widetech.mamut.android.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -91,6 +92,7 @@ public class EnTurnoFragment extends Fragment implements View.OnClickListener {
                 uri = Uri.parse(InicioTurnoActivity.BASE_URI + "/" + "finalizar_turno");
                 break;
             case R.id.ButtonChat:
+                getActivity().startActivity(new Intent(getActivity(), ChatActivity.class));
                 break;
             case R.id.ButtonOpciones:
                 break;
@@ -138,7 +140,7 @@ public class EnTurnoFragment extends Fragment implements View.OnClickListener {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(Uri uri);
     }
 
 }

@@ -97,6 +97,7 @@ public class CargueFragment extends Fragment implements View.OnClickListener {
                 activity = EstadoViajeActivity.class;
                 break;
             case R.id.ButtonChat:
+                activity = ChatActivity.class;
                 break;
             default:
                 break;
@@ -124,7 +125,7 @@ public class CargueFragment extends Fragment implements View.OnClickListener {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(Uri uri);
     }
 
 }

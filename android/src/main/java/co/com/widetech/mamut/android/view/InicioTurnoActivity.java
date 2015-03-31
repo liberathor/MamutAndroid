@@ -129,6 +129,7 @@ public class InicioTurnoActivity extends BinderServiceActivity implements EnTurn
                 case R.id.ButtonOpciones:
                     break;
                 case R.id.ButtonChat:
+                    getActivity().startActivity(new Intent(getActivity(), ChatActivity.class));
                     break;
                 default:
                     break;
