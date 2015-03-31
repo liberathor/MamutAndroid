@@ -1,12 +1,14 @@
 package co.com.widetech.mamut.android.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
 
@@ -18,11 +20,14 @@ import co.com.widetech.mamut.android.R;
  * Use the {@link EnMantenimientoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EnMantenimientoFragment extends Fragment {
+public class EnMantenimientoFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private Button mButtonInicioMantenimiento;
+    private Button mButtonChat;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -68,6 +73,35 @@ public class EnMantenimientoFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_en_mantenimiento, container, false);
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Activity activity = getActivity();
+        mButtonInicioMantenimiento = (Button) activity.findViewById(R.id.ButtonInicioMantenimiento);
+        mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
+        mButtonInicioMantenimiento.setOnClickListener(this);
+        mButtonChat.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        int id = view.getId();
+        Uri uri = null;
+        switch (id) {
+            case R.id.ButtonInicioMantenimiento:
+                uri = Uri.parse(InicioTurnoActivity.BASE_URI + "/" + "iniciar_mantenimiento");
+                break;
+            case R.id.ButtonChat:
+                getActivity().startActivity(new Intent(getActivity(), ChatActivity.class));
+                break;
+            default:
+                break;
+        }
+        if (uri != null) {
+            mListener.onFragmentInteraction(uri);
+        }
+    }
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -104,7 +138,7 @@ public class EnMantenimientoFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(Uri uri);
     }
 
 }
