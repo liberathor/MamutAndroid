@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">mamut</string>
+    <string name="app_name">Mamut</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_operation">OperationActivity</string>
-    <string name="title_activity_info_cargue">infoCargueActivity</string>
-    <string name="title_activity_estado_viaje">EstadoViajeActivity</string>
-    <string name="title_activity_detencion_ruta">DetencionRutaActivity</string>
-    <string name="title_activity_finalizar_viaje">FinalizarViajeActivity</string>
-    <string name="title_activity_inicio_turno">InicioTurnoActivity</string>
-    <string name="title_activity_info_viaje">InfoViajeActivity</string>
-    <string name="title_activity_tanqueo">TanqueoActivity</string>
+    <string name="title_activity_main">Menu principal</string>
+    <string name="title_activity_operation">Operacion nacional</string>
+    <string name="title_activity_info_cargue">Informaion de cargue</string>
+    <string name="title_activity_estado_viaje">En viaje</string>
+    <string name="title_activity_detencion_ruta">Detencion de ruta</string>
+    <string name="title_activity_finalizar_viaje">Finalizacion de viaje</string>
+    <string name="title_activity_inicio_turno">Iniciar turno</string>
+    <string name="title_activity_info_viaje">Informacion de viaje</string>
+    <string name="title_activity_tanqueo">Tanqueo</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_solicitud_mantenimiento">SolicitudMantenimientoActivity</string>
+    <string name="title_activity_solicitud_mantenimiento">En mantenimiento</string>
     <string name="title_activity_projectos">ProjectosActivity</string>
-    <string name="title_activity_inicio_viaje">InicioViaje</string>
+    <string name="title_activity_inicio_viaje">Inicio de viaje</string>
     <string name="fragment_name">co.com.widetech.mamut.android.fragment_name</string>
     <string name="fragment_title">co.com.widetech.mamut.android.fragment_title</string>
     <string name="title_pausa_activa">EN PAUSA ACTIVA</string>
     <string name="title_alimentacion">EN ALIMENTACION</string>
     <string name="title_pernoctacion">EN PERNOCTACION</string>
     <string name="title_otro_motivo">OTRO MOTIVO</string>
-    <string name="title_activity_chat">ChatActivity</string>
-    <string name="title_activity_solicitur_mantenimiento">SoliciturMantenimientoActivity</string>
+    <string name="title_activity_chat">Chat</string>
+    <string name="title_activity_solicitur_mantenimiento">En mantenimiento</string>
 
 </resources>
