@@ -13,26 +13,16 @@
             android:layout_height="wrap_content"
             android:text="Tanqueo"
             android:id="@+id/ButtonTanqueo"
-            android:layout_above="@+id/ButtonMantenimiento" android:layout_centerHorizontal="true"
-            android:layout_marginBottom="42dp"/>
+            android:layout_above="@+id/ButtonMantenimiento"
+            android:layout_marginBottom="24dp" android:layout_alignLeft="@+id/ButtonMantenimiento"
+            android:layout_alignStart="@+id/ButtonMantenimiento" android:layout_alignRight="@+id/ButtonMantenimiento"
+            android:layout_alignEnd="@+id/ButtonMantenimiento"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mantenimiento"
             android:id="@+id/ButtonMantenimiento" android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chat"
-            android:id="@+id/ButtonChat"
-            android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Volver"
-            android:id="@+id/ButtonVolver" android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
