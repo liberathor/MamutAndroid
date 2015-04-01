@@ -2,9 +2,12 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context="co.com.widetech.mamut.android.view.GalonesFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+                tools:context="co.com.widetech.mamut.android.view.GalonesFragment"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+        >
 
     <TextView
             android:layout_width="wrap_content"
@@ -16,12 +19,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GALONES"
-            android:id="@+id/textView18" android:layout_below="@+id/textView17" android:layout_centerHorizontal="true"
-            android:layout_marginTop="76dp"/>
+            android:id="@+id/textView18" android:layout_above="@+id/editTextGalones"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextGalones" android:layout_below="@+id/textView18"
+            android:id="@+id/editTextGalones" android:layout_above="@+id/ButtonEnviarGalones"
             android:layout_alignLeft="@+id/textView17" android:layout_alignStart="@+id/textView17"
             android:layout_alignRight="@+id/textView17" android:layout_alignEnd="@+id/textView17"
             android:inputType="number"/>
@@ -30,6 +34,7 @@
             android:layout_height="wrap_content"
             android:text="Enviar"
             android:id="@+id/ButtonEnviarGalones"
-            android:layout_centerVertical="true" android:layout_alignRight="@+id/editTextGalones"
-            android:layout_alignEnd="@+id/editTextGalones"/>
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            />
 </RelativeLayout>
