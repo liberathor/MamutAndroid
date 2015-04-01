@@ -40,17 +40,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opciones"
-            android:id="@+id/ButtonOptions" android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="20dp"
+            android:id="@+id/ButtonOptions"
+            android:layout_alignTop="@+id/ButtonChat" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Chat"
             android:id="@+id/ButtonChat"
-            android:layout_alignTop="@+id/ButtonOptions" android:layout_centerHorizontal="true"/>
+            android:layout_alignParentBottom="true" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
