@@ -46,10 +46,10 @@
             android:layout_height="wrap_content"
             android:text="Enviar"
             android:id="@+id/ButtonEnviarTanqueo"
-            android:layout_marginTop="86dp" android:layout_below="@+id/editText9"
-            android:layout_alignRight="@+id/textView13" android:layout_alignEnd="@+id/textView13"/>
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"/>
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Chat"
             android:id="@+id/ButtonChat"
-            android:layout_alignTop="@+id/ButtonEnviarTanqueo" android:layout_alignLeft="@+id/textView13"
-            android:layout_alignStart="@+id/textView13"/>
+            android:layout_alignParentBottom="true" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
 </RelativeLayout>
