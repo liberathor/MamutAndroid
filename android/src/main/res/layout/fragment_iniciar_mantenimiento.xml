@@ -2,7 +2,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:context="co.com.widetech.mamut.android.view.EnMantenimientoFragment">
+                tools:context="co.com.widetech.mamut.android.view.InicioMantenimientoFragment">
 
     <TextView
             android:layout_width="wrap_content"
@@ -13,12 +13,12 @@
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Inicio mantenimiento"
-            android:id="@+id/ButtonInicioMantenimiento" android:layout_below="@+id/textView16"
+            android:text="iniciar mantenimiento"
+            android:id="@+id/ButtonFinMantenimiento" android:layout_below="@+id/textView16"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="152dp"/>
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Chat"
             android:id="@+id/ButtonChat"
-            android:layout_below="@+id/ButtonInicioMantenimiento" android:layout_centerHorizontal="true"
+            android:layout_below="@+id/ButtonFinMantenimiento" android:layout_centerHorizontal="true"
             android:layout_marginTop="53dp"/>
 </RelativeLayout>

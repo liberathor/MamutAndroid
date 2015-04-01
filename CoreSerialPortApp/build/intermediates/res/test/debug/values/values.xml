@@ -52,9 +52,11 @@
     <string name="default_type_unity">Cellocator</string>
     <string name="error_configuration">Please configure your serial port first.</string>
     <string name="error_security">You do not have read/write permission to the serial
-		port.</string>
+        port.
+    </string>
     <string name="error_unknown">The serial port can not be opened for an unknown
-		reason.</string>
+        reason.
+    </string>
     <string name="hello_world">Hello world!</string>
     <string name="key_kill_app">myKillApp</string>
     <string name="option_baudrate">BAUDRATE</string>

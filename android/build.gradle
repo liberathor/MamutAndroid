@@ -38,8 +38,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':CoreSerialPortApp')
     compile 'com.android.support:appcompat-v7:21.0.0'
     compile 'com.android.support:gridlayout-v7:21.0.0'
     compile 'com.android.support:support-v4:21.0.0'
-    compile project(':CoreSerialPortApp')
 }

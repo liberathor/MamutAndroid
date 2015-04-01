@@ -11,17 +11,19 @@ import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
-public class SolicitudMantenimientoActivity extends ActionBarActivity implements EnMantenimientoFragment.OnFragmentInteractionListener {
+public class SolicitudMantenimientoActivity extends ActionBarActivity implements InicioMantenimientoFragment.OnFragmentInteractionListener {
     public static final String SCHEME = ContentResolver.SCHEME_CONTENT + "://";
     public static final String AUTHORITY = "co.com.widetech.mamut.android.mantenimiento";
     private static final int INICIAR_MANTENIMIENTO = 0;
     private static final int FINALIZAR_MANTENIMIENTO = 1;
+    private static final int INGRESAR_GALONES = 2;
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
     public static String BASE_URI = SCHEME + AUTHORITY;
 
     static {
         sUriMatcher.addURI(AUTHORITY, "iniciar_mantenimiento", INICIAR_MANTENIMIENTO);
         sUriMatcher.addURI(AUTHORITY, "finalizar_mantenimiento", FINALIZAR_MANTENIMIENTO);
+        sUriMatcher.addURI(AUTHORITY, "ingresar_galones", INGRESAR_GALONES);
     }
 
     private Fragment mFragment;
@@ -74,10 +76,13 @@ public class SolicitudMantenimientoActivity extends ActionBarActivity implements
         Fragment fragment = null;
         switch (match) {
             case INICIAR_MANTENIMIENTO:
-                fragment = new EnMantenimientoFragment();
+                fragment = new InicioMantenimientoFragment();
                 break;
             case FINALIZAR_MANTENIMIENTO:
+                fragment = new FinalizarMantenimientoFragment();
                 break;
+            case INGRESAR_GALONES:
+                fragment = new GalonesFragment();
             default:
                 break;
         }
@@ -120,7 +125,7 @@ public class SolicitudMantenimientoActivity extends ActionBarActivity implements
             Fragment fragment = null;
             switch (id) {
                 case R.id.ButtonSolicitudMantenimiento:
-                    fragment = new EnMantenimientoFragment();
+                    fragment = new InicioMantenimientoFragment();
                     break;
                 case R.id.ButtonChat:
                     break;
