@@ -13,6 +13,7 @@
         <item name="android:actionBarSize">@dimen/abc_action_bar_default_height_material</item>
         <item name="windowActionBar">true</item>
         <item name="android:buttonStyle">@style/button</item>
+        <item name="android:windowBackground">@drawable/ic_background</item>
     </style>
 
     <style name="button" parent="@android:style/Widget.Button">
