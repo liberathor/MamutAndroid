@@ -23,7 +23,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/editTextGalones" android:layout_below="@+id/textView18"
             android:layout_alignLeft="@+id/textView17" android:layout_alignStart="@+id/textView17"
-            android:layout_alignRight="@+id/textView17" android:layout_alignEnd="@+id/textView17"/>
+            android:layout_alignRight="@+id/textView17" android:layout_alignEnd="@+id/textView17"
+            android:inputType="number"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
