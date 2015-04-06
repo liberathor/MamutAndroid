@@ -38,9 +38,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/editText9"
-            android:layout_below="@+id/textView13" android:layout_alignLeft="@+id/ButtonChat"
-            android:layout_alignStart="@+id/ButtonChat"
-            android:layout_alignRight="@+id/textView13" android:layout_alignEnd="@+id/textView13"/>
+            android:layout_below="@+id/textView13"
+            android:layout_alignRight="@+id/textView13" android:layout_alignEnd="@+id/textView13"
+            android:layout_alignLeft="@+id/textView13" android:layout_alignStart="@+id/textView13"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
