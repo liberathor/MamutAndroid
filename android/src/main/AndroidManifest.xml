@@ -88,6 +88,23 @@
                 android:name=".view.SolicitudMantenimientoActivity"
                 android:label="@string/title_activity_solicitur_mantenimiento">
         </activity>
+
+        <receiver android:name="com.co.widetech.serial_port_core.receiver.DeviceReceiverShutdown">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="receiver.DeviceReceiverPower">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_SHUTDOWN"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.co.widetech.serial_port_core.receiver.PluginControlReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

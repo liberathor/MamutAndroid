@@ -61,8 +61,13 @@ public class InicioViajeActivity extends BinderServiceActivity implements InfoIn
     }
 
     @Override
-    protected boolean isValid(String data) {
+    protected boolean isValid() {
         return false;
+    }
+
+    @Override
+    protected String buildData() {
+        return null;
     }
 
     /**

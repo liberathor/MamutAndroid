@@ -1,8 +1,7 @@
 package co.com.widetech.mamut.android.view;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.*;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,10 +11,37 @@ import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
 import com.co.widetech.serial_port_core.models.DeviceStatus;
 import utils.AlertBuilder;
+import utils.MessageBuilder;
 
 
 public class IngresoActivity extends BinderServiceActivity {
     private static final String TAG = "IngresoActivity";
+    private PlaceholderFragment mFragment;
+    private BroadcastReceiver receiverLoginActivity = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            try {
+                String nameUser = intent.getStringExtra("Name");
+                String codeUser = intent.getStringExtra("Code");
+                if (true) {
+                    sharedStatusApp.setsPrefNameUser(nameUser);
+                    if (codeUser.equalsIgnoreCase("1")) {
+                        new DeviceStatus(IngresoActivity.this).setStatusLogin(true);
+                        startActivity(new Intent(IngresoActivity.this, MainActivity.class));
+                        IngresoActivity.this.finish();
+                    } else {
+                        AlertBuilder.buildGenericAlert(IngresoActivity.this, "Error", "Contrasena incorrecta", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
+                    }
+                }
+            } catch (Exception e) {
+                Log.d(TAG, "error");
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +49,12 @@ public class IngresoActivity extends BinderServiceActivity {
         Log.d(TAG, "onCreate()");
         setContentView(R.layout.activity_ingreso);
         if (savedInstanceState == null) {
+            mFragment = new PlaceholderFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, mFragment)
                     .commit();
         }
+        resumeLogin();
     }
 
     @Override
@@ -34,6 +62,14 @@ public class IngresoActivity extends BinderServiceActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_ingreso, menu);
         return true;
+    }
+
+    private void resumeLogin() {
+        DeviceStatus deviceStatus = new DeviceStatus(getApplicationContext());
+        if (deviceStatus.getStatusLogin().getBoolean("statusLogin", false)) {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+        }
     }
 
     @Override
@@ -52,13 +88,32 @@ public class IngresoActivity extends BinderServiceActivity {
     }
 
     @Override
-    protected boolean isValid(String data) {
+    protected boolean isValid() {
+        String data = mFragment.getCodigoAcceso();
         if (data != null) {
             if (data.length() > 0) {
+                sharedStatusApp.setCodeUser(data);
                 return true;
             }
         }
         return false;
+    }
+
+    @Override
+    protected String buildData() {
+        return new MessageBuilder(this).buildMessageToLogin();
+    }
+
+    @Override
+    protected void onResume() {
+        registerReceiver(receiverLoginActivity, new IntentFilter("LoginSystem"));
+        super.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(receiverLoginActivity);
+        super.onStop();
     }
 
     /**
@@ -91,13 +146,11 @@ public class IngresoActivity extends BinderServiceActivity {
         public void onClick(View view) {
             IngresoActivity activity = (IngresoActivity) getActivity();
             try {
-                if (activity.sendData(mTextView.getText().toString())) {
-                    new DeviceStatus(getActivity()).setStatusSelectSerialPort(true);
-                    getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
-                    getActivity().finish();
+                activity.setWhaitAck(true);
+                if (activity.sendData()) {
                 }
             } catch (IllegalStateException e) {
-                AlertBuilder.buildAlertNotConfiguredDevice(
+                AlertBuilder.buildGenericAlert(
                         activity,
                         "Configure el Puerto Serial",
                         "Comuniquese con el Administrador para la configuracon",
@@ -110,6 +163,10 @@ public class IngresoActivity extends BinderServiceActivity {
                         }).show();
                 e.printStackTrace();
             }
+        }
+
+        public String getCodigoAcceso() {
+            return mTextView.getText().toString();
         }
     }
 }

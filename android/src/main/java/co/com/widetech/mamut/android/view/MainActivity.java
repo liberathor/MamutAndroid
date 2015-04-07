@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
+import utils.MessageBuilder;
 
 
 public class MainActivity extends BinderServiceActivity {
@@ -47,9 +48,15 @@ public class MainActivity extends BinderServiceActivity {
     }
 
     @Override
-    protected boolean isValid(String data) {
-        return false;
+    protected boolean isValid() {
+        return true;
     }
+
+    @Override
+    protected String buildData() {
+        return new MessageBuilder(this).buildMessageToDeviceStarted();
+    }
+
 
     /**
      * A placeholder fragment containing a simple view.

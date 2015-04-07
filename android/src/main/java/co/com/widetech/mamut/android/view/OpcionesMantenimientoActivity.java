@@ -46,8 +46,13 @@ public class OpcionesMantenimientoActivity extends BinderServiceActivity {
     }
 
     @Override
-    protected boolean isValid(String data) {
+    protected boolean isValid() {
         return false;
+    }
+
+    @Override
+    protected String buildData() {
+        return null;
     }
 
     public interface OnFragmentInteractionListener {

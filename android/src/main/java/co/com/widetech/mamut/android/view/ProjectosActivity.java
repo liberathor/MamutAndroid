@@ -42,8 +42,13 @@ public class ProjectosActivity extends BinderServiceActivity {
     }
 
     @Override
-    protected boolean isValid(String data) {
+    protected boolean isValid() {
         return false;
+    }
+
+    @Override
+    protected String buildData() {
+        return null;
     }
 
     /**

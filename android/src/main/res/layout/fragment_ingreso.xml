@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ingresar"
-            android:id="@+id/buttonIngreso" android:layout_below="@+id/editTextCodigoIngreso"
+            android:id="@+id/buttonIngreso" android:layout_below="@id/editTextCodigoIngreso"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             />
@@ -27,10 +27,10 @@
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:id="@+id/imageView" android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/editTextCodigoIngreso"
-            android:layout_alignStart="@+id/editTextCodigoIngreso" android:layout_marginTop="90dp"
-            android:layout_alignRight="@+id/editTextCodigoIngreso"
-            android:layout_alignEnd="@+id/editTextCodigoIngreso"/>
+            android:layout_alignLeft="@id/editTextCodigoIngreso"
+            android:layout_alignStart="@id/editTextCodigoIngreso" android:layout_marginTop="90dp"
+            android:layout_alignRight="@id/editTextCodigoIngreso"
+            android:layout_alignEnd="@id/editTextCodigoIngreso"/>
     <ProgressBar
             style="?android:attr/progressBarStyleSmall"
             android:layout_width="wrap_content"

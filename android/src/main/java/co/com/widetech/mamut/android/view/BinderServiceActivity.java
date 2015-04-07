@@ -11,9 +11,7 @@ import co.com.widetech.mamut.android.R;
 import com.co.widetech.serial_port_core.models.DeviceStatus;
 import com.co.widetech.serial_port_core.service.TransportDataService;
 import com.co.widetech.serial_port_core.tools.SerialPortPreferences;
-import com.co.widetech.serial_port_core.tools.Utils;
 import utils.AlertBuilder;
-import utils.Config;
 import utils.SharedStatus;
 
 /**
@@ -61,6 +59,7 @@ public abstract class BinderServiceActivity extends ActionBarActivity {
                                 sharedStatusApp.setInfoDevice(true);
                                 startActivity(new Intent(BinderServiceActivity.this,
                                         SerialPortPreferences.class));
+                                new DeviceStatus(BinderServiceActivity.this).setStatusSelectSerialPort(true);
                             }
                         }
                     },
@@ -90,30 +89,19 @@ public abstract class BinderServiceActivity extends ActionBarActivity {
         }
     }
 
-    protected abstract boolean isValid(String data);
+    protected abstract boolean isValid();
 
-    protected final boolean sendData(String data) {
-        if (isValid(data)) {
-            return transportMessage(buildData(data));
+    protected final boolean sendData() {
+        String data = "";
+        if (isValid()) {
+            data = buildData();
+            return transportMessage(data);
         }
-        Log.d(TAG, "Can't sendData() data: " + data);
+        Log.d(TAG, "Can't sendData() " + data);
         return false;
     }
 
-    protected String buildData(String data) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(Utils.formatStartUnit(typeUnity(), this));
-        stringBuilder.append(Config.TYPE_MESSAGE_LOGIN);
-        SharedPreferences sPreferenceCode = sharedStatusApp.getCodeUser();
-        String code = sPreferenceCode.getString("codeUser", "");
-        stringBuilder.append(code);
-//		sb.append(";");
-//		sb.append(String.valueOf(mStack.updateCounter()));
-        stringBuilder.append(Utils.formatEndUnit(typeUnity(), this));
-        String dataToSend = stringBuilder.toString();
-        Log.d(TAG, "buildData() data: " + dataToSend);
-        return dataToSend;
-    }
+    protected abstract String buildData();
 
     private final boolean transportMessage(String data) {
         Log.d(TAG, "transportMessage() data: " + data);

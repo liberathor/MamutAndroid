@@ -6,12 +6,11 @@ import android.content.UriMatcher;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
 
-public class SolicitudMantenimientoActivity extends ActionBarActivity implements InicioMantenimientoFragment.OnFragmentInteractionListener {
+public class SolicitudMantenimientoActivity extends BinderServiceActivity implements InicioMantenimientoFragment.OnFragmentInteractionListener {
     public static final String SCHEME = ContentResolver.SCHEME_CONTENT + "://";
     public static final String AUTHORITY = "co.com.widetech.mamut.android.mantenimiento";
     private static final int INICIAR_MANTENIMIENTO = 0;
@@ -90,6 +89,16 @@ public class SolicitudMantenimientoActivity extends ActionBarActivity implements
         if (fragment != null) {
             addFragment(fragment);
         }
+    }
+
+    @Override
+    protected boolean isValid() {
+        return false;
+    }
+
+    @Override
+    protected String buildData() {
+        return null;
     }
 
     /**
