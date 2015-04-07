@@ -11,7 +11,7 @@ import android.widget.EditText;
  */
 public class AlertBuilder {
 
-    public static AlertDialog buildAlertNotConfiguredDevice(Context context, String tittle, String message, DialogInterface.OnClickListener onClickListener) {
+    public static AlertDialog buildGenericAlert(Context context, String tittle, String message, DialogInterface.OnClickListener onClickListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(tittle);
         builder.setMessage(message);
