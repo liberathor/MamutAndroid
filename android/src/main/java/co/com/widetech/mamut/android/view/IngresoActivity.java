@@ -10,6 +10,7 @@ import android.view.*;
 import android.widget.Button;
 import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
+import com.co.widetech.serial_port_core.models.DeviceStatus;
 import utils.AlertBuilder;
 
 
@@ -91,6 +92,7 @@ public class IngresoActivity extends BinderServiceActivity {
             IngresoActivity activity = (IngresoActivity) getActivity();
             try {
                 if (activity.sendData(mTextView.getText().toString())) {
+                    new DeviceStatus(getActivity()).setStatusSelectSerialPort(true);
                     getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
                     getActivity().finish();
                 }

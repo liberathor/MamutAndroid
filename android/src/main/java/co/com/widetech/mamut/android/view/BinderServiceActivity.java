@@ -58,9 +58,9 @@ public abstract class BinderServiceActivity extends ActionBarActivity {
                         public void onClick(DialogInterface dialog, int which) {
                             Log.d(TAG, "onPostCreate()");
                             if (input.getText().toString().equalsIgnoreCase("wt2015")) {
+                                sharedStatusApp.setInfoDevice(true);
                                 startActivity(new Intent(BinderServiceActivity.this,
                                         SerialPortPreferences.class));
-                                sharedStatusApp.setInfoDevice(true);
                             }
                         }
                     },
