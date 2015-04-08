@@ -7,7 +7,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
 import android.util.Log;
 import android.widget.EditText;
-import co.com.widetech.mamut.android.R;
 import com.co.widetech.serial_port_core.models.DeviceStatus;
 import com.co.widetech.serial_port_core.service.TransportDataService;
 import com.co.widetech.serial_port_core.tools.SerialPortPreferences;
@@ -114,25 +113,5 @@ public abstract class BinderServiceActivity extends ActionBarActivity {
 
     protected void setWhaitAck(boolean whaitAck) {
         this.whaitAck = whaitAck;
-    }
-
-    private String typeUnity() {
-        SharedPreferences sp = deviceStatus.getsPreferenceManager();
-        String unityType = getResources().getString(R.string.option_unity_type);
-        String unity = sp.getString(unityType, "");
-        if (unity.length() == 0) {
-            throw new IllegalStateException("Type Unity no set");
-        }
-        return unity;
-    }
-
-    private String typeDevice() {
-        SharedPreferences sp = deviceStatus.getsPreferenceManager();
-        String deviceType = getResources().getString(R.string.option_device);
-        String device = sp.getString(deviceType, "");
-        if (device.length() == 0) {
-            throw new IllegalStateException("Type Device no set");
-        }
-        return device;
     }
 }
