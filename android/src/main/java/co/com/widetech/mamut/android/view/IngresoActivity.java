@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.*;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import co.com.widetech.mamut.android.R;
 import com.co.widetech.serial_port_core.models.DeviceStatus;
 import utils.AlertBuilder;
@@ -17,6 +18,7 @@ import utils.MessageBuilder;
 public class IngresoActivity extends BinderServiceActivity {
     private static final String TAG = "IngresoActivity";
     private PlaceholderFragment mFragment;
+
     private BroadcastReceiver receiverLoginActivity = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             try {
@@ -26,6 +28,7 @@ public class IngresoActivity extends BinderServiceActivity {
                     sharedStatusApp.setsPrefNameUser(nameUser);
                     if (codeUser.equalsIgnoreCase("1")) {
                         new DeviceStatus(IngresoActivity.this).setStatusLogin(true);
+                        mFragment.mProgressBar.setVisibility(View.INVISIBLE);
                         startActivity(new Intent(IngresoActivity.this, MainActivity.class));
                         IngresoActivity.this.finish();
                     } else {
@@ -120,6 +123,7 @@ public class IngresoActivity extends BinderServiceActivity {
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
+        protected ProgressBar mProgressBar;
         private Button mButton;
         private EditText mTextView;
 
@@ -131,6 +135,7 @@ public class IngresoActivity extends BinderServiceActivity {
             Activity activity = getActivity();
             mButton = (Button) activity.findViewById(R.id.buttonIngreso);
             mTextView = (EditText) activity.findViewById(R.id.editTextCodigoIngreso);
+            mProgressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
             mButton.setOnClickListener(this);
             super.onActivityCreated(savedInstanceState);
         }
@@ -148,6 +153,7 @@ public class IngresoActivity extends BinderServiceActivity {
             try {
                 activity.setWhaitAck(true);
                 if (activity.sendData()) {
+                    mProgressBar.setVisibility(View.VISIBLE);
                 }
             } catch (IllegalStateException e) {
                 AlertBuilder.buildGenericAlert(
@@ -157,8 +163,7 @@ public class IngresoActivity extends BinderServiceActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                //TODO: clear data or do something to fix it
-                                //mEditPass.setText("");
+                                mTextView.setText("");
                             }
                         }).show();
                 e.printStackTrace();
