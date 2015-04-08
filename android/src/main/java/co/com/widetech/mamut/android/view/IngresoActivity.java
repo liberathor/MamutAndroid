@@ -163,6 +163,7 @@ public class IngresoActivity extends BinderServiceActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                mProgressBar.setVisibility(View.INVISIBLE);
                                 mTextView.setText("");
                             }
                         }).show();
