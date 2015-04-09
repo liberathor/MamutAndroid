@@ -37,6 +37,10 @@ public final class Config {
         TYPE_ACTION_FINALIZAR_TURNO
     }
 
+    public enum valuesTanqueo {
+        TYPE_ACTION_TANQUEO
+    }
+
     public enum valuesMantenimiento {
         TYPE_ACTION_SOLICITUD_MANTENIMIENTO,
         TYPE_ACTION_INICIO_MANTENIMIENTO,
