@@ -30,51 +30,10 @@ public final class MessageBuilder {
         mDeviceStatus = new DeviceStatus(mContext.getApplicationContext());
     }
 
-    public String buildMessageNewTravel(String sCodeOrigen, String sCodeDestination, String tanker, String load, String quantity, String guideNumber, String expires) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
-        sb.append(Config.TYPE_MESSAGE_INIT_TRAVEL);
-        sb.append("O" + sCodeOrigen);
-        sb.append(",");
-        sb.append("D" + sCodeDestination);
-        sb.append(",");
-        sb.append(tanker);
-        sb.append(",");
-        sb.append(load);
-        sb.append(",");
-        sb.append(quantity);
-        sb.append(",");
-        sb.append(guideNumber);
-        sb.append(",");
-        sb.append(expires);
-        sb.append(";");
-        sb.append(String.valueOf(mStack.updateCounter()));
-        sb.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
-
-        String message = sb.toString();
-        Log.d(TAG, "sendMessageTravel() message: " + message);
-        return message;
-    }
-
-    public String buildMessageToDeviceStarted() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
-        stringBuilder.append(Config.TYPE_MESSAGE_LOGIN);
-        SharedPreferences sPreferenceCode = mSharedStatusApp.getCodeUser();
-        String code = sPreferenceCode.getString("codeUser", "");
-        stringBuilder.append(code);
-//		sb.append(";");
-//		sb.append(String.valueOf(mStack.updateCounter()));
-        stringBuilder.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
-        String dataToSend = stringBuilder.toString();
-        Log.d(TAG, "buildMessageToDeviceStarted(): " + dataToSend);
-        return dataToSend;
-    }
-
     public String buildMessageToLogin() {
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
-        sb.append(Config.TYPE_MESSAGE_LOGIN);
+        sb.append(Config.buttonStrings.TYPE_MESSAGE_LOGIN);
         SharedPreferences sPreferenceCode = mSharedStatusApp.getCodeUser();
         String code = sPreferenceCode.getString("codeUser", "");
         sb.append(code);
@@ -94,7 +53,7 @@ public final class MessageBuilder {
         String unity = sp.getString(unityType, "");
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.formatStartUnit(unity, mContext));
-        sb.append(Config.TYPE_MESSAGE_CHAT);
+        sb.append(Config.buttonStrings.TYPE_MESSAGE_CHAT);
         sb.append(message);
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -105,45 +64,94 @@ public final class MessageBuilder {
         return newMessage;
     }
 
-    public String buildMessageToStartTravel(String sCodeOrigen, String sCodeDestination, String tanker, String load, String quantity, String guideNumber, String expires) {
+    public String buildMessageMainButton(String typeButton) {
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
-        sb.append(Config.TYPE_MESSAGE_INIT_TRAVEL);
-        sb.append("O" + sCodeOrigen);
-        sb.append(",");
-        sb.append("D" + sCodeDestination);
-        sb.append(",");
-        sb.append(tanker);
-        sb.append(",");
-        sb.append(load);
-        sb.append(",");
-        sb.append(quantity);
-        sb.append(",");
-        sb.append(guideNumber);
-        sb.append(",");
-        sb.append(expires);
-        sb.append(";");
-        sb.append(String.valueOf(mStack.updateCounter()));
-        sb.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
-
-        String message = sb.toString();
-        Log.d(TAG, "buildMessageToStartTravel(): " + message);
-        return message;
-    }
-
-    public String buildMessageToNotifyTravelStatus(String message, String travelStatus) {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
-        //example type message: sb.append(Config.TYPE_MESSAGE_PAUSE_TRAVEL);
-        sb.append(travelStatus);
-        sb.append(message);
+        sb.append(typeButton);
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
         sb.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
 
         String newMessage = sb.toString();
-        System.out.println(message);
+        Log.d(TAG, newMessage);
+        return newMessage;
+    }
+
+    public String buildMessageInformacionViaje(String ciudad, String carga) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
+        sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
+        sb.append(Config.SEPARATOR);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE);
+        sb.append(Config.SEPARATOR);
+
+        sb.append(ciudad);
+        sb.append(Config.SEPARATOR);
+        sb.append(carga);
+        sb.append(Config.SEPARATOR);
+
+        sb.append(";");
+        sb.append(String.valueOf(mStack.updateCounter()));
+        sb.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
+
+        String newMessage = sb.toString();
+        Log.d(TAG, newMessage);
+        return newMessage;
+    }
+
+    public String buildMessageLlegueACargar() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
+        sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
+        sb.append(Config.SEPARATOR);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE);
+        sb.append(Config.SEPARATOR);
+
+        sb.append(";");
+        sb.append(String.valueOf(mStack.updateCounter()));
+        sb.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
+
+        String newMessage = sb.toString();
+        Log.d(TAG, newMessage);
+        return newMessage;
+    }
+
+    public String buildMessageInicieMiViaje() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
+        sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
+        sb.append(Config.SEPARATOR);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE);
+        sb.append(Config.SEPARATOR);
+
+        sb.append(";");
+        sb.append(String.valueOf(mStack.updateCounter()));
+        sb.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
+
+        String newMessage = sb.toString();
+        Log.d(TAG, newMessage);
+        return newMessage;
+    }
+
+    public String buildMessageDatosDeViaje(String manifiesto, String trailer) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
+        sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
+        sb.append(Config.SEPARATOR);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE);
+        sb.append(Config.SEPARATOR);
+
+        sb.append(manifiesto);
+        sb.append(Config.SEPARATOR);
+        sb.append(trailer);
+        sb.append(Config.SEPARATOR);
+
+        sb.append(";");
+        sb.append(String.valueOf(mStack.updateCounter()));
+        sb.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
+
+        String newMessage = sb.toString();
+        Log.d(TAG, newMessage);
         return newMessage;
     }
 

@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
-import utils.MessageBuilder;
 
 
 public class MainActivity extends BinderServiceActivity {
@@ -54,7 +53,7 @@ public class MainActivity extends BinderServiceActivity {
 
     @Override
     protected String buildData() {
-        return new MessageBuilder(this).buildMessageToDeviceStarted();
+        return null;
     }
 
 
