@@ -11,6 +11,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
+import utils.Config;
+import utils.MessageBuilder;
 
 
 public class InicioTurnoActivity extends BinderServiceActivity implements EnTurnoFragment.OnFragmentInteractionListener {
@@ -41,6 +43,7 @@ public class InicioTurnoActivity extends BinderServiceActivity implements EnTurn
                 InicioTurnoActivity.this.startActivity(new Intent(InicioTurnoActivity.this, SolicitudTanqueoActivity.class));
             }
         });
+        sendData(true);
     }
 
     void replaceFragment(Fragment fragment, String tag) {
@@ -88,12 +91,12 @@ public class InicioTurnoActivity extends BinderServiceActivity implements EnTurn
 
     @Override
     protected boolean isValid() {
-        return false;
+        return true;
     }
 
     @Override
     protected String buildData() {
-        return null;
+        return new MessageBuilder(this).buildMessageMainButton(Config.buttonStrings.TYPE_BUTTON_PROYECTOS);
     }
 
     /**

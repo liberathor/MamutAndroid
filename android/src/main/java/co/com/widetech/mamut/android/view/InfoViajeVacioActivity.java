@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
+import utils.Config;
+import utils.MessageBuilder;
 
 public class InfoViajeVacioActivity extends BinderServiceActivity {
 
@@ -19,6 +21,7 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        sendData(true);
     }
 
     @Override
@@ -45,12 +48,12 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
 
     @Override
     protected boolean isValid() {
-        return false;
+        return true;
     }
 
     @Override
     protected String buildData() {
-        return null;
+        return new MessageBuilder(this).buildMessageMainButton(Config.buttonStrings.TYPE_BUTTON_VIAJE_VACIO);
     }
 
     /**

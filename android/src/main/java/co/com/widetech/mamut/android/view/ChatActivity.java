@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import co.com.widetech.mamut.android.R;
+import utils.Config;
+import utils.MessageBuilder;
 
 public class ChatActivity extends BinderServiceActivity {
 
@@ -43,12 +45,12 @@ public class ChatActivity extends BinderServiceActivity {
 
     @Override
     protected boolean isValid() {
-        return false;
+        return true;
     }
 
     @Override
     protected String buildData() {
-        return null;
+        return new MessageBuilder(this).buildMessageMainButton(Config.buttonStrings.TYPE_MESSAGE_CHAT);
     }
 
     /**
