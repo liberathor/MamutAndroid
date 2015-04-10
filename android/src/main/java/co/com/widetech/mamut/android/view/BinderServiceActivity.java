@@ -19,6 +19,7 @@ import java.util.Calendar;
  * Created by wtjramirez on 3/30/15.
  */
 public abstract class BinderServiceActivity extends ActionBarActivity {
+    private static final int MAX_INTENTS = 3;
     private static final int ELAPSED_SECONDS_TO_ENTER_SETTINGS = 1;
     private static final String TAG = "BinderServiceActivity";
     private static int intentToEnterSettings;
@@ -140,9 +141,9 @@ public abstract class BinderServiceActivity extends ActionBarActivity {
         long elapsedTimeSeconds = actualTime - timeFirstIntentEnterSettings;
         Log.d(TAG, "intentToEnterSettings() elapsedTime: " + elapsedTimeSeconds + " intent: " + intentToEnterSettings);
         if (elapsedTimeSeconds <= ELAPSED_SECONDS_TO_ENTER_SETTINGS && elapsedTimeSeconds >= 0) {
-            if (intentToEnterSettings < 4) {
+            if (intentToEnterSettings < MAX_INTENTS) {
                 ++intentToEnterSettings;
-            } else {
+            } else if (intentToEnterSettings == MAX_INTENTS) {
                 enterToSettings();
             }
         } else {
