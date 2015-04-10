@@ -13,17 +13,23 @@ import com.co.widetech.serial_port_core.tools.SerialPortPreferences;
 import utils.AlertBuilder;
 import utils.SharedStatus;
 
+import java.util.Calendar;
+
 /**
  * Created by wtjramirez on 3/30/15.
  */
 public abstract class BinderServiceActivity extends ActionBarActivity {
+    private static final int ELAPSED_SECONDS_TO_ENTER_SETTINGS = 1;
     private static final String TAG = "BinderServiceActivity";
+    private static int intentToEnterSettings;
+    private static long timeFirstIntentEnterSettings;
     SharedStatus sharedStatusApp;
     boolean mBound;
     boolean whaitAck;
     private TransportDataService mService;
     private DeviceStatus deviceStatus;
     private SharedPreferences sPrefInfoDevice;
+
     private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
@@ -47,26 +53,29 @@ public abstract class BinderServiceActivity extends ActionBarActivity {
         Boolean status = sPrefInfoDevice.getBoolean("valueInfoDevice", false);
         Log.d(TAG, "onPostCreate()");
         if (!status) {
-            final EditText input = new EditText(this);
-            input.setInputType(InputType.TYPE_CLASS_TEXT);
-            AlertBuilder.buildAlertNotificatonNewConfiguration(this,
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Log.d(TAG, "onPostCreate()");
-                            if (input.getText().toString().equalsIgnoreCase("wt2015")) {
-                                sharedStatusApp.setInfoDevice(true);
-                                startActivity(new Intent(BinderServiceActivity.this,
-                                        SerialPortPreferences.class));
-                                new DeviceStatus(BinderServiceActivity.this).setStatusSelectSerialPort(true);
-                            }
-                        }
-                    },
-                    input
-            ).show();
+            enterToSettings();
         }
     }
 
+    private void enterToSettings() {
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        AlertBuilder.buildAlertNotificatonNewConfiguration(this,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.d(TAG, "onPostCreate()");
+                        if (input.getText().toString().equalsIgnoreCase("wt2015")) {
+                            sharedStatusApp.setInfoDevice(true);
+                            startActivity(new Intent(BinderServiceActivity.this,
+                                    SerialPortPreferences.class));
+                            new DeviceStatus(BinderServiceActivity.this).setStatusSelectSerialPort(true);
+                        }
+                    }
+                },
+                input
+        ).show();
+    }
 
     @Override
     protected void onStart() {
@@ -88,9 +97,20 @@ public abstract class BinderServiceActivity extends ActionBarActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        if (mBound == false) {
+            Log.d(TAG, "onResume()");
+            Intent intent = new Intent(this, TransportDataService.class);
+            bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+        }
+        super.onResume();
+    }
+
     protected abstract boolean isValid();
 
-    protected final boolean sendData() {
+    protected final boolean sendData(boolean whaitAck) {
+        setWhaitAck(whaitAck);
         String data = "";
         if (isValid()) {
             data = buildData();
@@ -113,5 +133,21 @@ public abstract class BinderServiceActivity extends ActionBarActivity {
 
     protected void setWhaitAck(boolean whaitAck) {
         this.whaitAck = whaitAck;
+    }
+
+    public void intentToEnterSettings() {
+        int actualTime = Calendar.getInstance().get(Calendar.SECOND);
+        long elapsedTimeSeconds = actualTime - timeFirstIntentEnterSettings;
+        Log.d(TAG, "intentToEnterSettings() elapsedTime: " + elapsedTimeSeconds + " intent: " + intentToEnterSettings);
+        if (elapsedTimeSeconds <= ELAPSED_SECONDS_TO_ENTER_SETTINGS && elapsedTimeSeconds >= 0) {
+            if (intentToEnterSettings < 4) {
+                ++intentToEnterSettings;
+            } else {
+                enterToSettings();
+            }
+        } else {
+            intentToEnterSettings = 0;
+            timeFirstIntentEnterSettings = actualTime;
+        }
     }
 }

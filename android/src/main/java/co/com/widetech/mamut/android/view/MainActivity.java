@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.*;
 import android.widget.Button;
+import android.widget.ImageView;
 import co.com.widetech.mamut.android.R;
 import utils.AlertBuilder;
 
@@ -62,8 +63,10 @@ public class MainActivity extends BinderServiceActivity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class PlaceholderFragment extends Fragment implements Button.OnClickListener {
+    public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
+        private static int intent;
         private String TAG = "PlaceHolderFragment";
+        private ImageView mImageViewLogoMamut;
         private Button mButtonOpNal;
         private Button mButtonProyectos;
         private Button mButtonViajeVacio;
@@ -85,6 +88,7 @@ public class MainActivity extends BinderServiceActivity {
             mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
             mButtonMantenimiento = (Button) activity.findViewById(R.id.ButtonMantenimiento);
             mButtonSalida = (Button) activity.findViewById(R.id.ButtonSalida);
+            mImageViewLogoMamut = (ImageView) activity.findViewById(R.id.imageViewMamutLogo);
             mButtonOpNal.setOnClickListener(this);
             mButtonProyectos.setOnClickListener(this);
             mButtonViajeVacio.setOnClickListener(this);
@@ -92,6 +96,7 @@ public class MainActivity extends BinderServiceActivity {
             mButtonChat.setOnClickListener(this);
             mButtonMantenimiento.setOnClickListener(this);
             mButtonSalida.setOnClickListener(this);
+            mImageViewLogoMamut.setOnClickListener(this);
             super.onActivityCreated(savedInstanceState);
         }
 
@@ -132,6 +137,10 @@ public class MainActivity extends BinderServiceActivity {
                 case R.id.ButtonSalida:
                     getActivity().finish();
                     break;
+                case R.id.imageViewMamutLogo:
+                    Log.d(TAG, "onClick() imageViewMamutLogo");
+                    ((BinderServiceActivity) getActivity()).intentToEnterSettings();
+                    return;
                 default:
                     break;
             }
