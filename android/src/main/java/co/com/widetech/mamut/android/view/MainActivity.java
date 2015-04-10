@@ -1,6 +1,7 @@
 package co.com.widetech.mamut.android.view;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
+import utils.AlertBuilder;
 
 
 public class MainActivity extends BinderServiceActivity {
@@ -105,6 +107,8 @@ public class MainActivity extends BinderServiceActivity {
             int id = view.getId();
             Log.d(TAG, "onClick() id: " + id);
             Class activity = null;
+            String title = "Confirmar accion";
+            String message = "Esta seguro?";
             switch (id) {
                 case R.id.ButtonOpNal:
                     activity = OperationActivity.class;
@@ -120,6 +124,7 @@ public class MainActivity extends BinderServiceActivity {
                     break;
                 case R.id.ButtonChat:
                     activity = ChatActivity.class;
+                    message = null;
                     break;
                 case R.id.ButtonMantenimiento:
                     activity = OpcionesMantenimientoActivity.class;
@@ -130,9 +135,20 @@ public class MainActivity extends BinderServiceActivity {
                 default:
                     break;
             }
-            if (activity != null) {
+            if (message != null) {
+                launchWhitAlertActivity(activity, title, message);
+            } else {
                 getActivity().startActivity(new Intent(getActivity(), activity));
             }
+        }
+
+        public void launchWhitAlertActivity(final Class activity, String title, String message) {
+            AlertBuilder.buildGenericAlert(getActivity(), title, message, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    getActivity().startActivity(new Intent(getActivity(), activity));
+                }
+            }, true).show();
         }
     }
 }
