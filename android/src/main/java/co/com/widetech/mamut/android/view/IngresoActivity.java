@@ -37,7 +37,7 @@ public class IngresoActivity extends BinderServiceActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
 
                             }
-                        });
+                        }, false);
                     }
                 }
             } catch (Exception e) {
@@ -166,7 +166,7 @@ public class IngresoActivity extends BinderServiceActivity {
                                 mProgressBar.setVisibility(View.INVISIBLE);
                                 mTextView.setText("");
                             }
-                        }).show();
+                        }, false).show();
                 e.printStackTrace();
             }
         }

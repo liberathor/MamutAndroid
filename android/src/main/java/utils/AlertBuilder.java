@@ -11,12 +11,19 @@ import android.widget.EditText;
  */
 public class AlertBuilder {
 
-    public static AlertDialog buildGenericAlert(Context context, String tittle, String message, DialogInterface.OnClickListener onClickListener) {
+    public static AlertDialog buildGenericAlert(Context context, String title, String message, DialogInterface.OnClickListener onClickListener, boolean cancelButton) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle(tittle);
+        builder.setTitle(title);
         builder.setMessage(message);
-        builder.setCancelable(false);
+        builder.setCancelable(cancelButton);
         builder.setPositiveButton("Aceptar", onClickListener);
+        if (cancelButton) {
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+        }
         AlertDialog alert = builder.create();
         return alert;
     }
