@@ -6,21 +6,26 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.Button;
+import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
+import utils.MessageBuilder;
 
 public class infoCargueActivity extends BinderServiceActivity {
+    private infoCargueActivity.PlaceholderFragment mFragment;
+    private EstatusActionsToSend statusToSend = EstatusActionsToSend.SEND_OPERACION_NAL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_cargue);
         if (savedInstanceState == null) {
+            mFragment = new PlaceholderFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, mFragment)
                     .commit();
         }
+        sendData(true);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -46,21 +51,58 @@ public class infoCargueActivity extends BinderServiceActivity {
 
     @Override
     protected boolean isValid() {
+        switch (statusToSend) {
+            case SEND_OPERACION_NAL:
+                return true;
+            case SEND_INFO_VIAJE:
+                String ciudadDestino = mFragment.getCiudadDestino();
+                String carga = mFragment.getmCarga();
+                String errorCarga = null;
+                String errorDestino = null;
+                if (!ciudadDestino.isEmpty() && !carga.isEmpty()) {
+                    return true;
+                } else {
+                    if (ciudadDestino.isEmpty()) {
+                        errorDestino = "Por favor llene el destino";
+                    }
+                    if (carga.isEmpty()) {
+                        errorCarga = "Por favor llene la carga";
+                    }
+                    mFragment.setError(errorCarga, errorDestino);
+                    return false;
+                }
+        }
         return false;
     }
 
     @Override
     protected String buildData() {
-        return null;
+        String data = null;
+        switch (statusToSend) {
+            case SEND_OPERACION_NAL:
+                data = new MessageBuilder(this).buildMessageLlegueACargar();
+                break;
+            case SEND_INFO_VIAJE:
+                data = new MessageBuilder(this).buildMessageInicieMiViaje();
+                break;
+        }
+        return data;
+    }
+
+    public enum EstatusActionsToSend {
+        SEND_OPERACION_NAL,
+        SEND_INFO_VIAJE
     }
 
     /**
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
-        Button mButtonChat;
-        Button mButtonFinalizarViaje;
-        Button mButtonOpciones;
+        private Button mButtonChat;
+        private Button mButtonFinalizarViaje;
+        private Button mButtonOpciones;
+        private EditText mEditTextCiudadDestino;
+        private EditText mEditTextCarga;
 
         public PlaceholderFragment() {
         }
@@ -71,6 +113,8 @@ public class infoCargueActivity extends BinderServiceActivity {
             mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
             mButtonFinalizarViaje = (Button) activity.findViewById(R.id.ButtonOptions);
             mButtonOpciones = (Button) activity.findViewById(R.id.ButtonOpciones);
+            mEditTextCiudadDestino = (EditText) activity.findViewById(R.id.editTextCiudad);
+            mEditTextCarga = (EditText) activity.findViewById(R.id.editTextCarga);
             mButtonChat.setOnClickListener(this);
             mButtonFinalizarViaje.setOnClickListener(this);
             mButtonOpciones.setOnClickListener(this);
@@ -93,7 +137,11 @@ public class infoCargueActivity extends BinderServiceActivity {
                     activity = ChatActivity.class;
                     break;
                 case R.id.ButtonOptions:
-                    activity = InicioViajeActivity.class;
+                    infoCargueActivity parentActivity = ((infoCargueActivity) getActivity());
+                    parentActivity.statusToSend = EstatusActionsToSend.SEND_INFO_VIAJE;
+                    if (parentActivity.sendData(true)) {
+                        activity = InicioViajeActivity.class;
+                    }
                     break;
                 case R.id.ButtonOpciones:
                     break;
@@ -103,6 +151,19 @@ public class infoCargueActivity extends BinderServiceActivity {
             if (activity != null) {
                 getActivity().startActivity(new Intent(getActivity(), activity));
             }
+        }
+
+        public String getCiudadDestino() {
+            return mEditTextCiudadDestino.getText().toString();
+        }
+
+        public String getmCarga() {
+            return mEditTextCarga.getText().toString();
+        }
+
+        public void setError(String errorCarga, String errorCiudadDestino) {
+            mEditTextCarga.setError(errorCarga);
+            mEditTextCiudadDestino.setError(errorCiudadDestino);
         }
     }
 }
