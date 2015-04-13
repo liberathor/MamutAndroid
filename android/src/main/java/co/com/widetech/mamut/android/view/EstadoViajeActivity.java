@@ -107,7 +107,7 @@ public class EstadoViajeActivity extends BinderServiceActivity {
         public void onActivityCreated(Bundle savedInstanceState) {
             Activity activity = getActivity();
             mButtonDetencionRuta = (Button) activity.findViewById(R.id.ButtonDetencionRuta);
-            mButtonLlegueDescargar = (Button) activity.findViewById(R.id.ButtonLlegadaDescargar);
+            mButtonLlegueDescargar = (Button) activity.findViewById(R.id.ButtonProyectos);
             mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
             mButtonOptions = (Button) activity.findViewById(R.id.ButtonOptions);
             mButtonDetencionRuta.setOnClickListener(this);
@@ -127,7 +127,7 @@ public class EstadoViajeActivity extends BinderServiceActivity {
                     parentActivity.sendData(StatusEstadoViaje.SEND_DATA_DETENCION_RUTA);
                     activity = DetencionRutaActivity.class;
                     break;
-                case R.id.ButtonLlegadaDescargar:
+                case R.id.ButtonProyectos:
                     parentActivity.sendData(StatusEstadoViaje.SEND_DATA_LLEGUE_DESCARGAR);
                     activity = FinalizarViajeActivity.class;
                     break;

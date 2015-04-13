@@ -13,18 +13,18 @@
             android:text="Detención de ruta"
             android:elevation="20dp"
             android:id="@+id/ButtonDetencionRuta"
-            android:layout_marginBottom="24dp" android:layout_above="@+id/ButtonLlegadaDescargar"
-            android:layout_alignLeft="@+id/ButtonLlegadaDescargar"
-            android:layout_alignStart="@+id/ButtonLlegadaDescargar"
-            android:layout_alignRight="@+id/ButtonLlegadaDescargar"
-            android:layout_alignEnd="@+id/ButtonLlegadaDescargar"/>
+            android:layout_marginBottom="24dp" android:layout_above="@+id/ButtonProyectos"
+            android:layout_alignLeft="@+id/ButtonProyectos"
+            android:layout_alignStart="@+id/ButtonProyectos"
+            android:layout_alignRight="@+id/ButtonProyectos"
+            android:layout_alignEnd="@+id/ButtonProyectos"/>
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Llegue a descargar"
             android:elevation="20dp"
-            android:id="@+id/ButtonLlegadaDescargar"
+            android:id="@+id/ButtonProyectos"
             android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
     <Button
             android:layout_width="wrap_content"

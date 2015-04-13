@@ -82,7 +82,7 @@ public class MainActivity extends BinderServiceActivity {
         public void onActivityCreated(Bundle savedInstanceState) {
             Activity activity = getActivity();
             mButtonOpNal = (Button) activity.findViewById(R.id.ButtonOpNal);
-            mButtonProyectos = (Button) activity.findViewById(R.id.ButtonLlegadaDescargar);
+            mButtonProyectos = (Button) activity.findViewById(R.id.ButtonProyectos);
             mButtonViajeVacio = (Button) activity.findViewById(R.id.ButtonViajeVacio);
             mButtonTanqueo = (Button) activity.findViewById(R.id.ButtonTanqueo);
             mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
@@ -118,7 +118,7 @@ public class MainActivity extends BinderServiceActivity {
                 case R.id.ButtonOpNal:
                     activity = OperationActivity.class;
                     break;
-                case R.id.ButtonLlegadaDescargar:
+                case R.id.ButtonProyectos:
                     activity = InicioTurnoActivity.class;
                     break;
                 case R.id.ButtonViajeVacio:

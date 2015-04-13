@@ -86,10 +86,13 @@ public class EnTurnoFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         int id = view.getId();
+        InicioTurnoActivity parentActivity = ((InicioTurnoActivity) getActivity());
         Uri uri = null;
         switch (id) {
             case R.id.ButtonFinalizarTurno:
-                uri = Uri.parse(InicioTurnoActivity.BASE_URI + "/" + "finalizar_turno");
+                if (parentActivity.sendData(InicioTurnoActivity.StateInicioTurno.SEND_DATA_STATE_FINALIZAR_TURNO)) {
+                    uri = Uri.parse(InicioTurnoActivity.BASE_URI + "/" + "finalizar_turno");
+                }
                 break;
             case R.id.ButtonChat:
                 getActivity().startActivity(new Intent(getActivity(), ChatActivity.class));

@@ -28,6 +28,8 @@ public class InicioTurnoActivity extends BinderServiceActivity implements EnTurn
         sUriMatcher.addURI(AUTHORITY, "finalizar_turno", FINALIZAR_TURNO);
     }
 
+    private StateInicioTurno mStateInicioTurno = StateInicioTurno.SEND_DATA_STATE_PROYECTOS;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,6 @@ public class InicioTurnoActivity extends BinderServiceActivity implements EnTurn
         transaction.replace(R.id.container, fragment, tag);
         transaction.commit();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -96,7 +97,32 @@ public class InicioTurnoActivity extends BinderServiceActivity implements EnTurn
 
     @Override
     protected String buildData() {
-        return new MessageBuilder(this).buildMessageMainButton(Config.buttonStrings.TYPE_BUTTON_PROYECTOS);
+        String data = null;
+        switch (mStateInicioTurno) {
+            case SEND_DATA_STATE_PROYECTOS:
+                data = new MessageBuilder(this).buildMessageMainButton(Config.buttonStrings.TYPE_BUTTON_PROYECTOS);
+                break;
+            case SEND_DATA_STATE_INICIAR_TURNO:
+                data = new MessageBuilder(this).buildMessageInicializarTurno();
+                break;
+            case SEND_DATA_STATE_FINALIZAR_TURNO:
+                data = new MessageBuilder(this).buildMessageFinalizarTurno();
+                break;
+            default:
+                break;
+        }
+        return data;
+    }
+
+    public boolean sendData(StateInicioTurno state) {
+        mStateInicioTurno = state;
+        return sendData(true);
+    }
+
+    enum StateInicioTurno {
+        SEND_DATA_STATE_PROYECTOS,
+        SEND_DATA_STATE_INICIAR_TURNO,
+        SEND_DATA_STATE_FINALIZAR_TURNO
     }
 
     /**
@@ -132,12 +158,15 @@ public class InicioTurnoActivity extends BinderServiceActivity implements EnTurn
         @Override
         public void onClick(View view) {
             int id = view.getId();
+            InicioTurnoActivity parentActivity = ((InicioTurnoActivity) getActivity());
             Fragment fragment = null;
             String tag = null;
             switch (id) {
                 case R.id.ButtonIniciarTurno:
-                    fragment = new EnTurnoFragment();
-                    tag = EnTurnoFragment.TAG;
+                    if (parentActivity.sendData(StateInicioTurno.SEND_DATA_STATE_INICIAR_TURNO)) {
+                        fragment = new EnTurnoFragment();
+                        tag = EnTurnoFragment.TAG;
+                    }
                     break;
                 case R.id.ButtonOpciones:
                     break;
