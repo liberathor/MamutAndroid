@@ -403,6 +403,10 @@ public final class MessageBuilder {
         sb.append(Config.SEPARATOR);
 
         sb.append(Config.valuesTanqueo.TYPE_ACTION_TANQUEO);
+        sb.append(Config.SEPARATOR);
+        sb.append(eds);
+        sb.append(Config.SEPARATOR);
+        sb.append(galones);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));

@@ -6,24 +6,27 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.Button;
+import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
 import utils.Config;
 import utils.MessageBuilder;
 
 public class SolicitudTanqueoActivity extends BinderServiceActivity {
+    private Fragment mFragment;
+    private StatusSolicitudTanqueo mStatusSolicitudTanqueo = StatusSolicitudTanqueo.SEND_DATA_START_SOLICITUD_TANQUEO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tanqueo);
         if (savedInstanceState == null) {
+            mFragment = new PlaceholderFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, mFragment)
                     .commit();
         }
         sendData(true);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -49,20 +52,63 @@ public class SolicitudTanqueoActivity extends BinderServiceActivity {
 
     @Override
     protected boolean isValid() {
-        return true;
+        boolean isValid = false;
+        switch (mStatusSolicitudTanqueo) {
+            case SEND_DATA_START_SOLICITUD_TANQUEO:
+                isValid = true;
+                break;
+            case SEND_DATA_ENVIAR_TANQUEO:
+                PlaceholderFragment fragment = ((PlaceholderFragment) mFragment);
+                if (!fragment.getNombreEds().isEmpty() && !fragment.getCantidadGalones().isEmpty()) {
+                    isValid = true;
+                } else {
+                    String errorNombresEds = null;
+                    String errorCantidadGalones = null;
+                    if (fragment.getNombreEds().isEmpty()) {
+                        errorNombresEds = "Ingrese un nombre valido";
+                    }
+                    if (fragment.getCantidadGalones().isEmpty()) {
+                        errorCantidadGalones = "Ingrese una cantidad";
+                    }
+                    fragment.setValidationErrors(errorNombresEds, errorCantidadGalones);
+                }
+                break;
+            default:
+                break;
+        }
+        return isValid;
     }
 
     @Override
     protected String buildData() {
-        return new MessageBuilder(this).buildMessageMainButton(Config.buttonStrings.TYPE_BUTTON_TANQUEO);
+        String data = null;
+        PlaceholderFragment fragment = ((PlaceholderFragment) mFragment);
+        switch (mStatusSolicitudTanqueo) {
+            case SEND_DATA_START_SOLICITUD_TANQUEO:
+                data = new MessageBuilder(this).buildMessageMainButton(Config.buttonStrings.TYPE_BUTTON_TANQUEO);
+                break;
+            case SEND_DATA_ENVIAR_TANQUEO:
+                data = new MessageBuilder(this).buildMessageTanqueo(fragment.getNombreEds(), Integer.parseInt(fragment.getCantidadGalones()));
+                break;
+            default:
+                break;
+        }
+        return data;
+    }
+
+    enum StatusSolicitudTanqueo {
+        SEND_DATA_START_SOLICITUD_TANQUEO,
+        SEND_DATA_ENVIAR_TANQUEO
     }
 
     /**
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
-        Button mButtonEnviarTanqueo;
-        Button mButtonChat;
+        private Button mButtonEnviarTanqueo;
+        private Button mButtonChat;
+        private EditText mEditTextNombreEds;
+        private EditText mEditTextCantidadGalones;
 
         public PlaceholderFragment() {
         }
@@ -82,20 +128,28 @@ public class SolicitudTanqueoActivity extends BinderServiceActivity {
             mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
             mButtonEnviarTanqueo.setOnClickListener(this);
             mButtonChat.setOnClickListener(this);
+            mEditTextNombreEds = (EditText) activity.findViewById(R.id.editTextNombreEds);
+            mEditTextCantidadGalones = (EditText) activity.findViewById(R.id.editTextCantidadGalones);
         }
 
         @Override
         public void onClick(View view) {
             int id = view.getId();
+            SolicitudTanqueoActivity parentActivity = ((SolicitudTanqueoActivity) getActivity());
             Class activity = null;
             Intent intent = null;
             switch (id) {
                 case R.id.ButtonEnviarTanqueo:
-                    activity = MainActivity.class;
-                    intent = new Intent(getActivity(), activity);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    parentActivity.mStatusSolicitudTanqueo = StatusSolicitudTanqueo.SEND_DATA_ENVIAR_TANQUEO;
+                    if (parentActivity.sendData(true)) {
+                        activity = MainActivity.class;
+                        intent = new Intent(getActivity(), activity);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    }
+                    break;
                 case R.id.ButtonChat:
                     activity = ChatActivity.class;
+                    intent = new Intent(getActivity(), activity);
                     break;
                 default:
                     break;
@@ -103,6 +157,19 @@ public class SolicitudTanqueoActivity extends BinderServiceActivity {
             if (activity != null) {
                 getActivity().startActivity(intent);
             }
+        }
+
+        public String getNombreEds() {
+            return mEditTextNombreEds.getText().toString();
+        }
+
+        public String getCantidadGalones() {
+            return mEditTextCantidadGalones.getText().toString();
+        }
+
+        public void setValidationErrors(String errorNombresEds, String errorCantidadGalones) {
+            mEditTextNombreEds.setError(errorNombresEds);
+            mEditTextCantidadGalones.setError(errorCantidadGalones);
         }
     }
 }
