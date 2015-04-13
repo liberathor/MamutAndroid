@@ -337,6 +337,23 @@ public final class MessageBuilder {
         return newMessage;
     }
 
+    public String buildMessageDetencionEnRutaOperacionNal() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
+        sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
+        sb.append(Config.SEPARATOR);
+
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_DETENCION_EN_RUTA);
+
+        sb.append(";");
+        sb.append(String.valueOf(mStack.updateCounter()));
+        sb.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
+
+        String newMessage = sb.toString();
+        Log.d(TAG, newMessage);
+        return newMessage;
+    }
+
     public String buildMessageLlegueDescargarEnViajeVacio() {
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));

@@ -7,9 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
+import utils.MessageBuilder;
 
 
 public class EstadoViajeActivity extends BinderServiceActivity {
+    private StatusEstadoViaje mStatusEstadoViaje;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +22,8 @@ public class EstadoViajeActivity extends BinderServiceActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        sendData(true);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -47,12 +49,33 @@ public class EstadoViajeActivity extends BinderServiceActivity {
 
     @Override
     protected boolean isValid() {
-        return false;
+        return true;
     }
 
     @Override
     protected String buildData() {
-        return null;
+        String data = null;
+        switch (mStatusEstadoViaje) {
+            case SEND_DATA_DETENCION_RUTA:
+                data = new MessageBuilder(this).buildMessageDetencionEnRutaOperacionNal();
+                break;
+            case SEND_DATA_LLEGUE_DESCARGAR:
+                data = new MessageBuilder(this).buildMessageLlegueADescargar();
+                break;
+            default:
+                break;
+        }
+        return data;
+    }
+
+    public void sendData(StatusEstadoViaje status) {
+        mStatusEstadoViaje = status;
+        sendData(true);
+    }
+
+    enum StatusEstadoViaje {
+        SEND_DATA_DETENCION_RUTA,
+        SEND_DATA_LLEGUE_DESCARGAR
     }
 
     /**
@@ -84,12 +107,15 @@ public class EstadoViajeActivity extends BinderServiceActivity {
         @Override
         public void onClick(View view) {
             int id = view.getId();
+            EstadoViajeActivity parentActivity = ((EstadoViajeActivity) getActivity());
             Class activity = null;
             switch (id) {
                 case R.id.ButtonDetencionRuta:
+                    parentActivity.sendData(StatusEstadoViaje.SEND_DATA_DETENCION_RUTA);
                     activity = DetencionRutaActivity.class;
                     break;
                 case R.id.ButtonLlegadaDescargar:
+                    parentActivity.sendData(StatusEstadoViaje.SEND_DATA_LLEGUE_DESCARGAR);
                     activity = FinalizarViajeActivity.class;
                     break;
                 case R.id.ButtonChat:
