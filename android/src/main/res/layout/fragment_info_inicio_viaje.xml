@@ -26,30 +26,31 @@
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/editTextManifiesto"
             android:layout_below="@+id/textView23" android:layout_centerHorizontal="true"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NUMERO DE TRAILER"
-            android:id="@+id/textView24" android:layout_below="@+id/editText" android:layout_centerHorizontal="true"
+            android:id="@+id/textView24" android:layout_below="@+id/editTextManifiesto"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="43dp"/>
     <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText2"
-            android:layout_below="@+id/textView24" android:layout_alignLeft="@+id/editText"
-            android:layout_alignStart="@+id/editText"/>
+            android:id="@+id/editTextTrailer"
+            android:layout_below="@+id/textView24" android:layout_alignLeft="@+id/editTextManifiesto"
+            android:layout_alignStart="@+id/editTextManifiesto"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enviar"
             android:id="@+id/ButtonEnviarInfoViaje"
-            android:layout_below="@+id/editText2" android:layout_alignRight="@+id/editText2"
-            android:layout_alignEnd="@+id/editText2"
-            android:layout_alignLeft="@+id/editText2" android:layout_alignStart="@+id/editText2"/>
+            android:layout_below="@+id/editTextTrailer" android:layout_alignRight="@+id/editTextTrailer"
+            android:layout_alignEnd="@+id/editTextTrailer"
+            android:layout_alignLeft="@+id/editTextTrailer" android:layout_alignStart="@+id/editTextTrailer"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

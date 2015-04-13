@@ -8,9 +8,14 @@ import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
+import utils.MessageBuilder;
 
 public class InicioViajeActivity extends BinderServiceActivity implements InfoInicioViajeFragment.OnFragmentInteractionListener {
-    Fragment mFragment;
+    private static final String LOG = "InicioViajeActivity";
+    private Fragment mFragment;
+    private StatusActionToSend statusActionToSend = StatusActionToSend.SEND_DATA_INICIE_VIAJE;
+    private String mNumeroManifiesto;
+    private String mNumeroTrailer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +29,7 @@ public class InicioViajeActivity extends BinderServiceActivity implements InfoIn
                     .add(R.id.container, mFragment)
                     .commit();
         }
+        sendData(true);
     }
 
     private void addFragment(Fragment fragment) {
@@ -62,12 +68,59 @@ public class InicioViajeActivity extends BinderServiceActivity implements InfoIn
 
     @Override
     protected boolean isValid() {
-        return false;
+        boolean isValid = false;
+        switch (statusActionToSend) {
+            case SEND_DATA_INICIE_VIAJE:
+                isValid = true;
+                break;
+            case SEND_DATA_REPORTAR_DATOS_VIAJE:
+                if (!mNumeroTrailer.isEmpty() && !mNumeroManifiesto.isEmpty()) {
+                    isValid = true;
+                    break;
+                } else {
+                    String errorManifiesto = null;
+                    String errorTrailer = null;
+                    if (mNumeroManifiesto.isEmpty()) {
+                        errorManifiesto = "Ingrese el numero de manifiesto";
+                    }
+                    if (mNumeroTrailer.isEmpty()) {
+                        errorTrailer = "Ingrese el numero de trailer";
+                    }
+                    ((InfoInicioViajeFragment) mFragment).setValidationErrors(errorManifiesto, errorTrailer);
+                }
+                break;
+            default:
+                break;
+        }
+        return isValid;
     }
 
     @Override
     protected String buildData() {
-        return null;
+        String data = "";
+        switch (statusActionToSend) {
+            case SEND_DATA_INICIE_VIAJE:
+                data = new MessageBuilder(this).buildMessageInicieMiViaje();
+                break;
+            case SEND_DATA_REPORTAR_DATOS_VIAJE:
+                data = new MessageBuilder(this).buildMessageDatosDeViaje(mNumeroManifiesto, mNumeroTrailer);
+                break;
+            default:
+                break;
+        }
+        return data;
+    }
+
+    public boolean sendData(String manifiesto, String trailer) {
+        mNumeroManifiesto = manifiesto;
+        mNumeroTrailer = trailer;
+        statusActionToSend = StatusActionToSend.SEND_DATA_REPORTAR_DATOS_VIAJE;
+        return sendData(true);
+    }
+
+    enum StatusActionToSend {
+        SEND_DATA_INICIE_VIAJE,
+        SEND_DATA_REPORTAR_DATOS_VIAJE
     }
 
     /**

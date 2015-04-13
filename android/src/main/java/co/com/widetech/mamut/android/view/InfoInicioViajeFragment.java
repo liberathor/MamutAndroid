@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
 
 /**
@@ -22,6 +23,8 @@ import co.com.widetech.mamut.android.R;
 public class InfoInicioViajeFragment extends Fragment implements View.OnClickListener {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private EditText mEditTextManifiesto;
+    private EditText mEditTextTrailer;
     private Button mButtonEnviarInfoViaje;
     private Button mButtonChat;
     private Button mButtonOptions;
@@ -93,6 +96,8 @@ public class InfoInicioViajeFragment extends Fragment implements View.OnClickLis
         mButtonEnviarInfoViaje = (Button) activity.findViewById(R.id.ButtonEnviarInfoViaje);
         mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
         mButtonOptions = (Button) activity.findViewById(R.id.ButtonOptions);
+        mEditTextTrailer = (EditText) activity.findViewById(R.id.editTextTrailer);
+        mEditTextManifiesto = (EditText) activity.findViewById(R.id.editTextManifiesto);
         mButtonEnviarInfoViaje.setOnClickListener(this);
         mButtonChat.setOnClickListener(this);
         mButtonOptions.setOnClickListener(this);
@@ -105,7 +110,10 @@ public class InfoInicioViajeFragment extends Fragment implements View.OnClickLis
         Class activity = null;
         switch (id) {
             case R.id.ButtonEnviarInfoViaje:
-                activity = EstadoViajeActivity.class;
+                InicioViajeActivity parentActivity = ((InicioViajeActivity) getActivity());
+                if (parentActivity.sendData(mEditTextManifiesto.getText().toString(), mEditTextTrailer.getText().toString())) {
+                    activity = EstadoViajeActivity.class;
+                }
                 break;
             case R.id.ButtonChat:
                 activity = ChatActivity.class;
@@ -118,6 +126,11 @@ public class InfoInicioViajeFragment extends Fragment implements View.OnClickLis
         if (activity != null) {
             getActivity().startActivity(new Intent(getActivity(), activity));
         }
+    }
+
+    public void setValidationErrors(String errorManifiesto, String errorTrailer) {
+        mEditTextManifiesto.setError(errorManifiesto);
+        mEditTextTrailer.setError(errorTrailer);
     }
 
     @Override
