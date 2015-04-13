@@ -436,7 +436,7 @@ public final class MessageBuilder {
         return newMessage;
     }
 
-    public String buildMessageReportarEstadoMantenimiento(int estadoMantenimiento) {
+    public String buildMessageReportarEstadoMantenimiento(Config.valuesMantenimiento estadoMantenimiento) {
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
         sb.append(Config.buttonStrings.TYPE_BUTTON_MANTENIMIENTO);
@@ -445,6 +445,25 @@ public final class MessageBuilder {
         sb.append(Config.valuesMantenimiento.TYPE_ACTION_SOLICITUD_MANTENIMIENTO);
         sb.append(Config.SEPARATOR);
         sb.append(estadoMantenimiento);
+
+        sb.append(";");
+        sb.append(String.valueOf(mStack.updateCounter()));
+        sb.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
+
+        String newMessage = sb.toString();
+        Log.d(TAG, newMessage);
+        return newMessage;
+    }
+
+    public String buildMessageReportarGalonesMantenimiento(int galones) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
+        sb.append(Config.buttonStrings.TYPE_BUTTON_MANTENIMIENTO);
+        sb.append(Config.SEPARATOR);
+
+        sb.append(Config.valuesMantenimiento.TYPE_ACTION_ENVIAR_GALONES);
+        sb.append(Config.SEPARATOR);
+        sb.append(galones);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));

@@ -82,11 +82,14 @@ public class FinalizarMantenimientoFragment extends Fragment implements View.OnC
     @Override
     public void onClick(View view) {
         int id = view.getId();
+        SolicitudMantenimientoActivity parentActivity = ((SolicitudMantenimientoActivity) getActivity());
         Intent intent = null;
         switch (id) {
             case R.id.ButtonFinalizarMantenimiento:
-                intent = new Intent(getActivity(), MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                if (parentActivity.sendData(SolicitudMantenimientoActivity.StatusSolicitudMantenimiento.SEND_FINALIZAR_MANTENIMIENTO)) {
+                    intent = new Intent(getActivity(), MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                }
                 break;
             case R.id.ButtonChat:
                 intent = new Intent(getActivity(), ChatActivity.class);

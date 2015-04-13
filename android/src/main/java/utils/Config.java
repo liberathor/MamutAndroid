@@ -44,7 +44,8 @@ public final class Config {
     public enum valuesMantenimiento {
         TYPE_ACTION_SOLICITUD_MANTENIMIENTO,
         TYPE_ACTION_INICIO_MANTENIMIENTO,
-        TYPE_ACTION_FIN_MANTENIMIENTO
+        TYPE_ACTION_FIN_MANTENIMIENTO,
+        TYPE_ACTION_ENVIAR_GALONES
     }
 
     public static final class buttonStrings {

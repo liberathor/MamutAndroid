@@ -117,17 +117,23 @@ public class GalonesFragment extends Fragment implements View.OnClickListener {
 
     private void enviarGalones() {
         if (mEditTextGalones != null) {
-            String val = mEditTextGalones.getText().toString();
-            if (!val.isEmpty()) {
-                try {
-                    int galones = Integer.parseInt(val);
-                    //TODO: SEND DATA
+            try {
+                SolicitudMantenimientoActivity parentFragment = ((SolicitudMantenimientoActivity) getActivity());
+                if (parentFragment.sendData(SolicitudMantenimientoActivity.StatusSolicitudMantenimiento.SEND_ENVIAR_GALONES)) {
                     Uri uri = Uri.parse(SolicitudMantenimientoActivity.BASE_URI + "/" + "finalizar_mantenimiento");
                     mListener.onFragmentInteraction(uri);
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
                 }
+            } catch (NumberFormatException e) {
+                e.printStackTrace();
             }
         }
+    }
+
+    public String getGalones() {
+        return mEditTextGalones.getText().toString();
+    }
+
+    public void setValidationError(String errorGalones) {
+        mEditTextGalones.setError(errorGalones);
     }
 }

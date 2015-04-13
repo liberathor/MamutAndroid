@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="iniciar mantenimiento"
-            android:id="@+id/ButtonFinMantenimiento"
+            android:id="@+id/ButtonIniciarMantenimiento"
             android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
     <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Chat"
             android:id="@+id/ButtonChat"

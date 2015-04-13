@@ -25,7 +25,7 @@ public class InicioMantenimientoFragment extends Fragment implements View.OnClic
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private Button mButtonFinMantenimiento;
+    private Button mButtonIniciarMantenimiento;
     private Button mButtonChat;
 
 
@@ -77,19 +77,22 @@ public class InicioMantenimientoFragment extends Fragment implements View.OnClic
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Activity activity = getActivity();
-        mButtonFinMantenimiento = (Button) activity.findViewById(R.id.ButtonFinMantenimiento);
+        mButtonIniciarMantenimiento = (Button) activity.findViewById(R.id.ButtonIniciarMantenimiento);
         mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
-        mButtonFinMantenimiento.setOnClickListener(this);
+        mButtonIniciarMantenimiento.setOnClickListener(this);
         mButtonChat.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
+        SolicitudMantenimientoActivity parentActivity = ((SolicitudMantenimientoActivity) getActivity());
         int id = view.getId();
         Uri uri = null;
         switch (id) {
-            case R.id.ButtonFinMantenimiento:
-                uri = Uri.parse(SolicitudMantenimientoActivity.BASE_URI + "/" + "ingresar_galones");
+            case R.id.ButtonIniciarMantenimiento:
+                if (parentActivity.sendData(SolicitudMantenimientoActivity.StatusSolicitudMantenimiento.SEND_INICIAR_MANTENIMIENTO)) {
+                    uri = Uri.parse(SolicitudMantenimientoActivity.BASE_URI + "/" + "ingresar_galones");
+                }
                 break;
             case R.id.ButtonChat:
                 getActivity().startActivity(new Intent(getActivity(), ChatActivity.class));
