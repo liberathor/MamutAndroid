@@ -13,17 +13,18 @@
             android:layout_height="100dp"
             android:inputType="textMultiLine"
             android:ems="10"
-            android:id="@+id/editText5"
+            android:id="@+id/editTextFinalizacionViaje"
             android:layout_centerVertical="true" android:layout_centerHorizontal="true"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enviar"
             android:id="@+id/ButtonFinalizarViaje"
-            android:layout_below="@+id/editText5"
-            android:layout_alignLeft="@+id/editText5"
-            android:layout_alignStart="@+id/editText5" android:layout_alignRight="@+id/editText5"
-            android:layout_alignEnd="@+id/editText5"/>
+            android:layout_below="@+id/editTextFinalizacionViaje"
+            android:layout_alignLeft="@+id/editTextFinalizacionViaje"
+            android:layout_alignStart="@+id/editTextFinalizacionViaje"
+            android:layout_alignRight="@+id/editTextFinalizacionViaje"
+            android:layout_alignEnd="@+id/editTextFinalizacionViaje"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

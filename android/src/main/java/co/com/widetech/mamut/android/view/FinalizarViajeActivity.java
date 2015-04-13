@@ -6,17 +6,21 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.Button;
+import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
+import utils.MessageBuilder;
 
 public class FinalizarViajeActivity extends BinderServiceActivity {
+    private Fragment mFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finalizar_viaje);
+        mFragment = new PlaceholderFragment();
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, mFragment)
                     .commit();
         }
     }
@@ -46,18 +50,27 @@ public class FinalizarViajeActivity extends BinderServiceActivity {
 
     @Override
     protected boolean isValid() {
-        return false;
+        boolean isValid = false;
+        PlaceholderFragment fragmentFinalizacion = ((PlaceholderFragment) mFragment);
+        if (!fragmentFinalizacion.getMessageFinalizacionViaje().isEmpty()) {
+            isValid = true;
+        } else {
+            fragmentFinalizacion.setErrorValidation("Ingrese un mensage");
+        }
+        return isValid;
     }
 
     @Override
     protected String buildData() {
-        return null;
+        PlaceholderFragment fragmentFinalizacion = ((PlaceholderFragment) mFragment);
+        return new MessageBuilder(this).buildMessageFinalizacionViaje(fragmentFinalizacion.getMessageFinalizacionViaje());
     }
 
     /**
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment implements View.OnClickListener {
+        private EditText mEditTextFinalizacionViaje;
         private Button mButtonFinalizarViaje;
         private Button mButtonChat;
 
@@ -75,6 +88,7 @@ public class FinalizarViajeActivity extends BinderServiceActivity {
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
             Activity activity = getActivity();
+            mEditTextFinalizacionViaje = (EditText) activity.findViewById(R.id.editTextFinalizacionViaje);
             mButtonFinalizarViaje = (Button) activity.findViewById(R.id.ButtonFinalizarViaje);
             mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
             mButtonFinalizarViaje.setOnClickListener(this);
@@ -84,13 +98,16 @@ public class FinalizarViajeActivity extends BinderServiceActivity {
         @Override
         public void onClick(View view) {
             int id = view.getId();
+            FinalizarViajeActivity parentActivity = ((FinalizarViajeActivity) getActivity());
             Class activity = null;
             Intent intent = null;
             switch (id) {
                 case R.id.ButtonFinalizarViaje:
-                    activity = MainActivity.class;
-                    intent = new Intent(getActivity(), activity);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    if (parentActivity.sendData(true)) {
+                        activity = MainActivity.class;
+                        intent = new Intent(getActivity(), activity);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    }
                     break;
                 case R.id.ButtonChat:
                     activity = ChatActivity.class;
@@ -102,6 +119,14 @@ public class FinalizarViajeActivity extends BinderServiceActivity {
             if (activity != null && intent != null) {
                 getActivity().startActivity(intent);
             }
+        }
+
+        public void setErrorValidation(String errorFinalizacion) {
+            mEditTextFinalizacionViaje.setError(errorFinalizacion);
+        }
+
+        public String getMessageFinalizacionViaje() {
+            return mEditTextFinalizacionViaje.getText().toString();
         }
     }
 }

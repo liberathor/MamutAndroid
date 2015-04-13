@@ -190,15 +190,15 @@ public final class MessageBuilder {
         return newMessage;
     }
 
-    public String buildMessageFinalizacionViaje() {
+    public String buildMessageFinalizacionViaje(String message) {
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
         sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
         sb.append(Config.SEPARATOR);
-        sb.append(Config.valuesOperacionNal.TYPE_ACTION_DETENCION_EN_RUTA);
-        sb.append(Config.SEPARATOR);
 
         sb.append(Config.valuesOperacionNal.TYPE_ACTION_FINALIZACION_VIAJE);
+        sb.append(Config.SEPARATOR);
+        sb.append(message);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
