@@ -8,20 +8,26 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
+import utils.Config;
+import utils.MessageBuilder;
 
 public class DetencionRutaActivity extends BinderServiceActivity implements EnDetencionRutaFragment.OnFragmentInteractionListener {
+    private Fragment mFragment;
+    private StatusDetencionRuta mStatusDetencionRuta = StatusDetencionRuta.SEND_DATA_DETENCION_RUTA;
+    private String mStringMotivoDetencionRuta = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detencion_ruta);
         if (savedInstanceState == null) {
+            mFragment = new PlaceholderFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, mFragment)
                     .commit();
         }
+        sendData(true);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -51,6 +57,7 @@ public class DetencionRutaActivity extends BinderServiceActivity implements EnDe
             transaction.addToBackStack(null);
             transaction.replace(R.id.container, fragment);
             transaction.commit();
+            mFragment = fragment;
         }
     }
 
@@ -64,12 +71,67 @@ public class DetencionRutaActivity extends BinderServiceActivity implements EnDe
 
     @Override
     protected boolean isValid() {
-        return false;
+        boolean isValid = false;
+        switch (mStatusDetencionRuta) {
+            case SEND_DATA_PAUSA_ACTIVA:
+                isValid = true;
+                break;
+            case SEND_DATA_PERNOCTACION:
+                isValid = true;
+                break;
+            case SEND_DATA_ALIMENTACION:
+                isValid = true;
+                break;
+            case SEND_DATA_OTRO_MOTIVO:
+                if (!mStringMotivoDetencionRuta.isEmpty()) {
+                    isValid = true;
+                } else {
+                    ((OtroMotivoDetencionFragment) mFragment).setErrorsFields("Por favor ingrese el motivo");
+                }
+                break;
+            default:
+                break;
+        }
+        return isValid;
     }
 
     @Override
     protected String buildData() {
-        return null;
+        String data = null;
+        switch (mStatusDetencionRuta) {
+            case SEND_DATA_PAUSA_ACTIVA:
+                data = new MessageBuilder(this).buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRuta.TYPE_ACTION_PAUSA_ACTIVA);
+                break;
+            case SEND_DATA_PERNOCTACION:
+                data = new MessageBuilder(this).buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRuta.TYPE_ACTION_PERNOCTACION);
+                break;
+            case SEND_DATA_ALIMENTACION:
+                data = new MessageBuilder(this).buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRuta.TYPE_ACTION_ALIMENTACION);
+                break;
+            case SEND_DATA_OTRO_MOTIVO:
+                data = new MessageBuilder(this).buildMessageDetencionEnRutaOtroMotivo(mStringMotivoDetencionRuta);
+                break;
+        }
+        return data;
+    }
+
+    public void sendData(StatusDetencionRuta status) {
+        mStatusDetencionRuta = status;
+        sendData(true);
+    }
+
+    public boolean sendDataOtroMotivo(String motivo) {
+        mStringMotivoDetencionRuta = motivo;
+        mStatusDetencionRuta = StatusDetencionRuta.SEND_DATA_OTRO_MOTIVO;
+        return sendData(true);
+    }
+
+    enum StatusDetencionRuta {
+        SEND_DATA_DETENCION_RUTA,
+        SEND_DATA_PAUSA_ACTIVA,
+        SEND_DATA_PERNOCTACION,
+        SEND_DATA_ALIMENTACION,
+        SEND_DATA_OTRO_MOTIVO
     }
 
     /**
@@ -109,18 +171,22 @@ public class DetencionRutaActivity extends BinderServiceActivity implements EnDe
         @Override
         public void onClick(View view) {
             int id = view.getId();
+            DetencionRutaActivity parentActivity = ((DetencionRutaActivity) getActivity());
             Fragment fragment = null;
             Bundle bundle = new Bundle();
             switch (id) {
                 case R.id.ButtonPausaActiva:
+                    parentActivity.sendData(StatusDetencionRuta.SEND_DATA_PAUSA_ACTIVA);
                     fragment = new EnDetencionRutaFragment();
                     bundle.putString(getString(R.string.fragment_title), getString(R.string.title_pausa_activa));
                     break;
                 case R.id.ButtonPernoctacion:
+                    parentActivity.sendData(StatusDetencionRuta.SEND_DATA_PERNOCTACION);
                     fragment = new EnDetencionRutaFragment();
                     bundle.putString(getString(R.string.fragment_title), getString(R.string.title_pernoctacion));
                     break;
                 case R.id.ButtonAlimentacion:
+                    parentActivity.sendData(StatusDetencionRuta.SEND_DATA_ALIMENTACION);
                     fragment = new EnDetencionRutaFragment();
                     bundle.putString(getString(R.string.fragment_title), getString(R.string.title_alimentacion));
                     break;

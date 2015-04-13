@@ -105,7 +105,6 @@ public final class MessageBuilder {
         sb.append(ciudad);
         sb.append(Config.SEPARATOR);
         sb.append(carga);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -122,7 +121,6 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
         sb.append(Config.SEPARATOR);
         sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -144,27 +142,6 @@ public final class MessageBuilder {
         sb.append(manifiesto);
         sb.append(Config.SEPARATOR);
         sb.append(trailer);
-        sb.append(Config.SEPARATOR);
-
-        sb.append(";");
-        sb.append(String.valueOf(mStack.updateCounter()));
-        sb.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
-
-        String newMessage = sb.toString();
-        Log.d(TAG, newMessage);
-        return newMessage;
-    }
-
-    public String buildMessageMotivoDetencionRuta(int motivo) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
-        sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
-        sb.append(Config.SEPARATOR);
-        sb.append(Config.valuesOperacionNal.TYPE_ACTION_DETENCION_EN_RUTA);
-        sb.append(Config.SEPARATOR);
-
-        sb.append(motivo);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -184,7 +161,6 @@ public final class MessageBuilder {
         sb.append(Config.SEPARATOR);
 
         sb.append(Config.valuesDetencionRuta.TYPE_ACTION_REINICIAR_VIAJE);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -204,7 +180,6 @@ public final class MessageBuilder {
         sb.append(Config.SEPARATOR);
 
         sb.append(Config.valuesOperacionNal.TYPE_ACTION_LLEGUE_DESCARGAR);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -224,7 +199,6 @@ public final class MessageBuilder {
         sb.append(Config.SEPARATOR);
 
         sb.append(Config.valuesOperacionNal.TYPE_ACTION_FINALIZACION_VIAJE);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -242,7 +216,6 @@ public final class MessageBuilder {
         sb.append(Config.SEPARATOR);
 
         sb.append(Config.valuesProyectos.TYPE_ACTION_INICIAR_TURNO);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -260,9 +233,6 @@ public final class MessageBuilder {
         sb.append(Config.SEPARATOR);
 
         sb.append(Config.valuesViajeVacio.TYPE_ACTION_INFORMACION_VIAJE);
-        sb.append(Config.SEPARATOR);
-
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -280,7 +250,6 @@ public final class MessageBuilder {
         sb.append(Config.SEPARATOR);
 
         sb.append(Config.valuesProyectos.TYPE_ACTION_FINALIZAR_TURNO);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -305,7 +274,6 @@ public final class MessageBuilder {
         sb.append(ordenServicio);
         sb.append(Config.SEPARATOR);
         sb.append(trailer);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -316,7 +284,26 @@ public final class MessageBuilder {
         return newMessage;
     }
 
-    public String buildMessageDetencionEnRutaMotivoPausa(int codigoMotivo) {
+    public String buildMessageMotivoDetencionRuta(Config.valuesDetencionRuta motivo) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
+        sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
+        sb.append(Config.SEPARATOR);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_DETENCION_EN_RUTA);
+        sb.append(Config.SEPARATOR);
+
+        sb.append(motivo);
+
+        sb.append(";");
+        sb.append(String.valueOf(mStack.updateCounter()));
+        sb.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
+
+        String newMessage = sb.toString();
+        Log.d(TAG, newMessage);
+        return newMessage;
+    }
+
+    public String buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRuta codigoMotivo) {
         StringBuilder sb = new StringBuilder();
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
         sb.append(Config.buttonStrings.TYPE_BUTTON_VIAJE_VACIO);
@@ -326,7 +313,28 @@ public final class MessageBuilder {
         sb.append(Config.SEPARATOR);
 
         sb.append(codigoMotivo);
+
+        sb.append(";");
+        sb.append(String.valueOf(mStack.updateCounter()));
+        sb.append(Utils.formatEndUnit(typeUnity(mContext), mContext));
+
+        String newMessage = sb.toString();
+        Log.d(TAG, newMessage);
+        return newMessage;
+    }
+
+    public String buildMessageDetencionEnRutaOtroMotivo(String motivo) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
+        sb.append(Config.buttonStrings.TYPE_BUTTON_VIAJE_VACIO);
         sb.append(Config.SEPARATOR);
+
+        sb.append(Config.valuesViajeVacio.TYPE_ACTION_INFORMACION_VIAJE);
+        sb.append(Config.SEPARATOR);
+
+        sb.append(Config.valuesDetencionRuta.TYPE_ACTION_OTRO_MOTIVO);
+        sb.append(Config.SEPARATOR);
+        sb.append(motivo);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -361,7 +369,6 @@ public final class MessageBuilder {
         sb.append(Config.SEPARATOR);
 
         sb.append(Config.valuesViajeVacio.TYPE_ACTION_LLEGUE_DESCARGAR);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -379,7 +386,6 @@ public final class MessageBuilder {
         sb.append(Config.SEPARATOR);
 
         sb.append(Config.valuesViajeVacio.TYPE_ACTION_FINALIZACION_VIAJE);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -397,7 +403,6 @@ public final class MessageBuilder {
         sb.append(Config.SEPARATOR);
 
         sb.append(Config.valuesTanqueo.TYPE_ACTION_TANQUEO);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -417,7 +422,6 @@ public final class MessageBuilder {
         sb.append(Config.valuesMantenimiento.TYPE_ACTION_SOLICITUD_MANTENIMIENTO);
         sb.append(Config.SEPARATOR);
         sb.append(mensaje);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -437,7 +441,6 @@ public final class MessageBuilder {
         sb.append(Config.valuesMantenimiento.TYPE_ACTION_SOLICITUD_MANTENIMIENTO);
         sb.append(Config.SEPARATOR);
         sb.append(estadoMantenimiento);
-        sb.append(Config.SEPARATOR);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));

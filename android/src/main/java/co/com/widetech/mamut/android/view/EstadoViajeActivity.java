@@ -49,7 +49,20 @@ public class EstadoViajeActivity extends BinderServiceActivity {
 
     @Override
     protected boolean isValid() {
-        return true;
+        boolean isValid = false;
+        if (mStatusEstadoViaje != null) {
+            switch (mStatusEstadoViaje) {
+                case SEND_DATA_DETENCION_RUTA:
+                    isValid = true;
+                    break;
+                case SEND_DATA_LLEGUE_DESCARGAR:
+                    isValid = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+        return isValid;
     }
 
     @Override

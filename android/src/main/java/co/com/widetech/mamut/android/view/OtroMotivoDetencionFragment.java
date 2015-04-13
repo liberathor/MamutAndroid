@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
 
 /**
@@ -23,6 +24,7 @@ public class OtroMotivoDetencionFragment extends Fragment implements View.OnClic
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private EditText mMotivoDetencionRuta;
     private Button mButtonEnviar;
     private Button mButtonChat;
     private Button mButtonOpciones;
@@ -74,6 +76,7 @@ public class OtroMotivoDetencionFragment extends Fragment implements View.OnClic
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Activity activity = getActivity();
+        mMotivoDetencionRuta = (EditText) activity.findViewById(R.id.editTextMotivo);
         mButtonEnviar = (Button) activity.findViewById(R.id.ButtonEnviarTanqueo);
         mButtonChat = (Button) activity.findViewById(R.id.ButtonChat);
         mButtonOpciones = (Button) activity.findViewById(R.id.ButtonOptions);
@@ -85,10 +88,13 @@ public class OtroMotivoDetencionFragment extends Fragment implements View.OnClic
     @Override
     public void onClick(View view) {
         int id = view.getId();
+        DetencionRutaActivity parentActivity = ((DetencionRutaActivity) getActivity());
         Uri uri = null;
         switch (id) {
             case R.id.ButtonEnviarTanqueo:
-                uri = Uri.parse(this.getClass().getCanonicalName());
+                if (parentActivity.sendDataOtroMotivo(mMotivoDetencionRuta.getText().toString())) {
+                    uri = Uri.parse(this.getClass().getCanonicalName());
+                }
                 break;
             case R.id.ButtonChat:
                 getActivity().startActivity(new Intent(getActivity(), ChatActivity.class));
@@ -109,6 +115,11 @@ public class OtroMotivoDetencionFragment extends Fragment implements View.OnClic
             mListener.onFragmentInteraction(uri);
         }
     }
+
+    public void setErrorsFields(String errorMotivo) {
+        mMotivoDetencionRuta.setError(errorMotivo);
+    }
+
 
     @Override
     public void onAttach(Activity activity) {
