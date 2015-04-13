@@ -6,19 +6,23 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.Button;
+import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
 import utils.Config;
 import utils.MessageBuilder;
 
 public class InfoViajeVacioActivity extends BinderServiceActivity {
+    private PlaceholderFragment mFragment;
+    private StatusInfoViaje mStatusInfoViaje = StatusInfoViaje.SEND_DATA_VIAJE_VACIO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_viaje);
         if (savedInstanceState == null) {
+            mFragment = new PlaceholderFragment();
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
+                    .add(R.id.container, mFragment)
                     .commit();
         }
         sendData(true);
@@ -48,12 +52,59 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
 
     @Override
     protected boolean isValid() {
-        return true;
+        boolean isValid = false;
+        switch (mStatusInfoViaje) {
+            case SEND_DATA_VIAJE_VACIO:
+                isValid = true;
+                break;
+            case SEND_DATA_INFORMACION_VIAJE:
+                PlaceholderFragment infoViajeFragment = mFragment;
+                if (!infoViajeFragment.getMessageDestino().isEmpty() && !infoViajeFragment.getMessageServicio().isEmpty() && !infoViajeFragment.getMessageTrailer().isEmpty()) {
+                    isValid = true;
+                } else {
+                    String errorDestino = null;
+                    String errorServicio = null;
+                    String errorTrailer = null;
+                    if (infoViajeFragment.getMessageDestino().isEmpty()) {
+                        errorDestino = "Por favor ingrese el destino";
+                    }
+                    if (infoViajeFragment.getMessageServicio().isEmpty()) {
+                        errorServicio = "Por favor ingrese el servicio";
+                    }
+                    if (infoViajeFragment.getMessageTrailer().isEmpty()) {
+                        errorTrailer = "Por favor ingrese el trailer";
+                    }
+                    infoViajeFragment.setMessagesValidationErrors(errorDestino, errorServicio, errorTrailer);
+                }
+                break;
+            default:
+                break;
+        }
+        return isValid;
     }
 
     @Override
     protected String buildData() {
-        return new MessageBuilder(this).buildMessageMainButton(Config.buttonStrings.TYPE_BUTTON_VIAJE_VACIO);
+        String data = null;
+        switch (mStatusInfoViaje) {
+            case SEND_DATA_VIAJE_VACIO:
+                data = new MessageBuilder(this).buildMessageMainButton(Config.buttonStrings.TYPE_BUTTON_VIAJE_VACIO);
+                break;
+            case SEND_DATA_INFORMACION_VIAJE:
+                String ciudad = mFragment.getMessageDestino();
+                String servicio = mFragment.getMessageServicio();
+                String trailer = mFragment.getMessageTrailer();
+                data = new MessageBuilder(this).buildMessageViajeVacioInformacionDeViaje(ciudad, servicio, trailer);
+                break;
+            default:
+                break;
+        }
+        return data;
+    }
+
+    enum StatusInfoViaje {
+        SEND_DATA_VIAJE_VACIO,
+        SEND_DATA_INFORMACION_VIAJE
     }
 
     /**
@@ -63,6 +114,9 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
         Button mButtonEnviarEstadoViaje;
         Button mButtonChat;
         Button mButtonOpciones;
+        EditText mEditTextDestino;
+        EditText mEditTextServicio;
+        EditText mEditTextTrailer;
 
         public PlaceholderFragment() {
         }
@@ -84,15 +138,23 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
             mButtonEnviarEstadoViaje.setOnClickListener(this);
             mButtonChat.setOnClickListener(this);
             mButtonOpciones.setOnClickListener(this);
+            mEditTextDestino = (EditText) activity.findViewById(R.id.editTextDestino);
+            mEditTextServicio = (EditText) activity.findViewById(R.id.editTextServicio);
+            mEditTextTrailer = (EditText) activity.findViewById(R.id.editTextTrailer);
         }
 
         @Override
         public void onClick(View view) {
             int id = view.getId();
+            InfoViajeVacioActivity parentFragment = ((InfoViajeVacioActivity) getActivity());
             Class activity = null;
             switch (id) {
                 case R.id.ButtonEnviarInfoViaje:
-                    activity = EstadoViajeActivity.class;
+                    parentFragment.mStatusInfoViaje = StatusInfoViaje.SEND_DATA_INFORMACION_VIAJE;
+                    if (parentFragment.sendData(true)) {
+                        setMessagesValidationErrors(null, null, null);
+                        activity = EstadoViajeActivity.class;
+                    }
                     break;
                 case R.id.ButtonChat:
                     activity = ChatActivity.class;
@@ -105,6 +167,24 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
             if (activity != null) {
                 getActivity().startActivity(new Intent(getActivity(), activity));
             }
+        }
+
+        public String getMessageDestino() {
+            return mEditTextDestino.getText().toString();
+        }
+
+        public String getMessageServicio() {
+            return mEditTextServicio.getText().toString();
+        }
+
+        public String getMessageTrailer() {
+            return mEditTextTrailer.getText().toString();
+        }
+
+        public void setMessagesValidationErrors(String destinoError, String servicioError, String trailerError) {
+            mEditTextDestino.setError(destinoError);
+            mEditTextServicio.setError(servicioError);
+            mEditTextTrailer.setError(trailerError);
         }
     }
 }
