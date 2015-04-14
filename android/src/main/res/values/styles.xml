@@ -15,8 +15,7 @@
         <item name="android:buttonStyle">@style/button</item>
         <item name="android:windowBackground">@drawable/ic_background</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textAppearance">@style/textAppareance</item>
-        <item name="android:editTextColor">@android:color/holo_blue_bright</item>
+        <item name="android:editTextStyle">@style/editTextAppareance</item>
     </style>
 
     <style name="button" parent="@android:style/Widget.Button">
@@ -37,7 +36,7 @@
         <item name="android:paddingLeft">25dp</item>
     </style>
 
-    <style name="textAppareance" parent="@android:style/TextAppearance">
+    <style name="editTextAppareance" parent="@android:style/Widget.EditText">
         <item name="android:textColor">@android:color/white</item>
     </style>
 
