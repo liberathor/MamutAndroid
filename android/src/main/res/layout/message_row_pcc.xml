@@ -36,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/thumbnail"
                 android:layout_toRightOf="@+id/thumbnail"
-                android:textColor="#040404"
                 android:typeface="sans"
                 android:textSize="16dip"
                 android:textStyle="bold"/>
@@ -51,7 +50,6 @@
                 android:layout_below="@id/NameUser"
                 android:layout_marginTop="1dip"
                 android:layout_toRightOf="@+id/thumbnail"
-                android:textColor="#343434"
                 android:textSize="15dip"/>
 
         <!-- Hour Message -->
@@ -64,7 +62,6 @@
                 android:gravity="right"
                 android:layout_marginRight="4dip"
                 android:textSize="12dip"
-                android:textColor="#0078FF"
                 android:textStyle="bold"/>
     </RelativeLayout>
 </LinearLayout>
