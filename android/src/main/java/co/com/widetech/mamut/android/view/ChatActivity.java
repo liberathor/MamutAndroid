@@ -231,7 +231,9 @@ public class ChatActivity extends BinderServiceActivity {
                     try {
                         runOnUiThread(new Runnable() {
                             public void run() {
-                                ((PlaceholderFragment) mFragment).updateMessagesChat();
+                                if (mFragment != null) {
+                                    ((PlaceholderFragment) mFragment).updateMessagesChat();
+                                }
                             }
                         });
                     } catch (Exception ex) {
