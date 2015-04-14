@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
-import utils.MessageBuilder;
+import co.com.widetech.mamut.android.utils.MessageBuilder;
 
 public class InicioViajeActivity extends BinderServiceActivity implements InfoInicioViajeFragment.OnFragmentInteractionListener {
     private static final String LOG = "InicioViajeActivity";

@@ -94,7 +94,7 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
-        <receiver android:name="receiver.DeviceReceiverPower">
+        <receiver android:name=".receiver.DeviceReceiverPower">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_SHUTDOWN"/>
             </intent-filter>

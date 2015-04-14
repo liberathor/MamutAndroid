@@ -1,4 +1,4 @@
-package utils;
+package co.com.widetech.mamut.android.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;

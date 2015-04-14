@@ -1,4 +1,4 @@
-package utils;
+package co.com.widetech.mamut.android.utils;
 
 /**
  * Created by wtjramirez on 3/30/15.

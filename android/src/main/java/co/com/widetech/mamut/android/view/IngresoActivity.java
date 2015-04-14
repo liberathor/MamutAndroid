@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import co.com.widetech.mamut.android.R;
+import co.com.widetech.mamut.android.utils.AlertBuilder;
+import co.com.widetech.mamut.android.utils.MessageBuilder;
 import com.co.widetech.serial_port_core.models.DeviceStatus;
-import utils.AlertBuilder;
-import utils.MessageBuilder;
 
 
 public class IngresoActivity extends BinderServiceActivity {

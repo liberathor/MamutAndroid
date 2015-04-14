@@ -1,4 +1,4 @@
-package utils;
+package co.com.widetech.mamut.android.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

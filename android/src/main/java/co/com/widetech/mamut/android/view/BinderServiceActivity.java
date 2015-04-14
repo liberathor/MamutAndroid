@@ -7,11 +7,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
 import android.util.Log;
 import android.widget.EditText;
+import co.com.widetech.mamut.android.utils.AlertBuilder;
+import co.com.widetech.mamut.android.utils.SharedStatus;
 import com.co.widetech.serial_port_core.models.DeviceStatus;
 import com.co.widetech.serial_port_core.service.TransportDataService;
 import com.co.widetech.serial_port_core.tools.SerialPortPreferences;
-import utils.AlertBuilder;
-import utils.SharedStatus;
 
 import java.util.Calendar;
 
@@ -27,7 +27,7 @@ public abstract class BinderServiceActivity extends ActionBarActivity {
     SharedStatus sharedStatusApp;
     boolean mBound;
     boolean whaitAck;
-    private TransportDataService mService;
+    TransportDataService mService;
     private DeviceStatus deviceStatus;
     private SharedPreferences sPrefInfoDevice;
 

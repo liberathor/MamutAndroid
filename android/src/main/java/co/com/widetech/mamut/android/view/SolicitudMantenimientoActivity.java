@@ -10,8 +10,8 @@ import android.view.*;
 import android.widget.Button;
 import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
-import utils.Config;
-import utils.MessageBuilder;
+import co.com.widetech.mamut.android.utils.Config;
+import co.com.widetech.mamut.android.utils.MessageBuilder;
 
 public class SolicitudMantenimientoActivity extends BinderServiceActivity implements InicioMantenimientoFragment.OnFragmentInteractionListener {
     public static final String SCHEME = ContentResolver.SCHEME_CONTENT + "://";

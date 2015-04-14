@@ -8,7 +8,7 @@ import android.view.*;
 import android.widget.Button;
 import android.widget.EditText;
 import co.com.widetech.mamut.android.R;
-import utils.MessageBuilder;
+import co.com.widetech.mamut.android.utils.MessageBuilder;
 
 public class infoCargueActivity extends BinderServiceActivity {
     private infoCargueActivity.PlaceholderFragment mFragment;

@@ -8,8 +8,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.*;
 import android.widget.Button;
 import co.com.widetech.mamut.android.R;
-import utils.Config;
-import utils.MessageBuilder;
+import co.com.widetech.mamut.android.utils.Config;
+import co.com.widetech.mamut.android.utils.MessageBuilder;
 
 public class DetencionRutaActivity extends BinderServiceActivity implements EnDetencionRutaFragment.OnFragmentInteractionListener {
     private Fragment mFragment;

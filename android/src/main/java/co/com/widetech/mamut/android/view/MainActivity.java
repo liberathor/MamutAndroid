@@ -10,7 +10,7 @@ import android.view.*;
 import android.widget.Button;
 import android.widget.ImageView;
 import co.com.widetech.mamut.android.R;
-import utils.AlertBuilder;
+import co.com.widetech.mamut.android.utils.AlertBuilder;
 
 
 public class MainActivity extends BinderServiceActivity {
