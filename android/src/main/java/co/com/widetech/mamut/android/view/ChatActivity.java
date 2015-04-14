@@ -152,6 +152,12 @@ public class ChatActivity extends BinderServiceActivity {
         }
 
         @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setRetainInstance(true);
+        }
+
+        @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
             Activity activity = getActivity();
@@ -206,9 +212,11 @@ public class ChatActivity extends BinderServiceActivity {
 
         private void updateMessagesChat() {
             ChatActivity parentActivity = ((ChatActivity) getActivity());
-            mListViewChats.setAdapter(new ChatAdapter(parentActivity.getMessages(), parentActivity));
-            mListViewChats.setFocusable(true);
-            mListViewChats.setSelection(parentActivity.sizechat);
+            if (parentActivity != null) {
+                mListViewChats.setAdapter(new ChatAdapter(parentActivity.getMessages(), parentActivity));
+                mListViewChats.setFocusable(true);
+                mListViewChats.setSelection(parentActivity.sizechat);
+            }
         }
     }
 
