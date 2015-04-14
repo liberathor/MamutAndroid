@@ -82,8 +82,7 @@ public final class MessageBuilder {
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
         sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
         sb.append(Config.SEPARATOR);
-        sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE);
-        sb.append(Config.SEPARATOR);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -99,7 +98,7 @@ public final class MessageBuilder {
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
         sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
         sb.append(Config.SEPARATOR);
-        sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE.ordinal() - 1);
         sb.append(Config.SEPARATOR);
 
         sb.append(ciudad);
@@ -120,7 +119,7 @@ public final class MessageBuilder {
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
         sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
         sb.append(Config.SEPARATOR);
-        sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -136,7 +135,7 @@ public final class MessageBuilder {
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
         sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
         sb.append(Config.SEPARATOR);
-        sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_INICIE_VIAJE.ordinal() - 1);
         sb.append(Config.SEPARATOR);
 
         sb.append(manifiesto);
@@ -157,10 +156,10 @@ public final class MessageBuilder {
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
         sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
         sb.append(Config.SEPARATOR);
-        sb.append(Config.valuesOperacionNal.TYPE_ACTION_DETENCION_EN_RUTA);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_DETENCION_EN_RUTA.ordinal() - 1);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesDetencionRuta.TYPE_ACTION_REINICIAR_VIAJE);
+        sb.append(Config.valuesDetencionRuta.TYPE_ACTION_REINICIAR_VIAJE.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -176,10 +175,10 @@ public final class MessageBuilder {
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
         sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
         sb.append(Config.SEPARATOR);
-        sb.append(Config.valuesOperacionNal.TYPE_ACTION_DETENCION_EN_RUTA);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_DETENCION_EN_RUTA.ordinal() - 1);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesOperacionNal.TYPE_ACTION_LLEGUE_DESCARGAR);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_LLEGUE_DESCARGAR.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -196,7 +195,7 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesOperacionNal.TYPE_ACTION_FINALIZACION_VIAJE);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_FINALIZACION_VIAJE.ordinal() - 1);
         sb.append(Config.SEPARATOR);
         sb.append(message);
 
@@ -215,7 +214,7 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_PROYECTOS);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesProyectos.TYPE_ACTION_INICIAR_TURNO);
+        sb.append(Config.valuesProyectos.TYPE_ACTION_INICIAR_TURNO.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -232,7 +231,7 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_VIAJE_VACIO);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesViajeVacio.TYPE_ACTION_INFORMACION_VIAJE);
+        sb.append(Config.valuesViajeVacio.TYPE_ACTION_INFORMACION_VIAJE.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -249,7 +248,7 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_PROYECTOS);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesProyectos.TYPE_ACTION_FINALIZAR_TURNO);
+        sb.append(Config.valuesProyectos.TYPE_ACTION_FINALIZAR_TURNO.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -266,7 +265,7 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_VIAJE_VACIO);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesViajeVacio.TYPE_ACTION_INFORMACION_VIAJE);
+        sb.append(Config.valuesViajeVacio.TYPE_ACTION_INFORMACION_VIAJE.ordinal() - 1);
         sb.append(Config.SEPARATOR);
 
         sb.append(ciudad);
@@ -289,10 +288,10 @@ public final class MessageBuilder {
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
         sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
         sb.append(Config.SEPARATOR);
-        sb.append(Config.valuesOperacionNal.TYPE_ACTION_DETENCION_EN_RUTA);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_DETENCION_EN_RUTA.ordinal() - 1);
         sb.append(Config.SEPARATOR);
 
-        sb.append(motivo);
+        sb.append(motivo.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -309,10 +308,10 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_VIAJE_VACIO);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesViajeVacio.TYPE_ACTION_INFORMACION_VIAJE);
+        sb.append(Config.valuesViajeVacio.TYPE_ACTION_INFORMACION_VIAJE.ordinal() - 1);
         sb.append(Config.SEPARATOR);
 
-        sb.append(codigoMotivo);
+        sb.append(codigoMotivo.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -329,10 +328,10 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_VIAJE_VACIO);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesViajeVacio.TYPE_ACTION_INFORMACION_VIAJE);
+        sb.append(Config.valuesViajeVacio.TYPE_ACTION_INFORMACION_VIAJE.ordinal() - 1);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesDetencionRuta.TYPE_ACTION_OTRO_MOTIVO);
+        sb.append(Config.valuesDetencionRuta.TYPE_ACTION_OTRO_MOTIVO.ordinal() - 1);
         sb.append(Config.SEPARATOR);
         sb.append(motivo);
 
@@ -351,7 +350,7 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_OPERACION_NAL);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesOperacionNal.TYPE_ACTION_DETENCION_EN_RUTA);
+        sb.append(Config.valuesOperacionNal.TYPE_ACTION_DETENCION_EN_RUTA.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -368,7 +367,7 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_VIAJE_VACIO);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesViajeVacio.TYPE_ACTION_LLEGUE_DESCARGAR);
+        sb.append(Config.valuesViajeVacio.TYPE_ACTION_LLEGUE_DESCARGAR.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -385,7 +384,7 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_VIAJE_VACIO);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesViajeVacio.TYPE_ACTION_FINALIZACION_VIAJE);
+        sb.append(Config.valuesViajeVacio.TYPE_ACTION_FINALIZACION_VIAJE.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -402,7 +401,7 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_TANQUEO);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesTanqueo.TYPE_ACTION_TANQUEO);
+        sb.append(Config.valuesTanqueo.TYPE_ACTION_TANQUEO.ordinal() - 1);
         sb.append(Config.SEPARATOR);
         sb.append(eds);
         sb.append(Config.SEPARATOR);
@@ -423,7 +422,7 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_MANTENIMIENTO);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesMantenimiento.TYPE_ACTION_SOLICITUD_MANTENIMIENTO);
+        sb.append(Config.valuesMantenimiento.TYPE_ACTION_SOLICITUD_MANTENIMIENTO.ordinal() - 1);
         sb.append(Config.SEPARATOR);
         sb.append(mensaje);
 
@@ -442,9 +441,9 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_MANTENIMIENTO);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesMantenimiento.TYPE_ACTION_SOLICITUD_MANTENIMIENTO);
+        sb.append(Config.valuesMantenimiento.TYPE_ACTION_SOLICITUD_MANTENIMIENTO.ordinal() - 1);
         sb.append(Config.SEPARATOR);
-        sb.append(estadoMantenimiento);
+        sb.append(estadoMantenimiento.ordinal() - 1);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
@@ -461,7 +460,7 @@ public final class MessageBuilder {
         sb.append(Config.buttonStrings.TYPE_BUTTON_MANTENIMIENTO);
         sb.append(Config.SEPARATOR);
 
-        sb.append(Config.valuesMantenimiento.TYPE_ACTION_ENVIAR_GALONES);
+        sb.append(Config.valuesMantenimiento.TYPE_ACTION_ENVIAR_GALONES.ordinal() - 1);
         sb.append(Config.SEPARATOR);
         sb.append(galones);
 
