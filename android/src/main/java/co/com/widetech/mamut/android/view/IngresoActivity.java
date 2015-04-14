@@ -13,6 +13,7 @@ import co.com.widetech.mamut.android.R;
 import co.com.widetech.mamut.android.utils.AlertBuilder;
 import co.com.widetech.mamut.android.utils.MessageBuilder;
 import com.co.widetech.serial_port_core.models.DeviceStatus;
+import com.co.widetech.serial_port_core.service.TransportDataService;
 
 
 public class IngresoActivity extends BinderServiceActivity {
@@ -57,6 +58,7 @@ public class IngresoActivity extends BinderServiceActivity {
                     .add(R.id.container, mFragment)
                     .commit();
         }
+        startService(new Intent(IngresoActivity.this, TransportDataService.class));
         resumeLogin();
     }
 
