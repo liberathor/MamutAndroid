@@ -53,7 +53,7 @@ public class infoCargueActivity extends BinderServiceActivity {
     protected boolean isValid() {
         switch (statusToSend) {
             case SEND_OPERACION_NAL:
-                return true;
+                return false;
             case SEND_INFO_VIAJE:
                 String ciudadDestino = mFragment.getCiudadDestino();
                 String carga = mFragment.getmCarga();

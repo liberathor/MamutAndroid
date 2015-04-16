@@ -53,7 +53,7 @@ public class EstadoViajeActivity extends BinderServiceActivity {
         if (mStatusEstadoViaje != null) {
             switch (mStatusEstadoViaje) {
                 case SEND_DATA_DETENCION_RUTA:
-                    isValid = true;
+                    isValid = false;
                     break;
                 case SEND_DATA_LLEGUE_DESCARGAR:
                     isValid = true;
