@@ -12,13 +12,13 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:actionBarSize">@dimen/abc_action_bar_default_height_material</item>
         <item name="windowActionBar">true</item>
-        <item name="android:buttonStyle">@style/button</item>
+        <item name="android:buttonStyle">@style/AppTheme.buttonStyle</item>
         <item name="android:windowBackground">@drawable/ic_background</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:editTextStyle">@style/editTextAppareance</item>
+        <item name="android:editTextStyle">@style/AppTheme.editTextStyle</item>
     </style>
 
-    <style name="button" parent="@android:style/Widget.Button">
+    <style name="AppTheme.buttonStyle" parent="@android:style/Widget.Button">
         <item name="android:gravity">center</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:shadowColor">#ff000000</item>
@@ -36,7 +36,18 @@
         <item name="android:paddingLeft">25dp</item>
     </style>
 
-    <style name="editTextAppareance" parent="@android:style/Widget.EditText">
+    <style name="AppTheme.Preference" parent="android:style/Theme">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:background">#cccccc</item>
+        <item name="android:paddingTop">6px</item>
+        <item name="android:paddingBottom">6px</item>
+        <item name="android:paddingLeft">12px</item>
+    </style>
+
+    <style name="AppTheme.editTextStyle" parent="@android:style/Widget.EditText">
         <item name="android:textColor">@android:color/white</item>
     </style>
 
