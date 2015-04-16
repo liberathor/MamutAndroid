@@ -49,11 +49,11 @@ public final class Config {
     }
 
     public static final class buttonStrings {
-        public static final String TYPE_BUTTON_OPERACION_NAL = BASIC_START + "R00";
-        public static final String TYPE_BUTTON_VIAJE_VACIO = BASIC_START + "R01";
-        public static final String TYPE_BUTTON_PROYECTOS = BASIC_START + "R02";
-        public static final String TYPE_BUTTON_TANQUEO = BASIC_START + "R03";
-        public static final String TYPE_BUTTON_MANTENIMIENTO = BASIC_START + "R04";
+        public static final String TYPE_BUTTON_OPERACION_NAL = BASIC_START + "00";
+        public static final String TYPE_BUTTON_VIAJE_VACIO = BASIC_START + "01";
+        public static final String TYPE_BUTTON_PROYECTOS = BASIC_START + "02";
+        public static final String TYPE_BUTTON_TANQUEO = BASIC_START + "03";
+        public static final String TYPE_BUTTON_MANTENIMIENTO = BASIC_START + "04";
         public static final String TYPE_MESSAGE_LOGIN = BASIC_START + "EID" + SEPARATOR;
         public static final String TYPE_MESSAGE_CHAT = BASIC_START + "ACC" + SEPARATOR;
     }
