@@ -35,21 +35,22 @@ public final class R {
         public static int send=0x7f040000;
     }
     public static final class string {
-        public static int action_settings=0x7f070000;
-        public static int app_name=0x7f070001;
-        public static int default_baudrates=0x7f070002;
-        public static int default_time_report=0x7f070003;
-        public static int default_type_unity=0x7f070004;
-        public static int error_configuration=0x7f070005;
-        public static int error_security=0x7f070006;
-        public static int error_unknown=0x7f070007;
-        public static int hello_world=0x7f070008;
-        public static int key_kill_app=0x7f070009;
-        public static int option_baudrate=0x7f07000a;
-        public static int option_device=0x7f07000b;
-        public static int option_kill_app=0x7f07000c;
-        public static int option_time_report=0x7f07000d;
-        public static int option_unity_type=0x7f07000e;
+        public static int action_exit=0x7f070000;
+        public static int action_settings=0x7f070001;
+        public static int app_name=0x7f070002;
+        public static int default_baudrates=0x7f070003;
+        public static int default_time_report=0x7f070004;
+        public static int default_type_unity=0x7f070005;
+        public static int error_configuration=0x7f070006;
+        public static int error_security=0x7f070007;
+        public static int error_unknown=0x7f070008;
+        public static int hello_world=0x7f070009;
+        public static int key_kill_app=0x7f07000a;
+        public static int option_baudrate=0x7f07000b;
+        public static int option_device=0x7f07000c;
+        public static int option_kill_app=0x7f07000d;
+        public static int option_time_report=0x7f07000e;
+        public static int option_unity_type=0x7f07000f;
     }
     public static final class xml {
         public static int option_preferences=0x7f030000;

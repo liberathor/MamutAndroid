@@ -12,6 +12,7 @@ import co.com.widetech.mamut.android.utils.Config;
 import co.com.widetech.mamut.android.utils.MessageBuilder;
 
 public class OpcionesMantenimientoActivity extends BinderServiceActivity {
+    private static boolean isMantenimiento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +23,17 @@ public class OpcionesMantenimientoActivity extends BinderServiceActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        getExtras();
         sendData(true);
     }
 
+    public void getExtras() {
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            isMantenimiento = extras.getBoolean("EXTRA_TANQUEO", false);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -115,7 +124,9 @@ public class OpcionesMantenimientoActivity extends BinderServiceActivity {
                     break;
             }
             if (activity != null) {
-                getActivity().startActivity(new Intent(getActivity(), activity));
+                Intent intent = new Intent(getActivity(), activity);
+                intent.putExtra("EXTRA_TANQUEO", isMantenimiento);
+                getActivity().startActivity(intent);
             }
         }
     }

@@ -11,6 +11,7 @@ import co.com.widetech.mamut.android.R;
 import co.com.widetech.mamut.android.utils.MessageBuilder;
 
 public class FinalizarViajeActivity extends BinderServiceActivity {
+    private static boolean isViajeVacio;
     private Fragment mFragment;
 
     @Override
@@ -23,8 +24,15 @@ public class FinalizarViajeActivity extends BinderServiceActivity {
                     .add(R.id.container, mFragment)
                     .commit();
         }
+        getExtras();
     }
 
+    private void getExtras() {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            isViajeVacio = extras.getBoolean("EXTRA_VIAJE_VACIO", false);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,7 +71,11 @@ public class FinalizarViajeActivity extends BinderServiceActivity {
     @Override
     protected String buildData() {
         PlaceholderFragment fragmentFinalizacion = ((PlaceholderFragment) mFragment);
-        return new MessageBuilder(this).buildMessageFinalizacionViaje(fragmentFinalizacion.getMessageFinalizacionViaje());
+        if (isViajeVacio) {
+            return new MessageBuilder(this).buildMessageFinalizacionViajeVacio(fragmentFinalizacion.getMessageFinalizacionViaje());
+        } else {
+            return new MessageBuilder(this).buildMessageFinalizacionViaje(fragmentFinalizacion.getMessageFinalizacionViaje());
+        }
     }
 
     /**

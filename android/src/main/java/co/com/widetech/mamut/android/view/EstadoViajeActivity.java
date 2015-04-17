@@ -11,6 +11,7 @@ import co.com.widetech.mamut.android.utils.MessageBuilder;
 
 
 public class EstadoViajeActivity extends BinderServiceActivity {
+    private static boolean isViajeVacio;
     private StatusEstadoViaje mStatusEstadoViaje;
 
     @Override
@@ -22,7 +23,15 @@ public class EstadoViajeActivity extends BinderServiceActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        getExtras();
         sendData(true);
+    }
+
+    private void getExtras() {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            isViajeVacio = extras.getBoolean("EXTRA_VIAJE_VACIO", false);
+        }
     }
 
     @Override
@@ -70,10 +79,18 @@ public class EstadoViajeActivity extends BinderServiceActivity {
         String data = null;
         switch (mStatusEstadoViaje) {
             case SEND_DATA_DETENCION_RUTA:
-                data = new MessageBuilder(this).buildMessageDetencionEnRutaOperacionNal();
+                if (isViajeVacio) {
+                    data = new MessageBuilder(this).buildMessageDetencionEnRutaViajeVacio();
+                } else {
+                    data = new MessageBuilder(this).buildMessageDetencionEnRutaOperacionNal();
+                }
                 break;
             case SEND_DATA_LLEGUE_DESCARGAR:
-                data = new MessageBuilder(this).buildMessageLlegueADescargar();
+                if (isViajeVacio) {
+                    data = new MessageBuilder(this).buildMessageLlegueADescargarViajevacio();
+                } else {
+                    data = new MessageBuilder(this).buildMessageLlegueADescargar();
+                }
                 break;
             default:
                 break;
@@ -140,7 +157,9 @@ public class EstadoViajeActivity extends BinderServiceActivity {
                     break;
             }
             if (activity != null) {
-                getActivity().startActivity(new Intent(getActivity(), activity));
+                Intent intent = new Intent(getActivity(), activity);
+                intent.putExtra("EXTRA_VIAJE_VACIO", isViajeVacio);
+                getActivity().startActivity(intent);
             }
         }
 

@@ -29,7 +29,6 @@ public class InicioViajeActivity extends BinderServiceActivity implements InfoIn
                     .add(R.id.container, mFragment)
                     .commit();
         }
-        sendData(true);
     }
 
     private void addFragment(Fragment fragment) {

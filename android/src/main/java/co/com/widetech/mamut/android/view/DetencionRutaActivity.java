@@ -12,9 +12,14 @@ import co.com.widetech.mamut.android.utils.Config;
 import co.com.widetech.mamut.android.utils.MessageBuilder;
 
 public class DetencionRutaActivity extends BinderServiceActivity implements EnDetencionRutaFragment.OnFragmentInteractionListener {
+    private static boolean isViajeVacio;
     private Fragment mFragment;
     private StatusDetencionRuta mStatusDetencionRuta = StatusDetencionRuta.SEND_DATA_DETENCION_RUTA;
     private String mStringMotivoDetencionRuta = "";
+
+    public static boolean isViajeVacio() {
+        return isViajeVacio;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +31,15 @@ public class DetencionRutaActivity extends BinderServiceActivity implements EnDe
                     .add(R.id.container, mFragment)
                     .commit();
         }
+        getExtras();
         sendData(true);
+    }
+
+    private void getExtras() {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            isViajeVacio = extras.getBoolean("EXTRA_VIAJE_VACIO", false);
+        }
     }
 
     @Override
@@ -65,6 +78,7 @@ public class DetencionRutaActivity extends BinderServiceActivity implements EnDe
     public void onFragmentInteraction(Uri uri) {
         uri = Uri.parse(EnDetencionRutaFragment.class.getCanonicalName());
         if (uri.compareTo(uri) == 0) {
+            sendData(StatusDetencionRuta.SEND_DATA_REINICIAR_VIAJE);
             finish();
         }
     }
@@ -89,6 +103,8 @@ public class DetencionRutaActivity extends BinderServiceActivity implements EnDe
                     ((OtroMotivoDetencionFragment) mFragment).setErrorsFields("Por favor ingrese el motivo");
                 }
                 break;
+            case SEND_DATA_REINICIAR_VIAJE:
+                isValid = true;
             default:
                 break;
         }
@@ -98,19 +114,40 @@ public class DetencionRutaActivity extends BinderServiceActivity implements EnDe
     @Override
     protected String buildData() {
         String data = null;
-        switch (mStatusDetencionRuta) {
-            case SEND_DATA_PAUSA_ACTIVA:
-                data = new MessageBuilder(this).buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRuta.TYPE_ACTION_PAUSA_ACTIVA);
-                break;
-            case SEND_DATA_PERNOCTACION:
-                data = new MessageBuilder(this).buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRuta.TYPE_ACTION_PERNOCTACION);
-                break;
-            case SEND_DATA_ALIMENTACION:
-                data = new MessageBuilder(this).buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRuta.TYPE_ACTION_ALIMENTACION);
-                break;
-            case SEND_DATA_OTRO_MOTIVO:
-                data = new MessageBuilder(this).buildMessageDetencionEnRutaOtroMotivo(mStringMotivoDetencionRuta);
-                break;
+        if (isViajeVacio) {
+            switch (mStatusDetencionRuta) {
+                case SEND_DATA_PAUSA_ACTIVA:
+                    data = new MessageBuilder(this).buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRutaViajeVacio.TYPE_ACTION_PAUSA_ACTIVA);
+                    break;
+                case SEND_DATA_PERNOCTACION:
+                    data = new MessageBuilder(this).buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRutaViajeVacio.TYPE_ACTION_PERNOCTACION);
+                    break;
+                case SEND_DATA_ALIMENTACION:
+                    data = new MessageBuilder(this).buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRutaViajeVacio.TYPE_ACTION_ALIMENTACION);
+                    break;
+                case SEND_DATA_OTRO_MOTIVO:
+                    data = new MessageBuilder(this).buildMessageDetencionEnRutaOtroMotivoViajeVacio(mStringMotivoDetencionRuta);
+                    break;
+                case SEND_DATA_REINICIAR_VIAJE:
+                    data = new MessageBuilder(this).buildMessageReinicarViajeVacio();
+            }
+        } else {
+            switch (mStatusDetencionRuta) {
+                case SEND_DATA_PAUSA_ACTIVA:
+                    data = new MessageBuilder(this).buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRuta.TYPE_ACTION_PAUSA_ACTIVA);
+                    break;
+                case SEND_DATA_PERNOCTACION:
+                    data = new MessageBuilder(this).buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRuta.TYPE_ACTION_PERNOCTACION);
+                    break;
+                case SEND_DATA_ALIMENTACION:
+                    data = new MessageBuilder(this).buildMessageDetencionEnRutaMotivoPausa(Config.valuesDetencionRuta.TYPE_ACTION_ALIMENTACION);
+                    break;
+                case SEND_DATA_OTRO_MOTIVO:
+                    data = new MessageBuilder(this).buildMessageDetencionEnRutaOtroMotivo(mStringMotivoDetencionRuta);
+                    break;
+                case SEND_DATA_REINICIAR_VIAJE:
+                    data = new MessageBuilder(this).buildMessageReinicarViaje();
+            }
         }
         return data;
     }
@@ -131,7 +168,8 @@ public class DetencionRutaActivity extends BinderServiceActivity implements EnDe
         SEND_DATA_PAUSA_ACTIVA,
         SEND_DATA_PERNOCTACION,
         SEND_DATA_ALIMENTACION,
-        SEND_DATA_OTRO_MOTIVO
+        SEND_DATA_OTRO_MOTIVO,
+        SEND_DATA_REINICIAR_VIAJE
     }
 
     /**

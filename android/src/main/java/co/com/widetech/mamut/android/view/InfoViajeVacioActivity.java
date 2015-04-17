@@ -12,6 +12,7 @@ import co.com.widetech.mamut.android.utils.Config;
 import co.com.widetech.mamut.android.utils.MessageBuilder;
 
 public class InfoViajeVacioActivity extends BinderServiceActivity {
+    private static boolean isViajeVacio;
     private PlaceholderFragment mFragment;
     private StatusInfoViaje mStatusInfoViaje = StatusInfoViaje.SEND_DATA_VIAJE_VACIO;
 
@@ -25,7 +26,15 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
                     .add(R.id.container, mFragment)
                     .commit();
         }
+        getExtras();
         sendData(true);
+    }
+
+    private void getExtras() {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            isViajeVacio = extras.getBoolean("EXTRA_VIAJE_VACIO", false);
+        }
     }
 
     @Override
@@ -53,12 +62,31 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
     @Override
     protected boolean isValid() {
         boolean isValid = false;
+        PlaceholderFragment infoViajeFragment = mFragment;
         switch (mStatusInfoViaje) {
             case SEND_DATA_VIAJE_VACIO:
                 isValid = true;
                 break;
             case SEND_DATA_INFORMACION_VIAJE:
-                PlaceholderFragment infoViajeFragment = mFragment;
+                if (!infoViajeFragment.getMessageDestino().isEmpty() && !infoViajeFragment.getMessageServicio().isEmpty() && !infoViajeFragment.getMessageTrailer().isEmpty()) {
+                    isValid = true;
+                } else {
+                    String errorDestino = null;
+                    String errorServicio = null;
+                    String errorTrailer = null;
+                    if (infoViajeFragment.getMessageDestino().isEmpty()) {
+                        errorDestino = "Por favor ingrese el destino";
+                    }
+                    if (infoViajeFragment.getMessageServicio().isEmpty()) {
+                        errorServicio = "Por favor ingrese el servicio";
+                    }
+                    if (infoViajeFragment.getMessageTrailer().isEmpty()) {
+                        errorTrailer = "Por favor ingrese el trailer";
+                    }
+                    infoViajeFragment.setMessagesValidationErrors(errorDestino, errorServicio, errorTrailer);
+                }
+                break;
+            case SEND_DATA_INFORMACION_VIAJE_VACIO:
                 if (!infoViajeFragment.getMessageDestino().isEmpty() && !infoViajeFragment.getMessageServicio().isEmpty() && !infoViajeFragment.getMessageTrailer().isEmpty()) {
                     isValid = true;
                 } else {
@@ -86,16 +114,24 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
     @Override
     protected String buildData() {
         String data = null;
+        String ciudad = "";
+        String servicio = "";
+        String trailer = "";
         switch (mStatusInfoViaje) {
             case SEND_DATA_VIAJE_VACIO:
                 data = new MessageBuilder(this).buildMessageMainButton(Config.buttonStrings.TYPE_BUTTON_VIAJE_VACIO);
                 break;
             case SEND_DATA_INFORMACION_VIAJE:
-                String ciudad = mFragment.getMessageDestino();
-                String servicio = mFragment.getMessageServicio();
-                String trailer = mFragment.getMessageTrailer();
-                data = new MessageBuilder(this).buildMessageViajeVacioInformacionDeViaje(ciudad, servicio, trailer);
+                ciudad = mFragment.getMessageDestino();
+                servicio = mFragment.getMessageServicio();
+                trailer = mFragment.getMessageTrailer();
+                data = new MessageBuilder(this).buildMessageViajeVacioInfoViaje(ciudad, servicio, trailer);
                 break;
+            case SEND_DATA_INFORMACION_VIAJE_VACIO:
+                ciudad = mFragment.getMessageDestino();
+                servicio = mFragment.getMessageServicio();
+                trailer = mFragment.getMessageTrailer();
+                data = new MessageBuilder(this).buildMessageViajeVacioInformacionDeViaje(ciudad, servicio, trailer);
             default:
                 break;
         }
@@ -104,7 +140,8 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
 
     enum StatusInfoViaje {
         SEND_DATA_VIAJE_VACIO,
-        SEND_DATA_INFORMACION_VIAJE
+        SEND_DATA_INFORMACION_VIAJE,
+        SEND_DATA_INFORMACION_VIAJE_VACIO
     }
 
     /**
@@ -150,7 +187,11 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
             Class activity = null;
             switch (id) {
                 case R.id.ButtonEnviarInfoViaje:
-                    parentFragment.mStatusInfoViaje = StatusInfoViaje.SEND_DATA_INFORMACION_VIAJE;
+                    if (InfoViajeVacioActivity.isViajeVacio) {
+                        parentFragment.mStatusInfoViaje = StatusInfoViaje.SEND_DATA_INFORMACION_VIAJE_VACIO;
+                    } else {
+                        parentFragment.mStatusInfoViaje = StatusInfoViaje.SEND_DATA_INFORMACION_VIAJE;
+                    }
                     if (parentFragment.sendData(true)) {
                         setMessagesValidationErrors(null, null, null);
                         activity = EstadoViajeActivity.class;
@@ -165,7 +206,9 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
                     break;
             }
             if (activity != null) {
-                getActivity().startActivity(new Intent(getActivity(), activity));
+                Intent intent = new Intent(getActivity(), activity);
+                intent.putExtra("EXTRA_VIAJE_VACIO", isViajeVacio);
+                getActivity().startActivity(intent);
             }
         }
 

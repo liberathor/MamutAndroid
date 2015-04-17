@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import co.com.widetech.mamut.android.R;
 import co.com.widetech.mamut.android.utils.AlertBuilder;
+import com.co.widetech.serial_port_core.models.DeviceStatus;
 
 
 public class MainActivity extends BinderServiceActivity {
@@ -42,7 +43,14 @@ public class MainActivity extends BinderServiceActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_exit) {
+            new DeviceStatus(MainActivity.this).setStatusLogin(false);
+            AlertBuilder.buildGenericAlert(MainActivity.this, "Salir", "Desea salir de la aplicacion", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    MainActivity.this.finish();
+                }
+            }, false).show();
             return true;
         }
 
@@ -114,6 +122,7 @@ public class MainActivity extends BinderServiceActivity {
             Class activity = null;
             String title = "Confirmar accion";
             String message = "Esta seguro?";
+            boolean isViajeVacio = false;
             switch (id) {
                 case R.id.ButtonOpNal:
                     activity = OperationActivity.class;
@@ -123,6 +132,7 @@ public class MainActivity extends BinderServiceActivity {
                     break;
                 case R.id.ButtonViajeVacio:
                     activity = InfoViajeVacioActivity.class;
+                    isViajeVacio = true;
                     break;
                 case R.id.ButtonTanqueo:
                     activity = SolicitudTanqueoActivity.class;
@@ -145,17 +155,19 @@ public class MainActivity extends BinderServiceActivity {
                     break;
             }
             if (message != null) {
-                launchWhitAlertActivity(activity, title, message);
+                launchWhitAlertActivity(activity, title, message, isViajeVacio);
             } else {
                 getActivity().startActivity(new Intent(getActivity(), activity));
             }
         }
 
-        public void launchWhitAlertActivity(final Class activity, String title, String message) {
+        public void launchWhitAlertActivity(final Class activity, String title, String message, final boolean isViajeVacio) {
             AlertBuilder.buildGenericAlert(getActivity(), title, message, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    getActivity().startActivity(new Intent(getActivity(), activity));
+                    Intent intent = new Intent(getActivity(), activity);
+                    intent.putExtra("EXTRA_VIAJE_VACIO", isViajeVacio);
+                    getActivity().startActivity(intent);
                 }
             }, true).show();
         }

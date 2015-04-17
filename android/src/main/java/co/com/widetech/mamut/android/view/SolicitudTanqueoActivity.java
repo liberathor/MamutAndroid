@@ -83,6 +83,7 @@ public class SolicitudTanqueoActivity extends BinderServiceActivity {
     protected String buildData() {
         String data = null;
         PlaceholderFragment fragment = ((PlaceholderFragment) mFragment);
+
         switch (mStatusSolicitudTanqueo) {
             case SEND_DATA_START_SOLICITUD_TANQUEO:
                 data = new MessageBuilder(this).buildMessageMainButton(Config.buttonStrings.TYPE_BUTTON_TANQUEO);

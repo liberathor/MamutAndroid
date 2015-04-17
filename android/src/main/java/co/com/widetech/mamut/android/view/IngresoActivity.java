@@ -153,7 +153,7 @@ public class IngresoActivity extends BinderServiceActivity {
         public void onClick(View view) {
             IngresoActivity activity = (IngresoActivity) getActivity();
             try {
-                if (activity.sendData(true)) {
+                if (activity.sendData(false)) {
                     mProgressBar.setVisibility(View.VISIBLE);
                 }
             } catch (IllegalStateException e) {
