@@ -27,7 +27,7 @@ public class InfoViajeVacioActivity extends BinderServiceActivity {
                     .commit();
         }
         getExtras();
-        sendData(true);
+        sendFirstmessage();
     }
 
     private void getExtras() {

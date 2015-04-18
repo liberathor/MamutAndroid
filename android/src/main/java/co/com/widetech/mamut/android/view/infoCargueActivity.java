@@ -83,7 +83,7 @@ public class infoCargueActivity extends BinderServiceActivity {
                 data = new MessageBuilder(this).buildMessageLlegueACargar();
                 break;
             case SEND_INFO_VIAJE:
-                data = new MessageBuilder(this).buildMessageInicieMiViaje();
+                data = new MessageBuilder(this).buildMessageInformacionViaje(mFragment.getCiudadDestino(), mFragment.getmCarga());
                 break;
         }
         return data;

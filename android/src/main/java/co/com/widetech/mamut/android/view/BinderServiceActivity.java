@@ -151,4 +151,22 @@ public abstract class BinderServiceActivity extends ActionBarActivity {
             timeFirstIntentEnterSettings = actualTime;
         }
     }
+
+    public void sendFirstmessage() {
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                while (mService == null && !mBound) {
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Log.d(TAG, "waiting ..... for sendFirstmessage()");
+                }
+                sendData(true);
+            }
+        }.start();
+    }
 }

@@ -24,7 +24,7 @@ public class OpcionesMantenimientoActivity extends BinderServiceActivity {
                     .commit();
         }
         getExtras();
-        sendData(true);
+        sendFirstmessage();
     }
 
     public void getExtras() {

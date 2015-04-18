@@ -12,6 +12,7 @@ import co.com.widetech.mamut.android.utils.MessageBuilder;
 
 
 public class OperationActivity extends BinderServiceActivity {
+    public static final String TAG = "OperationActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +23,8 @@ public class OperationActivity extends BinderServiceActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-        sendData(true);
+        sendFirstmessage();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

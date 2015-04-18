@@ -45,7 +45,7 @@ public class InicioTurnoActivity extends BinderServiceActivity implements EnTurn
                 InicioTurnoActivity.this.startActivity(new Intent(InicioTurnoActivity.this, SolicitudTanqueoActivity.class));
             }
         });
-        sendData(true);
+        sendFirstmessage();
     }
 
     void replaceFragment(Fragment fragment, String tag) {

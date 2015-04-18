@@ -37,7 +37,7 @@ public class ChatActivity extends BinderServiceActivity {
                     .add(R.id.container, mFragment)
                     .commit();
         }
-        sendData(true);
+        sendFirstmessage();
     }
 
     @Override

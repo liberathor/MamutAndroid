@@ -18,7 +18,7 @@ public final class Config {
     }
 
     public static final class valuesViajeVacio {
-        public static final String TYPE_ACTION_INFORMACION_VIAJE = "R1";
+        public static final String TYPE_ACTION_INFORMACION_VIAJE = "R11";
         public static final String TYPE_ACTION_DETENCION_EN_RUTA = "R31";
         public static final String TYPE_ACTION_LLEGUE_DESCARGAR = "R36";
         public static final String TYPE_ACTION_FINALIZACION_VIAJE = "R37";
