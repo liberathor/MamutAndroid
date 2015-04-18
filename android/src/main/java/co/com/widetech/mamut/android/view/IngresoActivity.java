@@ -9,6 +9,7 @@ import android.view.*;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 import co.com.widetech.mamut.android.R;
 import co.com.widetech.mamut.android.utils.AlertBuilder;
 import co.com.widetech.mamut.android.utils.MessageBuilder;
@@ -27,6 +28,7 @@ public class IngresoActivity extends BinderServiceActivity {
                 String codeUser = intent.getStringExtra("Code");
                 if (true) {
                     sharedStatusApp.setsPrefNameUser(nameUser);
+                    Toast.makeText(IngresoActivity.this, nameUser, Toast.LENGTH_LONG).show();
                     if (codeUser.equalsIgnoreCase("1")) {
                         new DeviceStatus(IngresoActivity.this).setStatusLogin(true);
                         mFragment.mProgressBar.setVisibility(View.INVISIBLE);
