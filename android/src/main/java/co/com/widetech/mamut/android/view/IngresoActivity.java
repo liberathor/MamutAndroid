@@ -6,10 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.*;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.*;
 import co.com.widetech.mamut.android.R;
 import co.com.widetech.mamut.android.utils.AlertBuilder;
 import co.com.widetech.mamut.android.utils.MessageBuilder;
@@ -130,6 +127,7 @@ public class IngresoActivity extends BinderServiceActivity {
         protected ProgressBar mProgressBar;
         private Button mButton;
         private EditText mTextView;
+        private ImageView mImageViewLogo;
 
         public PlaceholderFragment() {
         }
@@ -140,7 +138,9 @@ public class IngresoActivity extends BinderServiceActivity {
             mButton = (Button) activity.findViewById(R.id.buttonIngreso);
             mTextView = (EditText) activity.findViewById(R.id.editTextCodigoIngreso);
             mProgressBar = (ProgressBar) activity.findViewById(R.id.progressBar);
+            mImageViewLogo = (ImageView) activity.findViewById(R.id.imageViewLogo);
             mButton.setOnClickListener(this);
+            mImageViewLogo.setOnClickListener(this);
             super.onActivityCreated(savedInstanceState);
         }
 
@@ -153,24 +153,34 @@ public class IngresoActivity extends BinderServiceActivity {
 
         @Override
         public void onClick(View view) {
-            IngresoActivity activity = (IngresoActivity) getActivity();
-            try {
-                if (activity.sendData(false)) {
-                    mProgressBar.setVisibility(View.VISIBLE);
-                }
-            } catch (IllegalStateException e) {
-                AlertBuilder.buildGenericAlert(
-                        activity,
-                        "Configure el Puerto Serial",
-                        "Comuniquese con el Administrador para la configuracon",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                mProgressBar.setVisibility(View.INVISIBLE);
-                                mTextView.setText("");
-                            }
-                        }, false).show();
-                e.printStackTrace();
+            int id = view.getId();
+            IngresoActivity parentActivity = (IngresoActivity) getActivity();
+            switch (id) {
+                case R.id.buttonIngreso:
+                    try {
+                        if (parentActivity.sendData(false)) {
+                            mProgressBar.setVisibility(View.VISIBLE);
+                        }
+                    } catch (IllegalStateException e) {
+                        AlertBuilder.buildGenericAlert(
+                                parentActivity,
+                                "Configure el Puerto Serial",
+                                "Comuniquese con el Administrador para la configuracion",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        mProgressBar.setVisibility(View.INVISIBLE);
+                                        mTextView.setText("");
+                                    }
+                                }, false).show();
+                        e.printStackTrace();
+                    }
+                    break;
+                case R.id.imageViewLogo:
+                    parentActivity.intentToEnterSettings();
+                    break;
+                default:
+                    break;
             }
         }
 
