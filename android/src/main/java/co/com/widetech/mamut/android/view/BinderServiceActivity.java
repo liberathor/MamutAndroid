@@ -28,7 +28,6 @@ public abstract class BinderServiceActivity extends ActionBarActivity {
     boolean mBound;
     boolean whaitAck;
     TransportDataService mService;
-    private DeviceStatus deviceStatus;
     private SharedPreferences sPrefInfoDevice;
 
     private ServiceConnection mConnection = new ServiceConnection() {
@@ -82,7 +81,6 @@ public abstract class BinderServiceActivity extends ActionBarActivity {
     protected void onStart() {
         super.onStart();
         Log.d(TAG, "onStart()");
-        deviceStatus = new DeviceStatus(getApplicationContext());
         sharedStatusApp = new SharedStatus(this);
         Intent intent = new Intent(this, TransportDataService.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
