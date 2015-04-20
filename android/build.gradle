@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.0'
+        classpath 'com.android.tools.build:gradle:1.1.1'
     }
 }
 apply plugin: 'com.android.application'
@@ -14,7 +14,7 @@ repositories {
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    buildToolsVersion '22.0.0'
 
     defaultConfig {
         applicationId "co.com.widetech.mamut.android"
@@ -37,9 +37,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':CoreSerialPortApp')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:21.0.0'
     compile 'com.android.support:gridlayout-v7:21.0.0'
     compile 'com.android.support:support-v4:21.0.0'
+    compile project(':CoreSerialPort:CoreSerialPortApp')
 }

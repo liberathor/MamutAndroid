@@ -2,5 +2,8 @@
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
+/CoreSerialPort
 .DS_Store
 /build
+
+android.CoreSerialPort

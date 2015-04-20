@@ -1,2 +1,1 @@
-include ':CoreSerialPortApp'
-include ':android'
+include ':android', 'CoreSerialPort:CoreSerialPortApp'
