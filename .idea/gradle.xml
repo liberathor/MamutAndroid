@@ -8,7 +8,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/CoreSerialPortApp" />
+            <option value="$PROJECT_DIR$/CoreSerialPort" />
+            <option value="$PROJECT_DIR$/CoreSerialPort/CoreSerialPortApp" />
             <option value="$PROJECT_DIR$/android" />
           </set>
         </option>

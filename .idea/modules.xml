@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CoreSerialPortApp/CoreSerialPortApp.iml" filepath="$PROJECT_DIR$/CoreSerialPortApp/CoreSerialPortApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CoreSerialPort/CoreSerialPort.iml" filepath="$PROJECT_DIR$/CoreSerialPort/CoreSerialPort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android.CoreSerialPort/CoreSerialPortApp/CoreSerialPortApp.iml" filepath="$PROJECT_DIR$/android.CoreSerialPort/CoreSerialPortApp/CoreSerialPortApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/MamutAndroid.iml" filepath="$PROJECT_DIR$/MamutAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/android/android.iml" filepath="$PROJECT_DIR$/android/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android.CoreSerialPort/android.CoreSerialPort.iml" filepath="$PROJECT_DIR$/android.CoreSerialPort/android.CoreSerialPort.iml" />
     </modules>
   </component>
 </project>
