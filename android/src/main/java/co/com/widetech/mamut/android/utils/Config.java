@@ -38,7 +38,7 @@ public final class Config {
         public static final String TYPE_ACTION_PERNOCTACION = "R32";
         public static final String TYPE_ACTION_ALIMENTACION = "R33";
         public static final String TYPE_ACTION_OTRO_MOTIVO = "R34";
-        public static final String TYPE_ACTION_REINICIAR_VIAJE = "R35";
+        public static final String TYPE_11TION_REINICIAR_VIAJE = "R35";
     }
 
     public static final class valuesDetencionRutaOperacionNal {

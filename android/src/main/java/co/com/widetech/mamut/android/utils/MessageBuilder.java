@@ -171,7 +171,7 @@ public final class MessageBuilder {
         sb.append(Utils.formatStartUnit(typeUnity(mContext), mContext));
         sb.append(Config.BASIC_START);
 
-        sb.append(Config.valuesDetencionRutaViajeVacio.TYPE_ACTION_REINICIAR_VIAJE);
+        sb.append(Config.valuesDetencionRuta.TYPE_ACTION_REINICIAR_VIAJE);
 
         sb.append(";");
         sb.append(String.valueOf(mStack.updateCounter()));
