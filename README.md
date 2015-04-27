@@ -27,8 +27,8 @@ Aplicacion android para el seguimiento y reporte de los estados de transporte pe
     ![Alt text](http://www.tri-plc.com/USB-RS232.jpg "USB-RS232 Converter")
 
 1. Instale o actualize su IDE (Intellij IDEA, Android Studio, o compatible con gradle) y el Android ADT
-2. Clone el repositorio MamutAndroid -> $ git clone https://github.com/widetechmobile/MamutAndroid
-3. Clone el repositorio CoreSerialPort -> $ git clone https://github.com/widetechmobile/CoreSerialPort
+2. Clone el repositorio MamutAndroid -> `$ git clone https://github.com/widetechmobile/MamutAndroid`
+3. Clone el repositorio CoreSerialPort -> `$ git clone https://github.com/widetechmobile/CoreSerialPort`
 4. Mueva o Copie la carpeta del repositorio clonado CoreSerialPort dentro de la carpeta del proyecto MamutAndroid
 6. Abra el proyecto MamutAndroid, sincronize el proyecto gradle, compile y ejecute
 7. Para realizar las pruebas por favor instale el driver de su adaptador USB-RS232 de la pagina del fabricante:
