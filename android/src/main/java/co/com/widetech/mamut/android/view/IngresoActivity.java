@@ -1,23 +1,40 @@
 package co.com.widetech.mamut.android.view;
 
 import android.app.Activity;
-import android.content.*;
+import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.*;
-import android.widget.*;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.co.widetech.serial_port_core.models.DeviceStatus;
+import com.co.widetech.serial_port_core.service.TransportDataService;
+import com.co.widetech.serial_port_core.tools.Utils;
+
 import co.com.widetech.mamut.android.R;
 import co.com.widetech.mamut.android.utils.AlertBuilder;
 import co.com.widetech.mamut.android.utils.MessageBuilder;
-import com.co.widetech.serial_port_core.models.DeviceStatus;
-import com.co.widetech.serial_port_core.service.TransportDataService;
 
 
 public class IngresoActivity extends BinderServiceActivity {
     private static final String TAG = "IngresoActivity";
     private PlaceholderFragment mFragment;
-
+    private Boolean mAccessTimeLogin;
     private BroadcastReceiver receiverLoginActivity = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             try {
@@ -27,6 +44,7 @@ public class IngresoActivity extends BinderServiceActivity {
                     sharedStatusApp.setsPrefNameUser(nameUser);
                     Toast.makeText(IngresoActivity.this, nameUser, Toast.LENGTH_LONG).show();
                     if (codeUser.equalsIgnoreCase("1")) {
+                        mAccessTimeLogin = false;
                         new DeviceStatus(IngresoActivity.this).setStatusLogin(true);
                         mFragment.mProgressBar.setVisibility(View.INVISIBLE);
                         startActivity(new Intent(IngresoActivity.this, MainActivity.class));
@@ -45,6 +63,8 @@ public class IngresoActivity extends BinderServiceActivity {
             }
         }
     };
+    private MyCountSendStartApp counterStartApp;
+    private ProgressDialog progressDialogLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +140,17 @@ public class IngresoActivity extends BinderServiceActivity {
         super.onStop();
     }
 
+    private long timeReporter() {
+        MessageBuilder builder = new MessageBuilder(this);
+        long timer = Utils.timerApplication(builder.typeUnity(this));
+        long tr = timer * 1000;
+        return tr;
+    }
+
+    MyCountSendStartApp getCounter() {
+        return new MyCountSendStartApp(IngresoActivity.this.timeReporter(), 1000);
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -158,8 +189,13 @@ public class IngresoActivity extends BinderServiceActivity {
             switch (id) {
                 case R.id.buttonIngreso:
                     try {
+                        parentActivity.mAccessTimeLogin = true;
                         if (parentActivity.sendData(false)) {
+                            parentActivity.progressDialogLogin = ProgressDialog.show(parentActivity, "Por Favor Espere",
+                                    "Validando el Acceso", true);
                             mProgressBar.setVisibility(View.VISIBLE);
+                            parentActivity.counterStartApp = parentActivity.getCounter();
+                            parentActivity.counterStartApp.start();
                         }
                     } catch (IllegalStateException e) {
                         AlertBuilder.buildGenericAlert(
@@ -184,8 +220,35 @@ public class IngresoActivity extends BinderServiceActivity {
             }
         }
 
+        public void setProgress(Boolean isProgress) {
+            mProgressBar.setVisibility(isProgress ? View.INVISIBLE : View.VISIBLE);
+        }
+
         public String getCodigoAcceso() {
             return mTextView.getText().toString();
+        }
+    }
+
+    private class MyCountSendStartApp extends CountDownTimer {
+
+        private MyCountSendStartApp(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+        }
+
+        @Override
+        public void onFinish() {
+            if (mAccessTimeLogin) {
+                mFragment.setProgress(false);
+                progressDialogLogin.dismiss();
+                Toast.makeText(IngresoActivity.this,
+                        getResources().getString(R.string.message_login_time_out),
+                        Toast.LENGTH_LONG).show();
+                mAccessTimeLogin = false;
+            }
         }
     }
 }

@@ -26,5 +26,6 @@
     <string name="title_otro_motivo">OTRO MOTIVO</string>
     <string name="title_activity_chat">Chat</string>
     <string name="title_activity_solicitur_mantenimiento">En mantenimiento</string>
+    <string name="message_login_time_out">Se Agoto el Tiempo de respuesta</string>
 
 </resources>
