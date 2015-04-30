@@ -6,10 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import co.com.widetech.mamut.android.R;
+
 import com.co.widetech.serial_port_core.models.Chat;
 
 import java.util.Vector;
+
+import co.com.widetech.mamut.android.R;
+
+/*TODO
+*
+* Adapter Messenger Chat
+* Array Messages
+* BaseAdapter para menejar bases de datos
+*
+*
+ */
+
 
 public class ChatAdapter extends BaseAdapter {
     private static LayoutInflater inflater = null;
